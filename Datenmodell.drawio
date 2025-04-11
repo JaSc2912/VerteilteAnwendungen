@@ -61,7 +61,12 @@
           <mxGeometry x="-2250" y="-1141" width="189" height="30" as="geometry" />
         </mxCell>
         <mxCell id="BPHc0PbeHajEXwLzNZIl-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="5pvtJaNoTowh3pFW2rUU-2" target="BPHc0PbeHajEXwLzNZIl-3">
-          <mxGeometry relative="1" as="geometry" />
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-2253" y="-889" />
+              <mxPoint x="-2253" y="-737" />
+            </Array>
+          </mxGeometry>
         </mxCell>
         <mxCell id="BPHc0PbeHajEXwLzNZIl-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="5pvtJaNoTowh3pFW2rUU-2" target="BPHc0PbeHajEXwLzNZIl-14">
           <mxGeometry relative="1" as="geometry">
@@ -76,6 +81,23 @@
             <Array as="points">
               <mxPoint x="-2261" y="-928" />
               <mxPoint x="-2261" y="-993" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BPHc0PbeHajEXwLzNZIl-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="5pvtJaNoTowh3pFW2rUU-2" target="BPHc0PbeHajEXwLzNZIl-18">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-2260" y="-928" />
+              <mxPoint x="-2260" y="-1059" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BPHc0PbeHajEXwLzNZIl-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="5pvtJaNoTowh3pFW2rUU-2" target="BPHc0PbeHajEXwLzNZIl-20">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-2226" y="-916" />
+              <mxPoint x="-2226" y="-901" />
+              <mxPoint x="-2178" y="-901" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -100,16 +122,22 @@
           <mxGeometry x="-2379" y="-839" width="30" height="60" as="geometry" />
         </mxCell>
         <mxCell id="BPHc0PbeHajEXwLzNZIl-3" value="Einloggen" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="-2158" y="-828" width="99" height="38" as="geometry" />
+          <mxGeometry x="-2158" y="-756" width="99" height="38" as="geometry" />
         </mxCell>
         <mxCell id="BPHc0PbeHajEXwLzNZIl-9" value="Benutzer verwalten" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="-2173.5" y="-709" width="130" height="42" as="geometry" />
         </mxCell>
         <mxCell id="BPHc0PbeHajEXwLzNZIl-14" value="Kundendaten pflegen" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="-2182.5" y="-950" width="148" height="46" as="geometry" />
+          <mxGeometry x="-2176" y="-982" width="148" height="46" as="geometry" />
         </mxCell>
         <mxCell id="BPHc0PbeHajEXwLzNZIl-16" value="Bankkonten verwalten" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="-2173.5" y="-1014" width="146" height="42" as="geometry" />
+          <mxGeometry x="-2175" y="-1038" width="146" height="47" as="geometry" />
+        </mxCell>
+        <mxCell id="BPHc0PbeHajEXwLzNZIl-18" value="Kundenübersicht zeigen" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-2189" y="-1088" width="174" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="BPHc0PbeHajEXwLzNZIl-20" value="Kontotransaktionen verwalten" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-2178" y="-927" width="152" height="47" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
