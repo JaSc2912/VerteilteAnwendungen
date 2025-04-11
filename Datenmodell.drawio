@@ -65,7 +65,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="qL2NnjRQjdQgOjW0ESIW" name="Anwendungsfallmodell">
-    <mxGraphModel grid="0" page="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="0" fold="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="3844" dy="1708" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="0" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -77,15 +77,6 @@
             <Array as="points">
               <mxPoint x="-2275" y="-889" />
               <mxPoint x="-2275" y="-737" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="BPHc0PbeHajEXwLzNZIl-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;startFill=0;" edge="1" parent="1" source="5pvtJaNoTowh3pFW2rUU-2" target="BPHc0PbeHajEXwLzNZIl-20">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="-2263" y="-916" />
-              <mxPoint x="-2263" y="-901" />
-              <mxPoint x="-2178" y="-901" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -102,6 +93,9 @@
               <mxPoint x="-2262" y="-1066" />
             </Array>
           </mxGeometry>
+        </mxCell>
+        <mxCell id="mCE0ZCVhC0V_4xXRBOCI-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;startFill=0;" edge="1" parent="1" source="5pvtJaNoTowh3pFW2rUU-2" target="BPHc0PbeHajEXwLzNZIl-20">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="5pvtJaNoTowh3pFW2rUU-2" value="&lt;div&gt;Kundenservice&lt;/div&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
           <mxGeometry x="-2379" y="-946" width="30" height="60" as="geometry" />
