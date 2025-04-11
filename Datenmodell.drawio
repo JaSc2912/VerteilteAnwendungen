@@ -53,12 +53,15 @@
     </mxGraphModel>
   </diagram>
   <diagram id="qL2NnjRQjdQgOjW0ESIW" name="Anwendungsfallmodell">
-    <mxGraphModel dx="3544" dy="1797" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="3830" dy="1946" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="QJYdXnABjzxTu_YOuyMo-1" value="Anwendungsfallmodell" style="text;strokeColor=none;fillColor=none;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;" vertex="1" parent="1">
           <mxGeometry x="-2250" y="-1141" width="189" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="8fA6ZSBMHwZi45fozLJX-1" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-1616" y="-798" width="160" height="80" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
