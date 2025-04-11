@@ -63,8 +63,8 @@
         <mxCell id="BPHc0PbeHajEXwLzNZIl-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="5pvtJaNoTowh3pFW2rUU-2" target="BPHc0PbeHajEXwLzNZIl-3">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="-2253" y="-889" />
-              <mxPoint x="-2253" y="-737" />
+              <mxPoint x="-2239" y="-889" />
+              <mxPoint x="-2239" y="-737" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -116,6 +116,17 @@
           <mxGeometry x="-2379" y="-738" width="30" height="60" as="geometry" />
         </mxCell>
         <mxCell id="BPHc0PbeHajEXwLzNZIl-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="BPHc0PbeHajEXwLzNZIl-1" target="BPHc0PbeHajEXwLzNZIl-3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-2275" y="-786" />
+              <mxPoint x="-2275" y="-737" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BPHc0PbeHajEXwLzNZIl-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="BPHc0PbeHajEXwLzNZIl-1" target="BPHc0PbeHajEXwLzNZIl-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="BPHc0PbeHajEXwLzNZIl-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="BPHc0PbeHajEXwLzNZIl-1" target="BPHc0PbeHajEXwLzNZIl-24">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="BPHc0PbeHajEXwLzNZIl-1" value="Kreditmitarbeiter" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
@@ -138,6 +149,12 @@
         </mxCell>
         <mxCell id="BPHc0PbeHajEXwLzNZIl-20" value="Kontotransaktionen verwalten" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="-2178" y="-927" width="152" height="47" as="geometry" />
+        </mxCell>
+        <mxCell id="BPHc0PbeHajEXwLzNZIl-22" value="Kreditanträge verwalten" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-2006" y="-874" width="166" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="BPHc0PbeHajEXwLzNZIl-24" value="Kunden auswerten" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-2003.5" y="-816" width="161" height="46" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
