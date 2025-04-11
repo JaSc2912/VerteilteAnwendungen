@@ -217,17 +217,29 @@
         <mxCell id="9vo7ut-yvvCGv_oY2JEk-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="9vo7ut-yvvCGv_oY2JEk-1" target="9vo7ut-yvvCGv_oY2JEk-6">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
+        <mxCell id="9vo7ut-yvvCGv_oY2JEk-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="9vo7ut-yvvCGv_oY2JEk-1" target="9vo7ut-yvvCGv_oY2JEk-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9vo7ut-yvvCGv_oY2JEk-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="9vo7ut-yvvCGv_oY2JEk-1" target="9vo7ut-yvvCGv_oY2JEk-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="9vo7ut-yvvCGv_oY2JEk-1" value="&lt;div&gt;Anmeldung&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="-49" y="73" width="102" height="34" as="geometry" />
         </mxCell>
         <mxCell id="9vo7ut-yvvCGv_oY2JEk-2" value="Benutzer verwalten" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="-268" y="60" width="120" height="60" as="geometry" />
         </mxCell>
+        <mxCell id="9vo7ut-yvvCGv_oY2JEk-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="9vo7ut-yvvCGv_oY2JEk-3" target="9vo7ut-yvvCGv_oY2JEk-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="9vo7ut-yvvCGv_oY2JEk-3" value="Kundenübersicht anzeigen" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="152" y="-61.5" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="9vo7ut-yvvCGv_oY2JEk-4" value="Bankkonten verwalten" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="152" y="19.5" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9vo7ut-yvvCGv_oY2JEk-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="9vo7ut-yvvCGv_oY2JEk-5" target="9vo7ut-yvvCGv_oY2JEk-7">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="9vo7ut-yvvCGv_oY2JEk-5" value="Kundendaten pflegen" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="152" y="100.5" width="120" height="60" as="geometry" />
@@ -236,13 +248,16 @@
           <mxGeometry x="152" y="181.5" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="9vo7ut-yvvCGv_oY2JEk-7" value="&lt;div&gt;Kunden suchen&lt;/div&gt;" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="307" y="299" width="120" height="60" as="geometry" />
+          <mxGeometry x="369" y="60" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="9vo7ut-yvvCGv_oY2JEk-8" value="Kreditanträge verwalten" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="-58" y="181.5" width="120" height="60" as="geometry" />
+          <mxGeometry x="-208" y="253" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9vo7ut-yvvCGv_oY2JEk-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="9vo7ut-yvvCGv_oY2JEk-9" target="9vo7ut-yvvCGv_oY2JEk-7">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="9vo7ut-yvvCGv_oY2JEk-9" value="Kunden auswerten" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="-58" y="262.5" width="120" height="60" as="geometry" />
+          <mxGeometry x="-58" y="253" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
