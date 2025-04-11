@@ -183,13 +183,13 @@
           <mxGeometry x="-2182.5" y="-816" width="161" height="46" as="geometry" />
         </mxCell>
         <mxCell id="BPHc0PbeHajEXwLzNZIl-26" value="Kunden suchen" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="-1930" y="-1006" width="123" height="40" as="geometry" />
+          <mxGeometry x="-1930" y="-981" width="123" height="40" as="geometry" />
         </mxCell>
         <mxCell id="BPHc0PbeHajEXwLzNZIl-28" value="&amp;lt;&amp;lt;extends&amp;gt;&amp;gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="-1930" y="-1097" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="BPHc0PbeHajEXwLzNZIl-30" value="&amp;lt;&amp;lt;extends&amp;gt;&amp;gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="-2009" y="-1021" width="60" height="30" as="geometry" />
+          <mxGeometry x="-2009" y="-994" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="BPHc0PbeHajEXwLzNZIl-32" value="&amp;lt;&amp;lt;extends&amp;gt;&amp;gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="-1951" y="-824" width="60" height="30" as="geometry" />
