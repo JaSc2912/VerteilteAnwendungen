@@ -60,20 +60,37 @@
         <mxCell id="QJYdXnABjzxTu_YOuyMo-1" value="Anwendungsfallmodell" style="text;strokeColor=none;fillColor=none;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;" parent="1" vertex="1">
           <mxGeometry x="-2250" y="-1141" width="189" height="30" as="geometry" />
         </mxCell>
+        <mxCell id="BPHc0PbeHajEXwLzNZIl-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="5pvtJaNoTowh3pFW2rUU-2" target="BPHc0PbeHajEXwLzNZIl-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="5pvtJaNoTowh3pFW2rUU-2" value="&lt;div&gt;Kundenservice&lt;/div&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
           <mxGeometry x="-2397" y="-1067" width="30" height="60" as="geometry" />
         </mxCell>
         <mxCell id="8fA6ZSBMHwZi45fozLJX-1" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="-1616" y="-798" width="160" height="80" as="geometry" />
         </mxCell>
+        <mxCell id="BPHc0PbeHajEXwLzNZIl-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="5pvtJaNoTowh3pFW2rUU-3" target="BPHc0PbeHajEXwLzNZIl-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="BPHc0PbeHajEXwLzNZIl-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="BPHc0PbeHajEXwLzNZIl-9">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-2361" y="-809" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
         <mxCell id="5pvtJaNoTowh3pFW2rUU-3" value="&lt;div&gt;Admin&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
           <mxGeometry x="-2397" y="-859" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="BPHc0PbeHajEXwLzNZIl-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="BPHc0PbeHajEXwLzNZIl-1" target="BPHc0PbeHajEXwLzNZIl-3">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="BPHc0PbeHajEXwLzNZIl-1" value="Kreditmitarbeiter" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
           <mxGeometry x="-2397" y="-960" width="30" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="BPHc0PbeHajEXwLzNZIl-3" value="" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="-2199" y="-1011" width="120" height="80" as="geometry" />
+        <mxCell id="BPHc0PbeHajEXwLzNZIl-3" value="Einloggen" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-2183" y="-1056" width="99" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="BPHc0PbeHajEXwLzNZIl-9" value="Benutzer verwalten" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-2198.5" y="-830" width="130" height="42" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
