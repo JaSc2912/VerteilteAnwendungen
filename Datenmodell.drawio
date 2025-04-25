@@ -311,6 +311,15 @@
         <mxCell id="JNt5qL9iGMX8k1b5O0Ix-1" value="Vermutlich reicht ein SendungsauftragsManager, würde nur für Suche nach Packstück genutzt werden" style="text;strokeColor=none;fillColor=none;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;" vertex="1" parent="bLZydbm9OblNH0IqQX_Z-24">
           <mxGeometry y="30" width="140" height="90" as="geometry" />
         </mxCell>
+        <mxCell id="JNt5qL9iGMX8k1b5O0Ix-2" value="&amp;lt;&amp;lt;control&amp;gt;&amp;gt;&lt;br&gt;SendungsauftragAnlegen" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="190" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JNt5qL9iGMX8k1b5O0Ix-3" value="&amp;lt;&amp;lt;control&amp;gt;&amp;gt;&lt;br&gt;KundeSuchen" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="220" y="190" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JNt5qL9iGMX8k1b5O0Ix-4" value="&amp;lt;&amp;lt;control&amp;gt;&amp;gt;&lt;br&gt;Adresse Prüfen" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="190" width="140" height="60" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
