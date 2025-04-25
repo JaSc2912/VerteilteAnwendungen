@@ -287,7 +287,7 @@
         <mxCell id="bLZydbm9OblNH0IqQX_Z-13" value="&amp;lt;&amp;lt;entity&amp;gt;&amp;gt;&lt;br&gt;Partner" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="400" y="30" width="140" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="bLZydbm9OblNH0IqQX_Z-27" value="+Prüfen" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="bLZydbm9OblNH0IqQX_Z-13">
+        <mxCell id="bLZydbm9OblNH0IqQX_Z-27" value="+Prüfen&lt;br&gt;+Suchen" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="bLZydbm9OblNH0IqQX_Z-13">
           <mxGeometry y="30" width="140" height="30" as="geometry" />
         </mxCell>
         <mxCell id="bLZydbm9OblNH0IqQX_Z-17" value="&amp;lt;&amp;lt;entity&amp;gt;&amp;gt;&lt;br&gt;Packstück" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
