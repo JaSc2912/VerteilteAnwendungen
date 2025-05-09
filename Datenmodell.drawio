@@ -359,9 +359,6 @@
             <mxPoint x="100" y="103" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="0kltCnKnje4ReAFgXTzZ-11" value="" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=12;startSize=8;endSize=8;" edge="1" parent="1" source="cXQzK2X6NRJz0FN-Uuuf-14" target="0kltCnKnje4ReAFgXTzZ-8">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
         <mxCell id="cXQzK2X6NRJz0FN-Uuuf-14" value="&lt;&lt;EntityClass&gt;&gt;&#xa;Kundenservice" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=36;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" parent="1" vertex="1">
           <mxGeometry x="31" y="245" width="171" height="112" as="geometry">
             <mxRectangle x="340" y="380" width="170" height="26" as="alternateBounds" />
@@ -541,17 +538,6 @@
         </mxCell>
         <mxCell id="0kltCnKnje4ReAFgXTzZ-6" value="Benutzer hinzufügen&#xa;Benutzer löschen&#xa;Benutzer bearbeiten" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontStyle=0" vertex="1" parent="0kltCnKnje4ReAFgXTzZ-4">
           <mxGeometry y="42" width="160" height="51" as="geometry" />
-        </mxCell>
-        <mxCell id="0kltCnKnje4ReAFgXTzZ-8" value="&lt;&lt;ControlClass&gt;&gt;&#xa;Kundenservice" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=36;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
-          <mxGeometry x="31" y="414" width="171" height="161" as="geometry">
-            <mxRectangle x="340" y="380" width="170" height="26" as="alternateBounds" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0kltCnKnje4ReAFgXTzZ-9" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="0kltCnKnje4ReAFgXTzZ-8">
-          <mxGeometry y="36" width="171" height="8" as="geometry" />
-        </mxCell>
-        <mxCell id="0kltCnKnje4ReAFgXTzZ-10" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;Kundenübersicht anzeigen&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;Bankkonten verwalten&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;Kontendaten pflegen&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;Kontotransaktionen suchen&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;Kontotransaktionen anlegen&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;Kontotransaktionen bearbeiten&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;" vertex="1" parent="0kltCnKnje4ReAFgXTzZ-8">
-          <mxGeometry y="44" width="171" height="111" as="geometry" />
         </mxCell>
         <mxCell id="0kltCnKnje4ReAFgXTzZ-12" value="&lt;&lt;ControlClass&gt;&gt;&#xa;Kreditanträge pflegen" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=41;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
           <mxGeometry x="207" y="414" width="160" height="138" as="geometry">
