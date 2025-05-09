@@ -324,7 +324,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="aUgvV-D-LwO2iLfMoU7L" name="Technischer Entwurf">
-    <mxGraphModel dx="2137" dy="847" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1144" dy="363" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -400,7 +400,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="AHiDVp6DZeFrgrHfG6EH-1" value="&lt;&lt;ControlClass&gt;&gt;&#xa;BenutzerManager" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=38;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" parent="1" vertex="1">
-          <mxGeometry x="-71" y="5" width="160" height="102" as="geometry">
+          <mxGeometry x="-160" y="26" width="160" height="102" as="geometry">
             <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -506,6 +506,21 @@
         </mxCell>
         <mxCell id="9AgCY94Q6LH1eDfAUAZP-14" value="*" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
           <mxGeometry x="648" y="490" width="23" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="9AgCY94Q6LH1eDfAUAZP-26" value="" style="edgeStyle=none;curved=0;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=12;endArrow=none;startFill=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint y="79" as="sourcePoint" />
+            <mxPoint x="120" y="79" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9AgCY94Q6LH1eDfAUAZP-27" value="verwaltet" style="text;strokeColor=none;fillColor=none;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="29" y="50" width="68" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="9AgCY94Q6LH1eDfAUAZP-28" value="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="95" y="80" width="25" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="9AgCY94Q6LH1eDfAUAZP-29" value="*" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry y="78" width="23" height="26" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
