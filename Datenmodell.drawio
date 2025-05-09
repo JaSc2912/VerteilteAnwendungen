@@ -324,7 +324,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="aUgvV-D-LwO2iLfMoU7L" name="Technischer Entwurf">
-    <mxGraphModel dx="1187" dy="919" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1262" dy="969" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -641,6 +641,39 @@
         </mxCell>
         <mxCell id="mykg-sMq9WUml8PZF-83-4" value="*" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
           <mxGeometry x="653" y="643" width="23" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="sdc8ZtIlMr8SOCxSiC9A-4" value="&lt;&lt;ControlClass&gt;&gt;&#xa;TransaktionenVerwalten" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=34;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="-137" y="515" width="160" height="93" as="geometry">
+            <mxRectangle x="130" y="380" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sdc8ZtIlMr8SOCxSiC9A-5" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="sdc8ZtIlMr8SOCxSiC9A-4">
+          <mxGeometry y="34" width="160" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="sdc8ZtIlMr8SOCxSiC9A-6" value="addTransaktion&#xa;deleteTransaktion&#xa;editTransaktion" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontStyle=0" vertex="1" parent="sdc8ZtIlMr8SOCxSiC9A-4">
+          <mxGeometry y="42" width="160" height="51" as="geometry" />
+        </mxCell>
+        <mxCell id="sdc8ZtIlMr8SOCxSiC9A-7" value="&lt;&lt;ControlClass&gt;&gt;&#xa;Bankkonto Verwalten" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=34;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="-137" y="613.5" width="160" height="93" as="geometry">
+            <mxRectangle x="130" y="380" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sdc8ZtIlMr8SOCxSiC9A-8" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="sdc8ZtIlMr8SOCxSiC9A-7">
+          <mxGeometry y="34" width="160" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="sdc8ZtIlMr8SOCxSiC9A-9" value="addBankkonto&#xa;deleteBankkonto&#xa;editBankkonto" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontStyle=0" vertex="1" parent="sdc8ZtIlMr8SOCxSiC9A-7">
+          <mxGeometry y="42" width="160" height="51" as="geometry" />
+        </mxCell>
+        <mxCell id="sdc8ZtIlMr8SOCxSiC9A-10" value="&lt;&lt;ControlClass&gt;&gt;&#xa;Kundenübersicht anzeigen" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=34;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="-137" y="718" width="160" height="93" as="geometry">
+            <mxRectangle x="130" y="380" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sdc8ZtIlMr8SOCxSiC9A-11" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="sdc8ZtIlMr8SOCxSiC9A-10">
+          <mxGeometry y="34" width="160" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="sdc8ZtIlMr8SOCxSiC9A-12" value="showKunde" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontStyle=0" vertex="1" parent="sdc8ZtIlMr8SOCxSiC9A-10">
+          <mxGeometry y="42" width="160" height="51" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
