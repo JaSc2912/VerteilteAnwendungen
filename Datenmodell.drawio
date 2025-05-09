@@ -376,9 +376,6 @@
             <mxPoint x="210" y="171" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="0kltCnKnje4ReAFgXTzZ-15" value="" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=12;startSize=8;endSize=8;" parent="1" source="cXQzK2X6NRJz0FN-Uuuf-31" target="0kltCnKnje4ReAFgXTzZ-12" edge="1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
         <mxCell id="cXQzK2X6NRJz0FN-Uuuf-31" value="&lt;&lt;EntityClass&gt;&gt;&#xa;Mitarbeiter Kreditvergabe" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=41;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" parent="1" vertex="1">
           <mxGeometry x="207" y="245" width="160" height="112" as="geometry">
             <mxRectangle x="340" y="380" width="170" height="26" as="alternateBounds" />
