@@ -410,7 +410,7 @@
         <mxCell id="AHiDVp6DZeFrgrHfG6EH-5" value="Benutzer hinzufügen&#xa;Benutzer entfernen&#xa;Benutzer suchen" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="AHiDVp6DZeFrgrHfG6EH-1">
           <mxGeometry y="46" width="160" height="54" as="geometry" />
         </mxCell>
-        <mxCell id="fiKLSdGa_c__ZcmBARTu-6" value="&lt;&lt;EntityClass&gt;&gt;&#xa;Benutzer" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=38;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
+        <mxCell id="fiKLSdGa_c__ZcmBARTu-6" value="&lt;&lt;EntityClass&gt;&gt;&#xa;Bankkonto" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=38;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
           <mxGeometry x="375" y="34" width="160" height="150" as="geometry">
             <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
           </mxGeometry>
