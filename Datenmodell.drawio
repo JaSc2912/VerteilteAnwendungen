@@ -324,7 +324,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="aUgvV-D-LwO2iLfMoU7L" name="Technischer Entwurf">
-    <mxGraphModel dx="1465" dy="1102" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1693" dy="1253" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -367,10 +367,13 @@
         <mxCell id="fiKLSdGa_c__ZcmBARTu-4" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;addBenutzer&lt;/span&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;deleteBenutzer&lt;/div&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;editBenutzer&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;" parent="cXQzK2X6NRJz0FN-Uuuf-14" vertex="1">
           <mxGeometry y="44" width="171" height="49" as="geometry" />
         </mxCell>
-        <mxCell id="cXQzK2X6NRJz0FN-Uuuf-17" value="" style="endArrow=block;endSize=10;endFill=0;shadow=0;strokeWidth=1;rounded=0;curved=0;edgeStyle=elbowEdgeStyle;elbow=vertical;fontSize=12;" parent="1" source="cXQzK2X6NRJz0FN-Uuuf-14" target="cXQzK2X6NRJz0FN-Uuuf-1" edge="1">
+        <mxCell id="cXQzK2X6NRJz0FN-Uuuf-17" value="" style="endArrow=block;endSize=10;endFill=0;shadow=0;strokeWidth=1;rounded=0;curved=0;edgeStyle=elbowEdgeStyle;elbow=vertical;fontSize=12;" parent="1" edge="1">
           <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="110" y="273" as="sourcePoint" />
-            <mxPoint x="210" y="171" as="targetPoint" />
+            <mxPoint x="161.00000000000023" y="245" as="sourcePoint" />
+            <mxPoint x="161.00000000000023" y="110" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="161" y="220" />
+            </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="cXQzK2X6NRJz0FN-Uuuf-31" value="&lt;&lt;EntityClass&gt;&gt;&#xa;Mitarbeiter Kreditvergabe" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=41;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" parent="1" vertex="1">
@@ -381,12 +384,12 @@
         <mxCell id="cXQzK2X6NRJz0FN-Uuuf-33" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="cXQzK2X6NRJz0FN-Uuuf-31" vertex="1">
           <mxGeometry y="41" width="160" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="i6Cqc2u_LaWKHE5Z8AJY-3" value="" style="endArrow=block;endSize=10;endFill=0;shadow=0;strokeWidth=1;rounded=0;curved=0;edgeStyle=elbowEdgeStyle;elbow=vertical;fontSize=12;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="cXQzK2X6NRJz0FN-Uuuf-31" target="cXQzK2X6NRJz0FN-Uuuf-1" edge="1">
+        <mxCell id="i6Cqc2u_LaWKHE5Z8AJY-3" value="" style="endArrow=block;endSize=10;endFill=0;shadow=0;strokeWidth=1;rounded=0;curved=0;edgeStyle=elbowEdgeStyle;elbow=vertical;fontSize=12;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" edge="1">
           <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="121" y="255" as="sourcePoint" />
-            <mxPoint x="200" y="157" as="targetPoint" />
+            <mxPoint x="328.0000000000002" y="245" as="sourcePoint" />
+            <mxPoint x="241" y="110" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="246" y="202" />
+              <mxPoint x="288" y="180" />
             </Array>
           </mxGeometry>
         </mxCell>
