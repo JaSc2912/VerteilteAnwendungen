@@ -324,7 +324,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="aUgvV-D-LwO2iLfMoU7L" name="Technischer Entwurf">
-    <mxGraphModel dx="1172" dy="776" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2003" dy="1182" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -543,7 +543,7 @@
           <mxGeometry y="42" width="160" height="51" as="geometry" />
         </mxCell>
         <mxCell id="0kltCnKnje4ReAFgXTzZ-8" value="&lt;&lt;ControlClass&gt;&gt;&#xa;Kundenservice" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=36;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
-          <mxGeometry x="-61" y="501" width="171" height="161" as="geometry">
+          <mxGeometry x="31" y="414" width="171" height="161" as="geometry">
             <mxRectangle x="340" y="380" width="170" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -554,7 +554,7 @@
           <mxGeometry y="44" width="171" height="111" as="geometry" />
         </mxCell>
         <mxCell id="0kltCnKnje4ReAFgXTzZ-12" value="&lt;&lt;ControlClass&gt;&gt;&#xa;Kreditanträge pflegen" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=41;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
-          <mxGeometry x="207" y="456" width="160" height="138" as="geometry">
+          <mxGeometry x="207" y="414" width="160" height="138" as="geometry">
             <mxRectangle x="340" y="380" width="170" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -590,7 +590,7 @@
           <mxGeometry y="42" width="160" height="27" as="geometry" />
         </mxCell>
         <mxCell id="0kltCnKnje4ReAFgXTzZ-24" value="&lt;&lt;ControlClass&gt;&gt;&#xa;Kreditantrag suchen" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=34;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
-          <mxGeometry x="207" y="605" width="160" height="74" as="geometry">
+          <mxGeometry x="212" y="604" width="160" height="74" as="geometry">
             <mxRectangle x="130" y="380" width="160" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -612,7 +612,7 @@
           <mxGeometry y="42" width="174" height="50" as="geometry" />
         </mxCell>
         <mxCell id="0kltCnKnje4ReAFgXTzZ-30" value="&lt;&lt;ControlClass&gt;&gt;&#xa;Kunde suchen" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=34;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
-          <mxGeometry x="19" y="715" width="160" height="75" as="geometry">
+          <mxGeometry x="31" y="604" width="160" height="75" as="geometry">
             <mxRectangle x="130" y="380" width="160" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
