@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:137.0) Gecko/20100101 Firefox/137.0" version="27.0.2" pages="5">
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.4 Safari/605.1.15" version="27.0.2" pages="5">
   <diagram name="Datenmodell" id="c4acf3e9-155e-7222-9cf6-157b1a14988f">
     <mxGraphModel dx="1044" dy="508" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="0" shadow="0">
       <root>
@@ -324,7 +324,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="aUgvV-D-LwO2iLfMoU7L" name="Technischer Entwurf">
-    <mxGraphModel dx="1442" dy="508" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1124" dy="478" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -410,27 +410,24 @@
         <mxCell id="AHiDVp6DZeFrgrHfG6EH-5" value="Benutzer hinzufügen&#xa;Benutzer entfernen&#xa;Benutzer suchen" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="AHiDVp6DZeFrgrHfG6EH-1" vertex="1">
           <mxGeometry y="46" width="160" height="54" as="geometry" />
         </mxCell>
+        <mxCell id="0NE7tNCKGxIL7WqbbuNd-5" value="" style="edgeStyle=none;curved=0;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=12;endArrow=none;startFill=0;" edge="1" parent="1" source="fiKLSdGa_c__ZcmBARTu-6" target="0NE7tNCKGxIL7WqbbuNd-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="fiKLSdGa_c__ZcmBARTu-6" value="&lt;&lt;EntityClass&gt;&gt;&#xa;Bankkonto" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=38;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" parent="1" vertex="1">
           <mxGeometry x="375" y="34" width="168" height="150" as="geometry">
             <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="fiKLSdGa_c__ZcmBARTu-9" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="fiKLSdGa_c__ZcmBARTu-6" vertex="1">
-          <mxGeometry y="38" width="168" height="8" as="geometry" />
-        </mxCell>
-        <mxCell id="RelBNONH3F_GxqQS7geX-2" value="&lt;p align=&quot;left&quot; style=&quot;margin:0px;margin-left:4px;&quot;&gt;IBAN: String&lt;/p&gt;&lt;p align=&quot;left&quot; style=&quot;margin:0px;margin-left:4px;&quot;&gt;Kontoart: String&lt;/p&gt;&lt;p align=&quot;left&quot; style=&quot;margin:0px;margin-left:4px;&quot;&gt;Kontostand: Double&lt;/p&gt;&lt;p align=&quot;left&quot; style=&quot;margin:0px;margin-left:4px;&quot;&gt;Kontoeröffnungsdatum: Date&lt;/p&gt;&lt;p align=&quot;left&quot; style=&quot;margin:0px;margin-left:4px;&quot;&gt;Kontostatus: String&lt;/p&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="fiKLSdGa_c__ZcmBARTu-6">
-          <mxGeometry y="46" width="168" height="84" as="geometry" />
+        <mxCell id="RelBNONH3F_GxqQS7geX-2" value="&lt;p align=&quot;left&quot; style=&quot;margin:0px;margin-left:4px;&quot;&gt;IBAN: String&lt;/p&gt;&lt;p align=&quot;left&quot; style=&quot;margin:0px;margin-left:4px;&quot;&gt;Kontoart: String&lt;/p&gt;&lt;p align=&quot;left&quot; style=&quot;margin:0px;margin-left:4px;&quot;&gt;Kontostand: Double&lt;/p&gt;&lt;p align=&quot;left&quot; style=&quot;margin:0px;margin-left:4px;&quot;&gt;Kontoeröffnungsdatum: Date&lt;/p&gt;&lt;p align=&quot;left&quot; style=&quot;margin:0px;margin-left:4px;&quot;&gt;Kontostatus: String&lt;/p&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="fiKLSdGa_c__ZcmBARTu-6" vertex="1">
+          <mxGeometry y="38" width="168" height="84" as="geometry" />
         </mxCell>
         <mxCell id="fiKLSdGa_c__ZcmBARTu-11" value="&lt;&lt;EntityClass&gt;&gt;&#xa;Benutzer" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=38;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" parent="1" vertex="1">
           <mxGeometry x="417" y="209.5" width="160" height="165" as="geometry">
             <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="fiKLSdGa_c__ZcmBARTu-14" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="fiKLSdGa_c__ZcmBARTu-11" vertex="1">
-          <mxGeometry y="38" width="160" height="8" as="geometry" />
-        </mxCell>
-        <mxCell id="-mip8UFCHyqWRxGyKL7F-1" value="&lt;p align=&quot;left&quot; style=&quot;margin:0px;margin-left:4px;&quot;&gt;Konto: String&lt;br&gt;&lt;/p&gt;&lt;p align=&quot;left&quot; style=&quot;margin:0px;margin-left:4px;&quot;&gt;Transaktionsnummer: String&lt;/p&gt;&lt;p align=&quot;left&quot; style=&quot;margin:0px;margin-left:4px;&quot;&gt;Transaktionsdatum: Date&lt;/p&gt;&lt;p align=&quot;left&quot; style=&quot;margin:0px;margin-left:4px;&quot;&gt;Betrag: Double&lt;/p&gt;&lt;p align=&quot;left&quot; style=&quot;margin:0px;margin-left:4px;&quot;&gt;Transaktionsart: Date&lt;/p&gt;&lt;p align=&quot;left&quot; style=&quot;margin:0px;margin-left:4px;&quot;&gt;Empfänger: String&lt;/p&gt;&lt;p align=&quot;left&quot; style=&quot;margin:0px;margin-left:4px;&quot;&gt;Transaktionsstatus: String&lt;/p&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="fiKLSdGa_c__ZcmBARTu-11">
-          <mxGeometry y="46" width="160" height="113" as="geometry" />
+        <mxCell id="-mip8UFCHyqWRxGyKL7F-1" value="&lt;p align=&quot;left&quot; style=&quot;margin:0px;margin-left:4px;&quot;&gt;Konto: String&lt;br&gt;&lt;/p&gt;&lt;p align=&quot;left&quot; style=&quot;margin:0px;margin-left:4px;&quot;&gt;Transaktionsnummer: String&lt;/p&gt;&lt;p align=&quot;left&quot; style=&quot;margin:0px;margin-left:4px;&quot;&gt;Transaktionsdatum: Date&lt;/p&gt;&lt;p align=&quot;left&quot; style=&quot;margin:0px;margin-left:4px;&quot;&gt;Betrag: Double&lt;/p&gt;&lt;p align=&quot;left&quot; style=&quot;margin:0px;margin-left:4px;&quot;&gt;Transaktionsart: Date&lt;/p&gt;&lt;p align=&quot;left&quot; style=&quot;margin:0px;margin-left:4px;&quot;&gt;Empfänger: String&lt;/p&gt;&lt;p align=&quot;left&quot; style=&quot;margin:0px;margin-left:4px;&quot;&gt;Transaktionsstatus: String&lt;/p&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="fiKLSdGa_c__ZcmBARTu-11" vertex="1">
+          <mxGeometry y="38" width="160" height="113" as="geometry" />
         </mxCell>
         <mxCell id="fiKLSdGa_c__ZcmBARTu-16" value="&lt;&lt;EntityClass&gt;&gt;&#xa;Kunde" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=38;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" parent="1" vertex="1">
           <mxGeometry x="464" y="514" width="160" height="161" as="geometry">
@@ -440,16 +437,30 @@
         <mxCell id="fiKLSdGa_c__ZcmBARTu-17" value="Kundennummer: String&#xa;Name: String&#xa;Adresse: String&#xa;Telefonnummer: String&#xa;Email: String&#xa;Geburtsdatum: Date&#xa;Kundenstatus: String" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="fiKLSdGa_c__ZcmBARTu-16" vertex="1">
           <mxGeometry y="38" width="160" height="121" as="geometry" />
         </mxCell>
-        <mxCell id="SqOnvnUHk47LTZxvm8TT-1" value="&lt;&lt;ControlClass&gt;&gt;&#xa;KundenManager" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=38;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
-          <mxGeometry x="640" y="543.5" width="160" height="102" as="geometry">
+        <mxCell id="SqOnvnUHk47LTZxvm8TT-1" value="&lt;&lt;ControlClass&gt;&gt;&#xa;KundenManager" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=38;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" parent="1" vertex="1">
+          <mxGeometry x="640" y="543.5" width="160" height="100" as="geometry">
             <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="SqOnvnUHk47LTZxvm8TT-2" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="SqOnvnUHk47LTZxvm8TT-1">
+        <mxCell id="SqOnvnUHk47LTZxvm8TT-2" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="SqOnvnUHk47LTZxvm8TT-1" vertex="1">
           <mxGeometry y="38" width="160" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="SqOnvnUHk47LTZxvm8TT-3" value="Kunden hinzufügen&#xa;Kunden entfernen&#xa;Kunden suchen" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="SqOnvnUHk47LTZxvm8TT-1">
+        <mxCell id="SqOnvnUHk47LTZxvm8TT-3" value="Kunden hinzufügen&#xa;Kunden entfernen&#xa;Kunden suchen" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="SqOnvnUHk47LTZxvm8TT-1" vertex="1">
           <mxGeometry y="46" width="160" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="0NE7tNCKGxIL7WqbbuNd-2" value="&lt;&lt;ControlClass&gt;&gt;&#xa;BankkontoManager" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=38;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="663" y="56.5" width="168" height="105" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="0NE7tNCKGxIL7WqbbuNd-3" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="0NE7tNCKGxIL7WqbbuNd-2">
+          <mxGeometry y="38" width="168" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="0NE7tNCKGxIL7WqbbuNd-6" value="Kunden hinzufügen&#xa;Kunden entfernen&#xa;Kunden suchen" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="0NE7tNCKGxIL7WqbbuNd-2">
+          <mxGeometry y="46" width="168" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="0NE7tNCKGxIL7WqbbuNd-10" value="verwaltet" style="text;strokeColor=none;fillColor=none;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="572" y="80" width="68" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
