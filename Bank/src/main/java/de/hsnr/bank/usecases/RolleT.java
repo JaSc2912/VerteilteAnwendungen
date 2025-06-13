@@ -8,7 +8,7 @@ package de.hsnr.bank.usecases;
  *
  * @author jannn
  */
-enum RolleT {
+public enum RolleT {
     ADMIN,
     KUNDENSERVICE,
     KREDITVERGABE

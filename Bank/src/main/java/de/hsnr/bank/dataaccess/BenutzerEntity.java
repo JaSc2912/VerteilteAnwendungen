@@ -6,6 +6,7 @@ package de.hsnr.bank.dataaccess;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Id;
+import de.hsnr.bank.usecases.RolleT;
 
 public class BenutzerEntity {
 
@@ -15,9 +16,9 @@ public class BenutzerEntity {
     @Column(name = "PASSWORT")
     private String passwort;
     @Column(name = "NAME")
-    String name;
+    private String name;
     @Column(name = "TELEFONNUMMER")
     private String telefonnummer;
     @Column(name = "ROLLE")
-    String rolle;
+    private RolleT rolle;
 }
