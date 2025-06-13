@@ -4,6 +4,8 @@
  */
 package de.hsnr.bank.entities;
 
+import java.util.Date;
+
 /**
  *
  * @author muell

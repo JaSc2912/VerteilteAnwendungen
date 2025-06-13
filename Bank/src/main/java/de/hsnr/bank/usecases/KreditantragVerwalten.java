@@ -4,10 +4,17 @@
  */
 package de.hsnr.bank.usecases;
 
+import de.hsnr.bank.usecases.Interfaces.IKreditantragVerwalten;
+
 /**
  *
  * @author jannn
  */
 public class KreditantragVerwalten implements IKreditantragVerwalten {
+
+    @Override
+    public void addKreditantrag() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }

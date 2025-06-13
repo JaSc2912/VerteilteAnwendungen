@@ -4,10 +4,16 @@
  */
 package de.hsnr.bank.usecases;
 
+
 /**
  *
  * @author jannn
  */
 public class Anmelden implements IAnmelden {
+
+    @Override
+    public void login(String benutzername, String passwort) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }

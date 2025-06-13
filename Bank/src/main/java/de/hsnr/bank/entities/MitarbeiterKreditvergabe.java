@@ -12,7 +12,8 @@ public class MitarbeiterKreditvergabe extends Benutzer {
     public MitarbeiterKreditvergabe(String benutzername, String passwort, String mitarbeiterID, String abteilung) {
         super(benutzername, passwort);
     }
-    @Override toString
+    
+    @Override
     public String toString() {
         return "MitarbeiterKreditvergabe{" + "benutzername=" + getBenutzername() + '}';
     }
