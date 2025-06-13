@@ -9,5 +9,10 @@ package de.hsnr.bank.entities;
  * @author muell
  */
 public class Bankkonto {
-    
+    IBAN: String  
+    Kontoart: String
+    Kontostand: Double
+    Kontoeröffnungsdatum: Date
+    Kontostatus: String
+    Besitzer: Kunde
 }

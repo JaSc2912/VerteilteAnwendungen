@@ -9,5 +9,7 @@ package de.hsnr.bank.usecases;
  * @author jannn
  */
 public interface IBankkontoPflegen {
-    
+    addBankkonto(String kontonummer, String iban, String bic, String bankname, String kontoinhaber, double saldo);
+    deleteBankkonto(String kontonummer);
+    editBankkonto(String kontonummer, String iban, String bic, String bankname, String kontoinhaber, double saldo);
 }
