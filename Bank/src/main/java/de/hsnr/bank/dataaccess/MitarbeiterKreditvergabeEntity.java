@@ -5,11 +5,13 @@
 package de.hsnr.bank.dataaccess;
 
 import de.hsnr.bank.dataaccess.BenutzerEntity;
+import jakarta.persistence.Entity;
 
 /**
  *
  * @author jannn
  */
-public class MitarbeiterKreditvergabeEntity extends BenutzerEntity {
+@Entity
+public class MitarbeiterKreditvergabeEntity{
     
 }

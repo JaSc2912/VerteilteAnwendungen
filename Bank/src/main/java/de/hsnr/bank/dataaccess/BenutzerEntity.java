@@ -5,14 +5,9 @@
 package de.hsnr.bank.dataaccess;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.Inheritance;
-import jakarta.persistence.InheritanceType;
-import java.io.Serializable;
 
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class BenutzerEntity implements Serializable {
+public class BenutzerEntity {
 
     @Column(name = "BENUTZERKENNUNG")
     @Id

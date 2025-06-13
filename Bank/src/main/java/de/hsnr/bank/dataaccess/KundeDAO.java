@@ -4,13 +4,10 @@
  */
 package de.hsnr.bank.dataaccess;
 
-import jakarta.persistence.Entity;
-
 /**
  *
- * @author jannn
+ * @author muell
  */
-@Entity
-public class AdminEntity {
+public class KundeDAO {
     
 }

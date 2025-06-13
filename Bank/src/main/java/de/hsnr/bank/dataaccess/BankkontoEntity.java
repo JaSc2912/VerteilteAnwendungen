@@ -5,8 +5,6 @@
 package de.hsnr.bank.dataaccess;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.Inheritance;
-import jakarta.persistence.InheritanceType;
 import java.util.Date;
 
 
@@ -15,14 +13,13 @@ import java.util.Date;
  * @author muell
  */
 @Entity
-@Inheritance(strategy =  InheritanceType.SINGLE_TABLE)
 public class BankkontoEntity  {
     
-    private String IBAN;
-    private String Kontoart;
-    private double Kontostand;
-    private Date Kontoeröffnung;
-    private String Kontostatus;
-    private KundeEntity Kunde;
+    private String iban;
+    private String kontoart;
+    private double kontostand;
+    private Date kontoeröffnung;
+    private String kontostatus;
+    private KundeEntity kunde;
   
 }

@@ -4,10 +4,7 @@
  */
 package de.hsnr.bank.dataaccess;
 
-import de.hsnr.bank.dataaccess.BankkontoEntity;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Inheritance;
-import jakarta.persistence.InheritanceType;
 import java.util.Date;
 
 
@@ -16,7 +13,6 @@ import java.util.Date;
  * @author muell
  */
 @Entity
-@Inheritance(strategy =  InheritanceType.SINGLE_TABLE)
 public class TransaktionEntity  {
     
     private BankkontoEntity Bankkonto;
