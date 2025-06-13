@@ -9,5 +9,5 @@ package de.hsnr.bank.usecases;
  * @author jannn
  */
 public interface IKundeSuchen {
-    
+    public void sucheKunde(String suchbegriff);
 }

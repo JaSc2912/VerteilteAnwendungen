@@ -9,5 +9,7 @@ package de.hsnr.bank.usecases;
  * @author jannn
  */
 public interface IKundePflegen {
-    
+    public void addKunde(String name, String vorname, String adresse, String telefonnummer);
+    public void deleteKunde(int kundeId);
+    public void updateKunde(int kundeId, String name, String vorname, String adresse, String telefonnummer);
 }

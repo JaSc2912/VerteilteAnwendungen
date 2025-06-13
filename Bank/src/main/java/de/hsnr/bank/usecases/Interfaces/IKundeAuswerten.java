@@ -9,5 +9,6 @@ package de.hsnr.bank.usecases;
  * @author jannn
  */
 public interface IKundeAuswerten {
-    
+    public boolean checkKreditwürdigkeit (Kunde kunde);
+    public Double checkSaldo  (Kunde kunde);
 }
