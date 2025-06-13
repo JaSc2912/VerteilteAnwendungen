@@ -8,6 +8,12 @@ package de.hsnr.bank.entities;
  *
  * @author muell
  */
-public class MitarbeiterKreditvergabe {
-    
+public class MitarbeiterKreditvergabe extends Benutzer {
+    public MitarbeiterKreditvergabe(String benutzername, String passwort, String mitarbeiterID, String abteilung) {
+        super(benutzername, passwort);
+    }
+    @Override toString
+    public String toString() {
+        return "MitarbeiterKreditvergabe{" + "benutzername=" + getBenutzername() + '}';
+    }
 }

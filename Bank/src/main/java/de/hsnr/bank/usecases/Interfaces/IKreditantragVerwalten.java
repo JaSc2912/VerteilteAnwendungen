@@ -9,5 +9,9 @@ package de.hsnr.bank.usecases;
  * @author jannn
  */
 public interface IKreditantragVerwalten {
-    
+    public void addKreditantrag()
+editKreditantrag
+acceptKreditantrag
+denyKreditantrag
+
 }

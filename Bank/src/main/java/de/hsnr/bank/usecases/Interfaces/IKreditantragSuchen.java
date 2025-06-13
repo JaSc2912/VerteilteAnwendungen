@@ -9,5 +9,5 @@ package de.hsnr.bank.usecases;
  * @author jannn
  */
 public interface IKreditantragSuchen {
-    
+    public List<Kreditantrag> sucheKreditantraege(String suchbegriff);
 }
