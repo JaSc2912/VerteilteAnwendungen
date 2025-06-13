@@ -23,6 +23,6 @@ public class BankkontoEntity  {
     private double Kontostand;
     private Date Kontoeröffnung;
     private String Kontostatus;
-    //Besitzer = Kunde
+    private KundeEntity Kunde;
   
 }
