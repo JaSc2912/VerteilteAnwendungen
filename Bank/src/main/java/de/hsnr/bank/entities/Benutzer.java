@@ -12,11 +12,11 @@ import de.hsnr.bank.usecases.RolleT;
  */
 public class Benutzer {
 
-    private String benutzername;
-    private String passwort;
-    private String name;
-    private String telefonnummer;
-    private RolleT rolle;
+    String benutzername;
+    String passwort;
+    String name;
+    String telefonnummer;
+    RolleT rolle;
 
     public Benutzer() {
     }
@@ -47,21 +47,5 @@ public class Benutzer {
 
     public String getPasswort() {
         return passwort;
-    }
-
-    public void setBenutzername(String Benutzername) {
-        this.benutzername = benutzername;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setPasswort(String passwort) {
-        this.passwort = passwort;
-    }
-
-    public void setTelefonnummer(String telefonnummer) {
-        this.telefonnummer = telefonnummer;
     }
 }

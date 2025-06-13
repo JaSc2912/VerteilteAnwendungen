@@ -4,6 +4,7 @@
  */
 package de.hsnr.bank.dataaccess;
 
+import de.hsnr.bank.usecases.RolleT;
 import jakarta.persistence.Entity;
 
 /**
@@ -11,6 +12,21 @@ import jakarta.persistence.Entity;
  * @author jannn
  */
 @Entity
-public class AdminEntity {
-    
+public class AdminEntity extends BenutzerEntity {
+
+    public void setRolle(RolleT rolle) {
+        this.rolle = rolle;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPasswort(String passwort) {
+        this.passwort = passwort;
+    }
+
+    public void setTelefonnummer(String telefonnummer) {
+        this.telefonnummer = telefonnummer;
+    }
 }

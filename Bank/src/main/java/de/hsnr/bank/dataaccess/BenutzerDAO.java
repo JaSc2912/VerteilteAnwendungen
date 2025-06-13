@@ -31,25 +31,6 @@ public class BenutzerDAO {
         }
     }
 
-    public Benutzer anlegen(Benutzer benutzer) {
-
-        BenutzerEntity benutzerEntity = new BenutzerEntity(benutzer);
-        em.persist(benutzerEntity);
-
-        return benutzerEntity.toBenutzer();
-
-    }
-
-    public boolean loeschen(Benutzer benutzer) {
-        BenutzerEntity benutzerEntity = em.find(BenutzerEntity.class, benutzer.getBenutzername());
-        if (benutzerEntity == null) {
-            return false;
-        }
-
-        em.remove(benutzerEntity);
-        return true;
-    }
-
     public List<Benutzer> alleLesen() {
 
         TypedQuery<BenutzerEntity> query = em.createQuery("SELECT a FROM BenutzerEntity a", BenutzerEntity.class);

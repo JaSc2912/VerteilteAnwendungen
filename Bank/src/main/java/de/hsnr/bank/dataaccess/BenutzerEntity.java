@@ -17,13 +17,13 @@ public class BenutzerEntity {
     @Id
     private String benutzername;
     @Column(name = "PASSWORT")
-    private String passwort;
+    String passwort;
     @Column(name = "NAME")
-    private String name;
+    String name;
     @Column(name = "TELEFONNUMMER")
-    private String telefonnummer;
+    String telefonnummer;
     @Column(name = "ROLLE")
-    private RolleT rolle;
+    RolleT rolle;
 
     public BenutzerEntity() {
     }
@@ -36,7 +36,7 @@ public class BenutzerEntity {
     public String getBenutzername() {
         return this.benutzername;
     }
-    
+
     public String getPasswort() {
         return this.passwort;
     }
@@ -57,19 +57,4 @@ public class BenutzerEntity {
         return new Benutzer(this.benutzername, this.name, this.passwort, this.telefonnummer, this.rolle);
     }
 
-    public void setRolle(RolleT rolle) {
-        this.rolle = rolle;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setPasswort(String passwort) {
-        this.passwort = passwort;
-    }
-
-    public void setTelefonnummer(String telefonnummer) {
-        this.telefonnummer = telefonnummer;
-    }
 }
