@@ -2,13 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package de.hsnr.bank;
+package de.hsnr.bank.dataaccess;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import java.util.Date;
-
 
 /**
  *
@@ -16,13 +15,14 @@ import java.util.Date;
  */
 @Entity
 @Inheritance(strategy =  InheritanceType.SINGLE_TABLE)
-public class BankkontoEntity  {
+public class KundeEntity  {
     
-    private String IBAN;
-    private String Kontoart;
-    private double Kontostand;
-    private Date Kontoeröffnung;
-    private String Kontostatus;
-    private KundeEntity Kunde;
-  
+    private String Kundennummer;
+    private String Name;
+    private String Adresse;
+    private String Kundenstatus;
+    private Date Geburtsdatum;
+    private String Telefonnummer;
+    private String Email;
 }
+
