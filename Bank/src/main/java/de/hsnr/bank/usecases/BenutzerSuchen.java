@@ -5,6 +5,7 @@
 package de.hsnr.bank.usecases;
 
 import de.hsnr.bank.entities.Benutzer;
+import de.hsnr.bank.usecases.Interfaces.IBenutzerSuchen;
 import java.util.List;
 
 /**
