@@ -4,7 +4,9 @@
  */
 package de.hsnr.bank;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import java.io.Serializable;
@@ -17,6 +19,17 @@ import java.io.Serializable;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class BenutzerEntity implements Serializable {
 
-   private String Benutzername;
-   private String  Passwort;
+
+    @Column(name="BENUTZERKENNUNG")
+    @Id
+    private String benutzername;
+    @Column(name="PASSWORT")
+    private String passwort;
+   @Column (name="NAME")
+   String name;
+   @Column (name="TELEFONNUMMER")
+   private String telefonnummer;
+   @Column (name="ROLLE")
+   String rolle;
+
 }
