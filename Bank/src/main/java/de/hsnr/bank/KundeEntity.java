@@ -7,16 +7,22 @@ package de.hsnr.bank;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
-import java.io.Serializable;
+import java.util.Date;
 
 /**
  *
- * @author jannn
+ * @author muell
  */
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class BenutzerEntity implements Serializable {
-
-   private String Benutzername;
-   private String  Passwort;
+@Inheritance(strategy =  InheritanceType.SINGLE_TABLE)
+public class KundeEntity  {
+    
+    private String Kundennummer;
+    private String Name;
+    private String Adresse;
+    private String Kundenstatus;
+    private Date Geburtsdatum;
+    private String Telefonnummer;
+    private String Email;
 }
+
