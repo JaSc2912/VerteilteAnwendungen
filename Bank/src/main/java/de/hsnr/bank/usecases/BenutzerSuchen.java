@@ -4,6 +4,7 @@
  */
 package de.hsnr.bank.usecases;
 
+import de.hsnr.bank.entities.Benutzer;
 import java.util.List;
 
 /**
