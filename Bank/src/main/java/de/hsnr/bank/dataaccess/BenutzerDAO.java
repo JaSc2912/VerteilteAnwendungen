@@ -30,7 +30,41 @@ public class BenutzerDAO {
             return benutzerEntity.toBenutzer();
         }
     }
+    public void addBenutzer(Benutzer benutzer) {
 
+        BenutzerEntity benutzerEntity = new BenutzerEntity(benutzer);
+
+        em.getTransaction().begin();
+        em.persist(benutzerEntity);
+        em.getTransaction().commit();
+
+    }
+    public void deleteBenutzer(String benutzername) {
+
+        BenutzerEntity benutzerEntity = em.find(BenutzerEntity.class, benutzername);
+
+        if (benutzerEntity != null) {
+            em.getTransaction().begin();
+            em.remove(benutzerEntity);
+            em.getTransaction().commit();
+        }
+
+    }
+    public void editBenutzer(Benutzer benutzer) {
+
+        BenutzerEntity benutzerEntity = em.find(BenutzerEntity.class, benutzer.getBenutzername());
+
+        if (benutzerEntity != null) {
+            em.getTransaction().begin();
+            benutzerEntity.passwort = benutzer.getPasswort();
+            benutzerEntity.name = benutzer.getName();
+            benutzerEntity.telefonnummer = benutzer.getTelefonnummer();
+            benutzerEntity.rolle = benutzer.getRolle();
+            em.merge(benutzerEntity);
+            em.getTransaction().commit();
+        }
+
+    }
     public List<Benutzer> alleLesen() {
 
         TypedQuery<BenutzerEntity> query = em.createQuery("SELECT a FROM BenutzerEntity a", BenutzerEntity.class);

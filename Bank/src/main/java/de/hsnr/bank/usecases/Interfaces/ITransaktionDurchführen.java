@@ -9,5 +9,6 @@ package de.hsnr.bank.usecases;
  * @author jannn
  */
 public interface ITransaktionDurchführen {
-    
+    public void doTransaktion(Bankkonto konto, String transaktionsnummer, java.util.Date transaktionsdatum,
+            double betrag, String transaktionsart, String empfänger, String transaktionsstatus);
 }

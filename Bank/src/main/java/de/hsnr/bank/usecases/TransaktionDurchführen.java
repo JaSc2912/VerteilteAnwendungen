@@ -11,5 +11,8 @@ import de.hsnr.bank.usecases.ITransaktionDurchführen;
  * @author jannn
  */
 public class TransaktionDurchführen implements ITransaktionDurchführen {
-    
+    public void doTransaktion(de.hsnr.bank.entities.Bankkonto konto, String transaktionsnummer, java.util.Date transaktionsdatum,
+            double betrag, String transaktionsart, String empfänger, String transaktionsstatus) {
+                
+            }
 }

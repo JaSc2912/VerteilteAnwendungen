@@ -9,5 +9,14 @@ package de.hsnr.bank.usecases;
  * @author jannn
  */
 public class BankkontoManager {
-    
+    private BankkontoDAO bankkontoDAO;
+    public BankkontoManager(BankkontoDAO bankkontoDAO) {
+        this.bankkontoDAO = bankkontoDAO;
+    }
+    public void addBankkonto(Bankkonto bankkonto) {
+        bankkontoDAO.addBankkonto(bankkonto);
+    }
+    public void deleteBankkonto(String iban) {
+        bankkontoDAO.deleteBankkonto(iban);
+    }
 }

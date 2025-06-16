@@ -4,7 +4,7 @@
  */
 package de.hsnr.bank.dataaccess;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import java.util.Date;
 
 
@@ -14,13 +14,21 @@ import java.util.Date;
  */
 @Entity
 public class TransaktionEntity  {
-    
-    private BankkontoEntity Bankkonto;
+    @Id
+    @Column(name = "TRANSAKTIONSNUMMER")
     private String Transaktionsnummer;
+    @ManyToOne
+    @Column(name = "BANKKONTO")
+    private BankkontoEntity Bankkonto;
+    @Column(name = "EMPFAENGER")
     private String Empfeanger;
+    @Column(name = "BETRAG")
     private double Betrag;
+    @Column(name = "TRANSAKTIONSDATUM")
     private Date Transaktionsdatum;
+    @Column(name = "TRANSAKTIONSSTATUS")
     private String Transaktionsstatus;
+    @Column(name = "TRANSAKTIONSART")
     private String Transaktionsart;
 }
 
