@@ -4,7 +4,7 @@
  */
 package de.hsnr.bank.usecases;
 
-import de.hsnr.bank.usecases.ITransaktionDurchführen;
+import de.hsnr.bank.usecases.Interfaces.ITransaktionDurchführen;
 
 /**
  *

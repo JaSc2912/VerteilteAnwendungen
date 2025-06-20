@@ -9,5 +9,10 @@ package de.hsnr.bank.usecases;
  * @author jannn
  */
 public class KundenübersichtAnzeigen implements IKundenübersichtAnzeigen {
+
+    @Override
+    public void showKunde() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }

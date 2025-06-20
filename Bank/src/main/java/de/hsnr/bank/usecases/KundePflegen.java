@@ -9,5 +9,20 @@ package de.hsnr.bank.usecases;
  * @author jannn
  */
 public class KundePflegen implements IKundePflegen {
+
+    @Override
+    public void addKunde(String name, String vorname, String adresse, String telefonnummer) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void deleteKunde(int kundeId) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void updateKunde(int kundeId, String name, String vorname, String adresse, String telefonnummer) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }
