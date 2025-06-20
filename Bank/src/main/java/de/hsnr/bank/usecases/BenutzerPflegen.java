@@ -7,12 +7,14 @@ package de.hsnr.bank.usecases;
 import de.hsnr.bank.dataaccess.BenutzerDAO;
 import de.hsnr.bank.entities.Benutzer;
 import de.hsnr.bank.usecases.Interfaces.IBenutzerPflegen;
+import jakarta.ejb.Stateless;
 import de.hsnr.bank.usecases.RolleT;
 
 /**
  *
  * @author jannn
  */
+@Stateless
 public class BenutzerPflegen implements IBenutzerPflegen {
 
     private BenutzerDAO benutzerDAO = new BenutzerDAO();

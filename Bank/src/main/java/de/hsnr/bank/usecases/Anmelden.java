@@ -7,11 +7,13 @@ package de.hsnr.bank.usecases;
 import de.hsnr.bank.dataaccess.BenutzerDAO;
 import de.hsnr.bank.entities.Benutzer;
 import de.hsnr.bank.usecases.Interfaces.IAnmelden;
+import jakarta.ejb.Stateless;
 
 /**
  *
  * @author jannn
  */
+@Stateless
 public class Anmelden implements IAnmelden {
 
     private BenutzerDAO benutzerDAO = new BenutzerDAO();

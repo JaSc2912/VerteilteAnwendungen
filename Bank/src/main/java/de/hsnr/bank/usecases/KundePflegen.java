@@ -7,11 +7,13 @@ package de.hsnr.bank.usecases;
 import de.hsnr.bank.dataaccess.KundeDAO;
 import de.hsnr.bank.entities.Kunde;
 import de.hsnr.bank.usecases.Interfaces.IKundePflegen;
+import jakarta.ejb.Stateless;
 
 /**
  *
  * @author jannn
  */
+@Stateless
 public class KundePflegen implements IKundePflegen {
 
     private KundeDAO kundeDAO = new KundeDAO();

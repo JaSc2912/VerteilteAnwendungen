@@ -6,12 +6,15 @@ package de.hsnr.bank.usecases;
 
 import de.hsnr.bank.dataaccess.KreditantragDAO;
 import de.hsnr.bank.entities.Kreditantrag;
+import jakarta.ejb.Stateless;
+
 import java.util.List;
 
 /**
  *
  * @author jannn
  */
+@Stateless
 public class KreditantragManager {
     private KreditantragDAO kreditantragDAO;
 

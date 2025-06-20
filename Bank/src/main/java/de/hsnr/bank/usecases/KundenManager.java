@@ -6,12 +6,15 @@ package de.hsnr.bank.usecases;
 
 import de.hsnr.bank.dataaccess.KundeDAO;
 import de.hsnr.bank.entities.Kunde;
+import jakarta.ejb.Stateless;
+
 import java.util.List;
 
 /**
  *
  * @author jannn
  */
+@Stateless
 public class KundenManager {
     private KundeDAO kundeDAO;
 

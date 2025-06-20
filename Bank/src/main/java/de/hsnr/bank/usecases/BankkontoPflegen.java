@@ -10,11 +10,13 @@ import de.hsnr.bank.dataaccess.BankkontoDAO;
 import de.hsnr.bank.entities.Bankkonto;
 import de.hsnr.bank.entities.Kunde;
 import de.hsnr.bank.usecases.Interfaces.IBankkontoPflegen;
+import jakarta.ejb.Stateless;
 
 /**
  *
  * @author jannn
  */
+@Stateless
 public class BankkontoPflegen implements IBankkontoPflegen {
 
     private BankkontoDAO bankkontoDAO = new BankkontoDAO();

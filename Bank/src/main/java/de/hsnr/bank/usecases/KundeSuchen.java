@@ -7,6 +7,8 @@ package de.hsnr.bank.usecases;
 import de.hsnr.bank.dataaccess.KundeDAO;
 import de.hsnr.bank.entities.Kunde;
 import de.hsnr.bank.usecases.Interfaces.IKundeSuchen;
+import jakarta.ejb.Stateless;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,6 +16,7 @@ import java.util.stream.Collectors;
  *
  * @author jannn
  */
+@Stateless
 public class KundeSuchen implements IKundeSuchen {
 
     private KundeDAO kundeDAO = new KundeDAO();

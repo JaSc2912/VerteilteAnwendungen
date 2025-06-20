@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://jakarta.ee/jsf/html">
+  <h:head>
+    <title>Kundenübersicht</title>
+  </h:head>
+  <h:body>
+    <h:form>
+      <h:outputLabel value="Kundennummer:" for="kundennummer" />
+      <h:inputText
+        id="kundennummer"
+        value="#{kundenUebersichtBean.kundennummer}"
+      />
+      <h:commandButton
+        value="Anzeigen"
+        action="#{kundenUebersichtBean.laden}"
+      />
+    </h:form>
+    <h:panelGrid columns="2" rendered="#{not empty kundenUebersichtBean.kunde}">
+      <h:outputText value="Name:" />
+      <h:outputText value="#{kundenUebersichtBean.kunde.name}" />
+      <h:outputText value="Adresse:" />
+      <h:outputText value="#{kundenUebersichtBean.kunde.adresse}" />
+      <h:outputText value="Telefon:" />
+      <h:outputText value="#{kundenUebersichtBean.kunde.telefonnummer}" />
+      <h:outputText value="E-Mail:" />
+      <h:outputText value="#{kundenUebersichtBean.kunde.email}" />
+      <h:outputText value="Geburtsdatum:" />
+      <h:outputText value="#{kundenUebersichtBean.kunde.geburtsdatum}" />
+      <h:outputText value="Status:" />
+      <h:outputText value="#{kundenUebersichtBean.kunde.kundenstatus}" />
+    </h:panelGrid>
+    <h:link value="Zurück zum Menü" outcome="menu.xhtml" />
+  </h:body>
+</html>

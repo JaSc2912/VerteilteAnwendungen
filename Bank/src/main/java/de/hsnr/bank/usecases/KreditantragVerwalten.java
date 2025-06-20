@@ -8,11 +8,13 @@ import de.hsnr.bank.dataaccess.KreditantragDAO;
 import de.hsnr.bank.entities.Kreditantrag;
 import de.hsnr.bank.entities.Kunde;
 import de.hsnr.bank.usecases.Interfaces.IKreditantragVerwalten;
+import jakarta.ejb.Stateless;
 
 /**
  *
  * @author jannn
  */
+@Stateless
 public class KreditantragVerwalten implements IKreditantragVerwalten {
 
     private KreditantragDAO kreditantragDAO = new KreditantragDAO();

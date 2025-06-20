@@ -8,11 +8,13 @@ import de.hsnr.bank.dataaccess.TransaktionDAO;
 import de.hsnr.bank.entities.Bankkonto;
 import de.hsnr.bank.entities.Transaktion;
 import de.hsnr.bank.usecases.Interfaces.ITransaktionDurchführen;
+import jakarta.ejb.Stateless;
 
 /**
  *
  * @author jannn
  */
+@Stateless
 public class TransaktionDurchführen implements ITransaktionDurchführen {
 
     private TransaktionDAO transaktionDAO = new TransaktionDAO();

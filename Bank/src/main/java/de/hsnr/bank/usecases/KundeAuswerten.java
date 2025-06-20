@@ -7,11 +7,13 @@ package de.hsnr.bank.usecases;
 import de.hsnr.bank.dataaccess.KreditantragDAO;
 import de.hsnr.bank.entities.Kunde;
 import de.hsnr.bank.usecases.Interfaces.IKundeAuswerten;
+import jakarta.ejb.Stateless;
 
 /**
  *
  * @author jannn
  */
+@Stateless
 public class KundeAuswerten implements IKundeAuswerten {
 
     private KreditantragDAO kreditantragDAO = new KreditantragDAO();

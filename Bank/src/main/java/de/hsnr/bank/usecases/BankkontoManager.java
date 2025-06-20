@@ -6,11 +6,13 @@ package de.hsnr.bank.usecases;
 
 import de.hsnr.bank.dataaccess.BankkontoDAO;
 import de.hsnr.bank.entities.Bankkonto;
+import jakarta.ejb.Stateless;
 
 /**
  *
  * @author jannn
  */
+@Stateless
 public class BankkontoManager {
 
     private BankkontoDAO bankkontoDAO;
