@@ -20,6 +20,10 @@ public class Benutzer {
 
     public Benutzer() {
     }
+    
+    public Benutzer(String benutzername, String passwort){
+        
+    }
 
     public Benutzer(String benutzername, String name, String passwort, String telefonnummer, RolleT rolle) {
         this.benutzername = benutzername;
