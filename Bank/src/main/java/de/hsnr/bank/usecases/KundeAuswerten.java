@@ -4,6 +4,8 @@
  */
 package de.hsnr.bank.usecases;
 
+import de.hsnr.bank.usecases.Interfaces.IKundeAuswerten;
+
 /**
  *
  * @author jannn
