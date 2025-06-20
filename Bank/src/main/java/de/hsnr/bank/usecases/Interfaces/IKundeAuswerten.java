@@ -11,6 +11,7 @@ import jakarta.ejb.Local;
  *
  * @author jannn
  */
+@Local
 public interface IKundeAuswerten {
 
     public boolean checkKreditwürdigkeit(Kunde kunde);

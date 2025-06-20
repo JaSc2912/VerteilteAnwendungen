@@ -4,6 +4,8 @@
  */
 package de.hsnr.bank.entities;
 
+import java.util.Date;
+
 /**
  *
  * @author muell
@@ -14,14 +16,14 @@ public class Kunde {
     private String adresse;
     private String telefonnummer;
     private String email;
-    private String geburtsdatum;
+    private Date geburtsdatum;
     private String kundenstatus; // "aktiv", "gesperrt", "verstorben"
 
     public Kunde() {
     }
 
     public Kunde(String kundennummer, String name, String adresse, String telefonnummer, String email,
-            String geburtsdatum, String kundenstatus) {
+            Date geburtsdatum, String kundenstatus) {
         this.kundennummer = kundennummer;
         this.name = name;
         this.adresse = adresse;
@@ -71,11 +73,11 @@ public class Kunde {
         this.email = email;
     }
 
-    public String getGeburtsdatum() {
+    public Date getGeburtsdatum() {
         return geburtsdatum;
     }
 
-    public void setGeburtsdatum(String geburtsdatum) {
+    public void setGeburtsdatum(Date geburtsdatum) {
         this.geburtsdatum = geburtsdatum;
     }
 

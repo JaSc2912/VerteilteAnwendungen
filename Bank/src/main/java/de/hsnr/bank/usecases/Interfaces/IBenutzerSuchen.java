@@ -12,6 +12,7 @@ import java.util.List;
  *
  * @author jannn
  */
+@Local
 public interface IBenutzerSuchen {
     public List<Benutzer> searchBenutzer(String suchParameter);
 }

@@ -6,7 +6,9 @@ package de.hsnr.bank.usecases;
 
 import de.hsnr.bank.dataaccess.BankkontoDAO;
 import de.hsnr.bank.entities.Bankkonto;
+import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
+import java.util.List;
 
 /**
  *
@@ -15,10 +17,10 @@ import jakarta.ejb.Stateless;
 @Stateless
 public class BankkontoManager {
 
+    @EJB
     private BankkontoDAO bankkontoDAO;
 
-    public BankkontoManager(BankkontoDAO bankkontoDAO) {
-        this.bankkontoDAO = bankkontoDAO;
+    public BankkontoManager() {
     }
 
     public void addBankkonto(Bankkonto bankkonto) {
@@ -27,5 +29,17 @@ public class BankkontoManager {
 
     public void deleteBankkonto(String iban) {
         bankkontoDAO.deleteBankkonto(iban);
+    }
+
+    public void editBankkonto(Bankkonto bankkonto) {
+        bankkontoDAO.editBankkonto(bankkonto);
+    }
+
+    public Bankkonto suchen(String iban) {
+        return bankkontoDAO.suchen(iban);
+    }
+
+    public List<Bankkonto> alleLesen() {
+        return bankkontoDAO.alleLesen();
     }
 }

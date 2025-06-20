@@ -11,6 +11,7 @@ import jakarta.ejb.Local;
  *
  * @author jannn
  */
+@Local
 public interface IKundenübersichtAnzeigen {
     /**
      * Gibt die Daten des Kunden mit der übergebenen Kundennummer zurück.

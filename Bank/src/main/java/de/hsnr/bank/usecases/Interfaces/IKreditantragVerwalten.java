@@ -11,6 +11,7 @@ import jakarta.ejb.Local;
  *
  * @author jannn
  */
+@Local
 public interface IKreditantragVerwalten {
     public void addKreditantrag(Double kreditsumme, Kunde antragssteller, String status, String laufzeit, Double zins);
 

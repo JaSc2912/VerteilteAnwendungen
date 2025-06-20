@@ -11,14 +11,15 @@ import jakarta.ejb.Local;
  *
  * @author jannn
  */
+@Local
 public interface IBankkontoPflegen {
-    boolean addBankkonto(String iban, String kontoArt, double kontostand, java.util.Date kontoEroeffnung,
-            String kontoStatus, Kunde besitzer);
+        boolean addBankkonto(String iban, String kontoArt, double kontostand, java.util.Date kontoEroeffnung,
+                        String kontoStatus, Kunde besitzer);
 
-    boolean editBankkonto(String iban, String kontoArt, double kontostand, java.util.Date kontoEroeffnung,
-            String kontoStatus, Kunde besitzer);
+        boolean editBankkonto(String iban, String kontoArt, double kontostand, java.util.Date kontoEroeffnung,
+                        String kontoStatus, Kunde besitzer);
 
-    boolean deleteBankkonto(String iban);
+        boolean deleteBankkonto(String iban);
 
-    de.hsnr.bank.entities.Bankkonto search(String iban);
+        de.hsnr.bank.entities.Bankkonto search(String iban);
 }

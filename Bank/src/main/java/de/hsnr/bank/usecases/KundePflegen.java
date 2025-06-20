@@ -4,9 +4,9 @@
  */
 package de.hsnr.bank.usecases;
 
-import de.hsnr.bank.dataaccess.KundeDAO;
 import de.hsnr.bank.entities.Kunde;
 import de.hsnr.bank.usecases.Interfaces.IKundePflegen;
+import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
 
 /**
@@ -16,21 +16,21 @@ import jakarta.ejb.Stateless;
 @Stateless
 public class KundePflegen implements IKundePflegen {
 
-    private KundeDAO kundeDAO = new KundeDAO();
+    @EJB
+    private KundenManager kundenManager;
 
     @Override
     public void addKunde(Kunde kunde) {
-        kundeDAO.addKunde(kunde);
+        kundenManager.addKunde(kunde);
     }
 
     @Override
     public void deleteKunde(String kundennummer) {
-        kundeDAO.deleteKunde(kundennummer);
+        kundenManager.deleteKunde(kundennummer);
     }
 
     @Override
     public void updateKunde(Kunde kunde) {
-        kundeDAO.editKunde(kunde);
+        kundenManager.editKunde(kunde);
     }
-
 }

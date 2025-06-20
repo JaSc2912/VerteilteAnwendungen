@@ -12,6 +12,7 @@ import jakarta.ejb.Local;
  *
  * @author jannn
  */
+@Local
 public interface IKundeSuchen {
     List<Kunde> sucheKunde(String suchbegriff);
 }

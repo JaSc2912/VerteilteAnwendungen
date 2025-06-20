@@ -11,6 +11,7 @@ import jakarta.ejb.Local;
  *
  * @author jannn
  */
+@Local
 public interface ITransaktionDurchführen {
 
     public void doTransaktion(Bankkonto konto, String transaktionsnummer, java.util.Date transaktionsdatum,

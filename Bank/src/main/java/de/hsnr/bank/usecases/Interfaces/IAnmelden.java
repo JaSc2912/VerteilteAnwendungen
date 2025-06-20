@@ -10,6 +10,7 @@ import jakarta.ejb.Local;
  *
  * @author jannn
  */
+@Local
 public interface IAnmelden {
     void login(String benutzername, String passwort);
 }

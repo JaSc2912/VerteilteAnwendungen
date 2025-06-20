@@ -15,31 +15,32 @@ import java.util.Date;
  * @author muell
  */
 @Entity
-public class KundeEntity  {
+public class KundeEntity {
 
     @Id
     @Column(name = "KUNDENNUMMER")
     private String kundennummer;
 
     @Column(name = "NAME")
-     String name;
+    String name;
 
     @Column(name = "ADRESSE")
-     String adresse;
+    String adresse;
 
     @Column(name = "KUNDENSTATUS")
-     String kundenstatus;
+    String kundenstatus;
 
     @Column(name = "GEBURTSDATUM")
-     String geburtsdatum;
+    Date geburtsdatum;
 
     @Column(name = "TELEFONNUMMER")
-     String telefonnummer;
+    String telefonnummer;
 
     @Column(name = "EMAIL")
-     String email;
+    String email;
 
-    public KundeEntity() {}
+    public KundeEntity() {
+    }
 
     public KundeEntity(Kunde kunde) {
         this.kundennummer = kunde.getKundennummer();
@@ -55,4 +56,3 @@ public class KundeEntity  {
         return new Kunde(kundennummer, name, adresse, telefonnummer, email, geburtsdatum, kundenstatus);
     }
 }
-

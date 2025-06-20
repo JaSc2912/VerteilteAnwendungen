@@ -12,6 +12,7 @@ import java.util.List;
  *
  * @author jannn
  */
+@Local
 public interface IKreditantragSuchen {
 
     public List<Kreditantrag> sucheKreditantraege(String suchbegriff);

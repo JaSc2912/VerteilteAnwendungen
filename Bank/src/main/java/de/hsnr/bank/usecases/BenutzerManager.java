@@ -5,8 +5,10 @@
 package de.hsnr.bank.usecases;
 
 import de.hsnr.bank.entities.Benutzer;
-import jakarta.ejb.Stateless;
 import de.hsnr.bank.dataaccess.BenutzerDAO;
+import jakarta.ejb.EJB;
+import jakarta.ejb.Stateless;
+import java.util.List;
 
 /**
  *
@@ -14,10 +16,10 @@ import de.hsnr.bank.dataaccess.BenutzerDAO;
  */
 @Stateless
 public class BenutzerManager {
+    @EJB
     private BenutzerDAO benutzerDAO;
 
-    public BenutzerManager(BenutzerDAO benutzerDAO) {
-        this.benutzerDAO = benutzerDAO;
+    public BenutzerManager() {
     }
 
     public void addBenutzer(Benutzer benutzer) {
@@ -28,12 +30,19 @@ public class BenutzerManager {
         benutzerDAO.deleteBenutzer(benutzername);
     }
 
-    public Benutzer suchen(String benutzername) {
-        return benutzerDAO.suchen(benutzername);
-    }
-
     public void editBenutzer(Benutzer benutzer) {
         benutzerDAO.editBenutzer(benutzer);
     }
 
+    public Benutzer suchen(String benutzername) {
+        return benutzerDAO.suchen(benutzername);
+    }
+
+    public List<Benutzer> alleLesen() {
+        return benutzerDAO.alleLesen();
+    }
+
+    public List<Benutzer> searchBenutzer(String suchParameter) {
+        return benutzerDAO.searchBenutzer(suchParameter);
+    }
 }

@@ -11,6 +11,7 @@ import jakarta.ejb.Local;
  *
  * @author jannn
  */
+@Local
 public interface IBenutzerPflegen {
     boolean addBenutzer(String benutzername, String name, String passwort, String telefonnummer, RolleT rolle);
 

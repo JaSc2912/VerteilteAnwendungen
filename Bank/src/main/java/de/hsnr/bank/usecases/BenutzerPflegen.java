@@ -4,11 +4,11 @@
  */
 package de.hsnr.bank.usecases;
 
-import de.hsnr.bank.dataaccess.BenutzerDAO;
 import de.hsnr.bank.entities.Benutzer;
 import de.hsnr.bank.usecases.Interfaces.IBenutzerPflegen;
-import jakarta.ejb.Stateless;
 import de.hsnr.bank.usecases.RolleT;
+import jakarta.ejb.EJB;
+import jakarta.ejb.Stateless;
 
 /**
  *
@@ -17,13 +17,14 @@ import de.hsnr.bank.usecases.RolleT;
 @Stateless
 public class BenutzerPflegen implements IBenutzerPflegen {
 
-    private BenutzerDAO benutzerDAO = new BenutzerDAO();
+    @EJB
+    private BenutzerManager benutzerManager;
 
     @Override
     public boolean addBenutzer(String benutzername, String name, String passwort, String telefonnummer, RolleT rolle) {
         try {
             Benutzer benutzer = new Benutzer(benutzername, name, passwort, telefonnummer, rolle);
-            benutzerDAO.addBenutzer(benutzer);
+            benutzerManager.addBenutzer(benutzer);
             return true;
         } catch (Exception e) {
             return false;
@@ -33,7 +34,7 @@ public class BenutzerPflegen implements IBenutzerPflegen {
     @Override
     public boolean deleteBenutzer(String benutzername) {
         try {
-            benutzerDAO.deleteBenutzer(benutzername);
+            benutzerManager.deleteBenutzer(benutzername);
             return true;
         } catch (Exception e) {
             return false;
@@ -43,7 +44,7 @@ public class BenutzerPflegen implements IBenutzerPflegen {
     @Override
     public boolean editBenutzer(String benutzername, String name, String passwort, String telefonnummer, RolleT rolle) {
         try {
-            Benutzer benutzer = benutzerDAO.suchen(benutzername);
+            Benutzer benutzer = benutzerManager.suchen(benutzername);
             if (benutzer == null) {
                 return false;
             }
@@ -51,7 +52,7 @@ public class BenutzerPflegen implements IBenutzerPflegen {
             benutzer.setPasswort(passwort);
             benutzer.setTelefonnummer(telefonnummer);
             benutzer.setRolle(rolle);
-            benutzerDAO.editBenutzer(benutzer);
+            benutzerManager.editBenutzer(benutzer);
             return true;
         } catch (Exception e) {
             return false;

@@ -4,9 +4,9 @@
  */
 package de.hsnr.bank.usecases;
 
-import de.hsnr.bank.dataaccess.KundeDAO;
 import de.hsnr.bank.entities.Kunde;
 import de.hsnr.bank.usecases.Interfaces.IKundenübersichtAnzeigen;
+import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
 
 /**
@@ -16,11 +16,11 @@ import jakarta.ejb.Stateless;
 @Stateless
 public class KundenübersichtAnzeigen implements IKundenübersichtAnzeigen {
 
-    private KundeDAO kundeDAO = new KundeDAO();
+    @EJB
+    private KundenManager kundenManager;
 
     @Override
     public Kunde showKunde(String kundennummer) {
-        return kundeDAO.suchen(kundennummer);
+        return kundenManager.suchen(kundennummer);
     }
-
 }

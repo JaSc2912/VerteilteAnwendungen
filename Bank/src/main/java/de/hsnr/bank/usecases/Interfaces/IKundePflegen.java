@@ -11,6 +11,7 @@ import jakarta.ejb.Local;
  *
  * @author jannn
  */
+@Local
 public interface IKundePflegen {
     void addKunde(Kunde kunde);
 
