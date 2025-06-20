@@ -4,8 +4,6 @@
  */
 package de.hsnr.bank.usecases;
 
-import de.hsnr.bank.usecases.IKundenübersichtAnzeigen;
-
 /**
  *
  * @author jannn

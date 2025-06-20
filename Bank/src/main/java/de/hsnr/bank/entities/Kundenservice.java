@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package de.hsnr.bank.entities;
-import de.hsnr.bank.entities.enums.RolleT;
+import de.hsnr.bank.usecases.RolleT;
 /**
  *
  * @author muell

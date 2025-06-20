@@ -13,13 +13,13 @@ public class KreditantragEntity {
     private String konto;
 
     @Column(name = "KREDITSUMME")
-    private Double kreditsumme;
+     Double kreditsumme;
 
     @Column(name = "LAUFZEIT")
-    private String laufzeit;
+     String laufzeit;
 
     @Column(name = "ZINS")
-    private Double zins;
+     Double zins;
 
     public KreditantragEntity() {}
 

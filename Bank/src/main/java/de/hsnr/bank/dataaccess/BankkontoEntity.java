@@ -24,19 +24,19 @@ public class BankkontoEntity {
     private String iban;
 
     @Column(name = "KONTOART")
-    private String kontoart;
+     String kontoart;
 
     @Column(name = "KONTOSTAND")
-    private Double kontostand;
+     Double kontostand;
 
     @Column(name = "KONTOEROEFFNUNGSDATUM")
-    private Date kontoeroeffnungsdatum;
+     Date kontoeroeffnungsdatum;
 
     @Column(name = "KONTOSTATUS")
-    private String kontostatus;
+     String kontostatus;
 
     @ManyToOne
-    private KundeEntity besitzer;
+     KundeEntity besitzer;
 
     public BankkontoEntity() {
     }

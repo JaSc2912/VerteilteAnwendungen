@@ -3,11 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package de.hsnr.bank.usecases;
-import jakarta.persistence.EntityManager;
-import de.hsnr.bank.dataaccess.BenutzerEntity;
 import de.hsnr.bank.entities.Benutzer;
-import de.hsnr.bank.dataaccess.AdminEntity;
-import de.hsnr.bank.dataaccess.Admin;
+import de.hsnr.bank.dataaccess.BenutzerDAO;
 
 /**
  *

@@ -22,22 +22,22 @@ public class KundeEntity  {
     private String kundennummer;
 
     @Column(name = "NAME")
-    private String name;
+     String name;
 
     @Column(name = "ADRESSE")
-    private String adresse;
+     String adresse;
 
     @Column(name = "KUNDENSTATUS")
-    private String kundenstatus;
+     String kundenstatus;
 
     @Column(name = "GEBURTSDATUM")
-    private String geburtsdatum;
+     String geburtsdatum;
 
     @Column(name = "TELEFONNUMMER")
-    private String telefonnummer;
+     String telefonnummer;
 
     @Column(name = "EMAIL")
-    private String email;
+     String email;
 
     public KundeEntity() {}
 

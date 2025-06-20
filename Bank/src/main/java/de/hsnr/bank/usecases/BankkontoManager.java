@@ -4,18 +4,25 @@
  */
 package de.hsnr.bank.usecases;
 
+import de.hsnr.bank.dataaccess.BankkontoDAO;
+import de.hsnr.bank.entities.Bankkonto;
+
 /**
  *
  * @author jannn
  */
 public class BankkontoManager {
+
     private BankkontoDAO bankkontoDAO;
+
     public BankkontoManager(BankkontoDAO bankkontoDAO) {
         this.bankkontoDAO = bankkontoDAO;
     }
+
     public void addBankkonto(Bankkonto bankkonto) {
         bankkontoDAO.addBankkonto(bankkonto);
     }
+
     public void deleteBankkonto(String iban) {
         bankkontoDAO.deleteBankkonto(iban);
     }
