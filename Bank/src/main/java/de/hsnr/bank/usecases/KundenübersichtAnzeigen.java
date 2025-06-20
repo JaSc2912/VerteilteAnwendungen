@@ -4,6 +4,8 @@
  */
 package de.hsnr.bank.usecases;
 
+import de.hsnr.bank.usecases.Interfaces.IKundenübersichtAnzeigen;
+
 /**
  *
  * @author jannn
@@ -12,7 +14,8 @@ public class KundenübersichtAnzeigen implements IKundenübersichtAnzeigen {
 
     @Override
     public void showKunde() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from
+                                                                       // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
 }

@@ -4,6 +4,8 @@
  */
 package de.hsnr.bank.usecases;
 
+import de.hsnr.bank.usecases.Interfaces.IKundeSuchen;
+
 /**
  *
  * @author jannn
@@ -12,7 +14,8 @@ public class KundeSuchen implements IKundeSuchen {
 
     @Override
     public void sucheKunde(String suchbegriff) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from
+                                                                       // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
 }
