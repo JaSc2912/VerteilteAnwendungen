@@ -23,12 +23,12 @@ public class KreditantragManager {
         kreditantragDAO.addKreditantrag(kreditantrag);
     }
 
-    public void deleteKreditantrag(String konto) {
-        kreditantragDAO.deleteKreditantrag(konto);
+    public void deleteKreditantrag(Long kreditantragsNummer) {
+        kreditantragDAO.deleteKreditantrag(kreditantragsNummer);
     }
 
-    public Kreditantrag suchen(String konto) {
-        return kreditantragDAO.suchen(konto);
+    public Kreditantrag suchen(Long kreditantragsNummer) {
+        return kreditantragDAO.suchen(kreditantragsNummer);
     }
 
     public void editKreditantrag(Kreditantrag kreditantrag) {

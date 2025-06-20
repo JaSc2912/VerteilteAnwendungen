@@ -4,6 +4,9 @@
  */
 package de.hsnr.bank.usecases;
 
+import de.hsnr.bank.dataaccess.TransaktionDAO;
+import de.hsnr.bank.entities.Bankkonto;
+import de.hsnr.bank.entities.Transaktion;
 import de.hsnr.bank.usecases.Interfaces.ITransaktionDurchführen;
 
 /**
@@ -11,8 +14,20 @@ import de.hsnr.bank.usecases.Interfaces.ITransaktionDurchführen;
  * @author jannn
  */
 public class TransaktionDurchführen implements ITransaktionDurchführen {
-    public void doTransaktion(de.hsnr.bank.entities.Bankkonto konto, String transaktionsnummer, java.util.Date transaktionsdatum,
+
+    private TransaktionDAO transaktionDAO = new TransaktionDAO();
+
+    @Override
+    public void doTransaktion(Bankkonto konto, String transaktionsnummer, java.util.Date transaktionsdatum,
             double betrag, String transaktionsart, String empfänger, String transaktionsstatus) {
-                
-            }
+        Transaktion transaktion = new Transaktion(
+                konto,
+                transaktionsnummer,
+                transaktionsdatum,
+                betrag,
+                transaktionsart,
+                empfänger,
+                transaktionsstatus);
+        transaktionDAO.addTransaktion(transaktion);
+    }
 }

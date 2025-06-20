@@ -4,14 +4,16 @@
  */
 package de.hsnr.bank.usecases.Interfaces;
 
+import de.hsnr.bank.entities.Kunde;
+
 /**
  *
  * @author jannn
  */
 public interface IKundePflegen {
-    public void addKunde(String name, String vorname, String adresse, String telefonnummer);
+    void addKunde(Kunde kunde);
 
-    public void deleteKunde(int kundeId);
+    void deleteKunde(String kundennummer);
 
-    public void updateKunde(int kundeId, String name, String vorname, String adresse, String telefonnummer);
+    void updateKunde(Kunde kunde);
 }

@@ -12,5 +12,5 @@ import java.util.List;
  * @author jannn
  */
 public interface IBenutzerSuchen {
-    public List<Benutzer> searchBenutzer();
+    public List<Benutzer> searchBenutzer(String suchParameter);
 }

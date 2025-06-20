@@ -4,16 +4,19 @@
  */
 package de.hsnr.bank.usecases.Interfaces;
 
+import de.hsnr.bank.entities.Kunde;
+
 /**
  *
  * @author jannn
  */
 public interface IKreditantragVerwalten {
-    public void addKreditantrag(Double kreditsumme, String konto, String laufzeit, Double zins);
+    public void addKreditantrag(Double kreditsumme, Kunde antragssteller, String status, String laufzeit, Double zins);
 
-    public void editKreditantrag(String id, Double kreditsumme, String konto, String laufzeit, Double zins);
+    public void editKreditantrag(Long kreditantragsNummer, Double kreditsumme, Kunde antragssteller, String status,
+            String laufzeit, Double zins);
 
-    public void acceptKreditantrag(String id);
+    public void acceptKreditantrag(Long kreditantragsNummer);
 
-    public void denyKreditantrag(String id);
+    public void denyKreditantrag(Long kreditantragsNummer);
 }

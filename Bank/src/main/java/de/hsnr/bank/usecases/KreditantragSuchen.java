@@ -4,6 +4,7 @@
  */
 package de.hsnr.bank.usecases;
 
+import de.hsnr.bank.dataaccess.KreditantragDAO;
 import de.hsnr.bank.entities.Kreditantrag;
 import de.hsnr.bank.usecases.Interfaces.IKreditantragSuchen;
 import java.util.List;
@@ -14,9 +15,10 @@ import java.util.List;
  */
 public class KreditantragSuchen implements IKreditantragSuchen {
 
+    private KreditantragDAO kreditantragDAO = new KreditantragDAO();
+
     @Override
     public List<Kreditantrag> sucheKreditantraege(String suchbegriff) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return kreditantragDAO.kreditantragSuchen(suchbegriff);
     }
-    
 }

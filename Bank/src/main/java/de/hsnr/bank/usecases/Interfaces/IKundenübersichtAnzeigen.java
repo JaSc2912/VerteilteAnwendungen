@@ -4,10 +4,18 @@
  */
 package de.hsnr.bank.usecases.Interfaces;
 
+import de.hsnr.bank.entities.Kunde;
+
 /**
  *
  * @author jannn
  */
 public interface IKundenübersichtAnzeigen {
-    public void showKunde();
+    /**
+     * Gibt die Daten des Kunden mit der übergebenen Kundennummer zurück.
+     * 
+     * @param kundennummer Die Kundennummer des gesuchten Kunden.
+     * @return Das Kunde-Objekt oder null, falls nicht gefunden.
+     */
+    public Kunde showKunde(String kundennummer);
 }

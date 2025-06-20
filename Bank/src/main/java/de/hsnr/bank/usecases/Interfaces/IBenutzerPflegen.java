@@ -12,6 +12,8 @@ import de.hsnr.bank.usecases.RolleT;
  */
 public interface IBenutzerPflegen {
     boolean addBenutzer(String benutzername, String name, String passwort, String telefonnummer, RolleT rolle);
+
     boolean deleteBenutzer(String benutzername);
-    boolean editBenutzer(String benutzername);
+
+    boolean editBenutzer(String benutzername, String name, String passwort, String telefonnummer, RolleT rolle);
 }

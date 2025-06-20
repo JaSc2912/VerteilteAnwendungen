@@ -4,10 +4,13 @@
  */
 package de.hsnr.bank.usecases.Interfaces;
 
+import de.hsnr.bank.entities.Kunde;
+import java.util.List;
+
 /**
  *
  * @author jannn
  */
 public interface IKundeSuchen {
-    public void sucheKunde(String suchbegriff);
+    List<Kunde> sucheKunde(String suchbegriff);
 }

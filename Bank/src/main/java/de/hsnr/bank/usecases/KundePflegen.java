@@ -4,6 +4,8 @@
  */
 package de.hsnr.bank.usecases;
 
+import de.hsnr.bank.dataaccess.KundeDAO;
+import de.hsnr.bank.entities.Kunde;
 import de.hsnr.bank.usecases.Interfaces.IKundePflegen;
 
 /**
@@ -12,22 +14,21 @@ import de.hsnr.bank.usecases.Interfaces.IKundePflegen;
  */
 public class KundePflegen implements IKundePflegen {
 
+    private KundeDAO kundeDAO = new KundeDAO();
+
     @Override
-    public void addKunde(String name, String vorname, String adresse, String telefonnummer) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from
-                                                                       // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void addKunde(Kunde kunde) {
+        kundeDAO.addKunde(kunde);
     }
 
     @Override
-    public void deleteKunde(int kundeId) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from
-                                                                       // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void deleteKunde(String kundennummer) {
+        kundeDAO.deleteKunde(kundennummer);
     }
 
     @Override
-    public void updateKunde(int kundeId, String name, String vorname, String adresse, String telefonnummer) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from
-                                                                       // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void updateKunde(Kunde kunde) {
+        kundeDAO.editKunde(kunde);
     }
 
 }

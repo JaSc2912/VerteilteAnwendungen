@@ -20,9 +20,9 @@ public class Benutzer {
 
     public Benutzer() {
     }
-    
-    public Benutzer(String benutzername, String passwort){
-        
+
+    public Benutzer(String benutzername, String passwort) {
+
     }
 
     public Benutzer(String benutzername, String name, String passwort, String telefonnummer, RolleT rolle) {
@@ -37,19 +37,39 @@ public class Benutzer {
         return benutzername;
     }
 
+    public void setBenutzername(String benutzername) {
+        this.benutzername = benutzername;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getTelefonnummer() {
         return telefonnummer;
     }
 
+    public void setTelefonnummer(String telefonnummer) {
+        this.telefonnummer = telefonnummer;
+    }
+
     public RolleT getRolle() {
         return rolle;
     }
 
+    public void setRolle(RolleT rolle) {
+        this.rolle = rolle;
+    }
+
     public String getPasswort() {
         return passwort;
+    }
+
+    public void setPasswort(String passwort) {
+        this.passwort = passwort;
     }
 }

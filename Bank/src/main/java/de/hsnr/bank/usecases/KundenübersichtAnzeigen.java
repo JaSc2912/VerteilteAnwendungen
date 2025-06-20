@@ -4,6 +4,8 @@
  */
 package de.hsnr.bank.usecases;
 
+import de.hsnr.bank.dataaccess.KundeDAO;
+import de.hsnr.bank.entities.Kunde;
 import de.hsnr.bank.usecases.Interfaces.IKundenübersichtAnzeigen;
 
 /**
@@ -12,10 +14,11 @@ import de.hsnr.bank.usecases.Interfaces.IKundenübersichtAnzeigen;
  */
 public class KundenübersichtAnzeigen implements IKundenübersichtAnzeigen {
 
+    private KundeDAO kundeDAO = new KundeDAO();
+
     @Override
-    public void showKunde() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from
-                                                                       // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Kunde showKunde(String kundennummer) {
+        return kundeDAO.suchen(kundennummer);
     }
 
 }

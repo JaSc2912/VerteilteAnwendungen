@@ -4,7 +4,11 @@
  */
 package de.hsnr.bank.usecases;
 
+import de.hsnr.bank.dataaccess.KundeDAO;
+import de.hsnr.bank.entities.Kunde;
 import de.hsnr.bank.usecases.Interfaces.IKundeSuchen;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -12,10 +16,21 @@ import de.hsnr.bank.usecases.Interfaces.IKundeSuchen;
  */
 public class KundeSuchen implements IKundeSuchen {
 
-    @Override
-    public void sucheKunde(String suchbegriff) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from
-                                                                       // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    private KundeDAO kundeDAO = new KundeDAO();
 
+    @Override
+    public List<Kunde> sucheKunde(String suchbegriff) {
+        String suchbegriffLower = suchbegriff.toLowerCase();
+        return kundeDAO.alleLesen().stream()
+                .filter(k -> (k.getKundennummer() != null
+                        && k.getKundennummer().toLowerCase().contains(suchbegriffLower)) ||
+                        (k.getName() != null && k.getName().toLowerCase().contains(suchbegriffLower)) ||
+                        (k.getAdresse() != null && k.getAdresse().toLowerCase().contains(suchbegriffLower)) ||
+                        (k.getTelefonnummer() != null && k.getTelefonnummer().toLowerCase().contains(suchbegriffLower))
+                        ||
+                        (k.getEmail() != null && k.getEmail().toLowerCase().contains(suchbegriffLower)) ||
+                        (k.getGeburtsdatum() != null && k.getGeburtsdatum().toLowerCase().contains(suchbegriffLower)) ||
+                        (k.getKundenstatus() != null && k.getKundenstatus().toLowerCase().contains(suchbegriffLower)))
+                .collect(Collectors.toList());
+    }
 }

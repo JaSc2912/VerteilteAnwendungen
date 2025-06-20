@@ -4,12 +4,20 @@
  */
 package de.hsnr.bank.usecases.Interfaces;
 
+import de.hsnr.bank.entities.Kunde;
+
 /**
  *
  * @author jannn
  */
 public interface IBankkontoPflegen {
-    boolean addBankkonto(String kontonummer, String iban, String bic, String bankname, String kontoinhaber, double saldo);
-    boolean deleteBankkonto(String kontonummer);
-    boolean editBankkonto(String kontonummer, String iban, String bic, String bankname, String kontoinhaber, double saldo);
+    boolean addBankkonto(String iban, String kontoArt, double kontostand, java.util.Date kontoEroeffnung,
+            String kontoStatus, Kunde besitzer);
+
+    boolean editBankkonto(String iban, String kontoArt, double kontostand, java.util.Date kontoEroeffnung,
+            String kontoStatus, Kunde besitzer);
+
+    boolean deleteBankkonto(String iban);
+
+    de.hsnr.bank.entities.Bankkonto search(String iban);
 }

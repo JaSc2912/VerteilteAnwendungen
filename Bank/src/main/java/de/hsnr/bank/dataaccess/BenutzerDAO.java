@@ -30,6 +30,7 @@ public class BenutzerDAO {
             return benutzerEntity.toBenutzer();
         }
     }
+
     public void addBenutzer(Benutzer benutzer) {
 
         BenutzerEntity benutzerEntity = new BenutzerEntity(benutzer);
@@ -39,6 +40,7 @@ public class BenutzerDAO {
         em.getTransaction().commit();
 
     }
+
     public void deleteBenutzer(String benutzername) {
 
         BenutzerEntity benutzerEntity = em.find(BenutzerEntity.class, benutzername);
@@ -50,6 +52,7 @@ public class BenutzerDAO {
         }
 
     }
+
     public void editBenutzer(Benutzer benutzer) {
 
         BenutzerEntity benutzerEntity = em.find(BenutzerEntity.class, benutzer.getBenutzername());
@@ -65,6 +68,7 @@ public class BenutzerDAO {
         }
 
     }
+
     public List<Benutzer> alleLesen() {
 
         TypedQuery<BenutzerEntity> query = em.createQuery("SELECT a FROM BenutzerEntity a", BenutzerEntity.class);
@@ -74,4 +78,13 @@ public class BenutzerDAO {
                 .collect(Collectors.toList());
 
     }
+
+    public List<Benutzer> searchBenutzer(String suchParameter) {
+        return alleLesen().stream()
+                .filter(b -> b.getBenutzername().toLowerCase().contains(suchParameter.toLowerCase())
+                        || (b.getName() != null && b.getName().toLowerCase().contains(suchParameter.toLowerCase()))
+                        || (b.getTelefonnummer() != null && b.getTelefonnummer().contains(suchParameter)))
+                .collect(Collectors.toList());
+    }
+
 }
