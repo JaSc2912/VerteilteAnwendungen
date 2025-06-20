@@ -6,6 +6,7 @@ package de.hsnr.bank.usecases.Interfaces;
 
 import de.hsnr.bank.entities.Kunde;
 import java.util.List;
+import jakarta.ejb.Local;
 
 /**
  *

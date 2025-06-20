@@ -5,6 +5,7 @@
 package de.hsnr.bank.usecases.Interfaces;
 
 import de.hsnr.bank.entities.Kunde;
+import jakarta.ejb.Local;
 
 /**
  *

@@ -5,6 +5,7 @@
 package de.hsnr.bank.usecases.Interfaces;
 
 import de.hsnr.bank.entities.Kreditantrag;
+import jakarta.ejb.Local;
 import java.util.List;
 
 /**

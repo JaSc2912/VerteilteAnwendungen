@@ -4,6 +4,8 @@
  */
 package de.hsnr.bank.usecases.Interfaces;
 
+import jakarta.ejb.Local;
+
 /**
  *
  * @author jannn
