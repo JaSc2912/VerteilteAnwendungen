@@ -9,21 +9,28 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Id;
 import de.hsnr.bank.usecases.RolleT;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.EnumType;
 
 @Entity
 public class BenutzerEntity {
 
-    @Column(name = "BENUTZERKENNUNG")
     @Id
-    private String benutzername;
+    @Column(name = "BENUTZERNAME")
+    protected String benutzername;
+
     @Column(name = "PASSWORT")
-    String passwort;
+    protected String passwort;
+
     @Column(name = "NAME")
-    String name;
+    protected String name;
+
     @Column(name = "TELEFONNUMMER")
-    String telefonnummer;
+    protected String telefonnummer;
+
     @Column(name = "ROLLE")
-    RolleT rolle;
+    @Enumerated(EnumType.STRING)
+    protected RolleT rolle;
 
     public BenutzerEntity() {
     }

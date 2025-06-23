@@ -4,7 +4,8 @@
  */
 package de.hsnr.bank.dataaccess;
 
-import de.hsnr.bank.dataaccess.BenutzerEntity;
+import de.hsnr.bank.entities.Kundenservice;
+import de.hsnr.bank.usecases.RolleT;
 import jakarta.persistence.Entity;
 
 /**
@@ -12,6 +13,21 @@ import jakarta.persistence.Entity;
  * @author jannn
  */
 @Entity
-public class KundenserviceEntity {
-    
+public class KundenserviceEntity extends BenutzerEntity {
+
+    public KundenserviceEntity() {
+        super();
+    }
+
+    public KundenserviceEntity(Kundenservice kundenservice) {
+        super(kundenservice);
+    }
+
+    public Kundenservice toKundenservice() {
+        Kundenservice kundenservice = new Kundenservice(this.benutzername, this.passwort);
+        kundenservice.setName(this.name);
+        kundenservice.setTelefonnummer(this.telefonnummer);
+        kundenservice.setRolle(this.rolle);
+        return kundenservice;
+    }
 }
