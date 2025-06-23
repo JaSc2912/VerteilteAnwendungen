@@ -6,6 +6,7 @@ package de.hsnr.bank.dataaccess;
 
 import de.hsnr.bank.entities.Kundenservice;
 import de.hsnr.bank.usecases.RolleT;
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 
 /**
@@ -13,6 +14,7 @@ import jakarta.persistence.Entity;
  * @author jannn
  */
 @Entity
+@DiscriminatorValue("KUNDENSERVICE")
 public class KundenserviceEntity extends BenutzerEntity {
 
     public KundenserviceEntity() {

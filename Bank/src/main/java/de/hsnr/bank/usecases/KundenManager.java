@@ -37,4 +37,8 @@ public class KundenManager {
     public List<Kunde> alleLesen() {
         return kundeDAO.alleLesen();
     }
+
+    public List<Kunde> searchKunde(String suchbegriff) {
+        return kundeDAO.searchKunde(suchbegriff);
+    }
 }

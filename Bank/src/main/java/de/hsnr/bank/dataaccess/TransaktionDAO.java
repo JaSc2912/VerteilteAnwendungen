@@ -5,6 +5,7 @@
 package de.hsnr.bank.dataaccess;
 
 import de.hsnr.bank.entities.Transaktion;
+import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
@@ -15,6 +16,7 @@ import java.util.stream.Collectors;
  *
  * @author muell
  */
+@Stateless
 public class TransaktionDAO {
 
     @PersistenceContext
@@ -22,9 +24,11 @@ public class TransaktionDAO {
 
     public void addTransaktion(Transaktion transaktion) {
         TransaktionEntity entity = new TransaktionEntity(transaktion);
-        em.getTransaction().begin();
+        if (transaktion.getKonto() != null) {
+            BankkontoEntity bankkontoEntity = em.find(BankkontoEntity.class, transaktion.getKonto().getIban());
+            entity.bankkonto = bankkontoEntity;
+        }
         em.persist(entity);
-        em.getTransaction().commit();
     }
 
     public List<Transaktion> alleLesen() {
@@ -38,7 +42,7 @@ public class TransaktionDAO {
     // Optional: Suche nach Transaktionen für ein Konto
     public List<Transaktion> findByKonto(String iban) {
         TypedQuery<TransaktionEntity> query = em.createQuery(
-                "SELECT t FROM TransaktionEntity t WHERE t.Bankkonto.iban = :iban", TransaktionEntity.class);
+                "SELECT t FROM TransaktionEntity t WHERE t.bankkonto.iban = :iban", TransaktionEntity.class);
         query.setParameter("iban", iban);
         return query.getResultList().stream()
                 .map(TransaktionEntity::toTransaktion)

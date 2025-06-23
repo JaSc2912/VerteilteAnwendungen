@@ -5,6 +5,7 @@
 package de.hsnr.bank.dataaccess;
 
 import de.hsnr.bank.entities.Kunde;
+import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
@@ -15,6 +16,7 @@ import java.util.stream.Collectors;
  *
  * @author muell
  */
+@Stateless
 public class KundeDAO {
 
     @PersistenceContext
@@ -27,24 +29,19 @@ public class KundeDAO {
 
     public void addKunde(Kunde kunde) {
         KundeEntity kundeEntity = new KundeEntity(kunde);
-        em.getTransaction().begin();
         em.persist(kundeEntity);
-        em.getTransaction().commit();
     }
 
     public void deleteKunde(String kundennummer) {
         KundeEntity kundeEntity = em.find(KundeEntity.class, kundennummer);
         if (kundeEntity != null) {
-            em.getTransaction().begin();
             em.remove(kundeEntity);
-            em.getTransaction().commit();
         }
     }
 
     public void editKunde(Kunde kunde) {
         KundeEntity kundeEntity = em.find(KundeEntity.class, kunde.getKundennummer());
         if (kundeEntity != null) {
-            em.getTransaction().begin();
             kundeEntity.name = kunde.getName();
             kundeEntity.adresse = kunde.getAdresse();
             kundeEntity.kundenstatus = kunde.getKundenstatus();
@@ -52,12 +49,21 @@ public class KundeDAO {
             kundeEntity.telefonnummer = kunde.getTelefonnummer();
             kundeEntity.email = kunde.getEmail();
             em.merge(kundeEntity);
-            em.getTransaction().commit();
         }
     }
 
     public List<Kunde> alleLesen() {
         TypedQuery<KundeEntity> query = em.createQuery("SELECT k FROM KundeEntity k", KundeEntity.class);
+        return query.getResultList().stream()
+                .map(KundeEntity::toKunde)
+                .collect(Collectors.toList());
+    }
+
+    public List<Kunde> searchKunde(String suchbegriff) {
+        TypedQuery<KundeEntity> query = em.createQuery(
+                "SELECT k FROM KundeEntity k WHERE k.kundennummer LIKE :suchbegriff OR LOWER(k.name) LIKE LOWER(:suchbegriff)",
+                KundeEntity.class);
+        query.setParameter("suchbegriff", "%" + suchbegriff + "%");
         return query.getResultList().stream()
                 .map(KundeEntity::toKunde)
                 .collect(Collectors.toList());

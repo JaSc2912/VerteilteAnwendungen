@@ -5,6 +5,7 @@
 package de.hsnr.bank.dataaccess;
 
 import de.hsnr.bank.entities.Benutzer;
+import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 
@@ -12,6 +13,7 @@ import jakarta.persistence.PersistenceContext;
  *
  * @author muell
  */
+@Stateless
 public class AdminDAO extends BenutzerDAO {
 
     @PersistenceContext

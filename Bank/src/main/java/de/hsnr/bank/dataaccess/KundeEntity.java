@@ -19,25 +19,25 @@ public class KundeEntity {
 
     @Id
     @Column(name = "KUNDENNUMMER")
-    private String kundennummer;
+    protected String kundennummer;
 
     @Column(name = "NAME")
-    String name;
+    protected String name;
 
     @Column(name = "ADRESSE")
-    String adresse;
+    protected String adresse;
 
     @Column(name = "KUNDENSTATUS")
-    String kundenstatus;
+    protected String kundenstatus;
 
     @Column(name = "GEBURTSDATUM")
-    Date geburtsdatum;
+    protected Date geburtsdatum;
 
     @Column(name = "TELEFONNUMMER")
-    String telefonnummer;
+    protected String telefonnummer;
 
     @Column(name = "EMAIL")
-    String email;
+    protected String email;
 
     public KundeEntity() {
     }

@@ -6,6 +6,7 @@ package de.hsnr.bank.dataaccess;
 
 import de.hsnr.bank.entities.MitarbeiterKreditvergabe;
 import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 
 /**
@@ -13,6 +14,7 @@ import jakarta.persistence.Entity;
  * @author jannn
  */
 @Entity
+@DiscriminatorValue("KREDITVERGABE")
 public class MitarbeiterKreditvergabeEntity extends BenutzerEntity {
 
     @Column(name = "MITARBEITER_ID")

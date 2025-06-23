@@ -47,11 +47,19 @@ public class KreditantragManager {
         return kreditantragDAO.kreditantragSuchenNachIban(iban);
     }
 
-    public List<Kreditantrag> kreditantragSuchen(String suchbegriff) {
-        return kreditantragDAO.kreditantragSuchen(suchbegriff);
+    public void antragAnnehmen(Long antragId) {
+        Kreditantrag antrag = suchen(antragId);
+        if (antrag != null) {
+            antrag.setStatus("Angenommen");
+            editKreditantrag(antrag);
+        }
     }
 
-    public KreditantragDAO.KundeKontoAuswertung auswertungFuerKunde(Kunde kunde) {
-        return kreditantragDAO.auswertungFuerKunde(kunde);
+    public void antragAblehnen(Long antragId) {
+        Kreditantrag antrag = suchen(antragId);
+        if (antrag != null) {
+            antrag.setStatus("Abgelehnt");
+            editKreditantrag(antrag);
+        }
     }
 }

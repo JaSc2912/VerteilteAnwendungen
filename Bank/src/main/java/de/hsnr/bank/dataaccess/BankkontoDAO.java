@@ -5,6 +5,7 @@
 package de.hsnr.bank.dataaccess;
 
 import de.hsnr.bank.entities.Bankkonto;
+import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
@@ -15,6 +16,7 @@ import java.util.stream.Collectors;
  *
  * @author muell
  */
+@Stateless
 public class BankkontoDAO {
 
     @PersistenceContext
@@ -31,38 +33,50 @@ public class BankkontoDAO {
 
     public void addBankkonto(Bankkonto bankkonto) {
         BankkontoEntity bankkontoEntity = new BankkontoEntity(bankkonto);
-        em.getTransaction().begin();
+        if (bankkonto.getBesitzer() != null) {
+            KundeEntity besitzerEntity = em.find(KundeEntity.class, bankkonto.getBesitzer().getKundennummer());
+            bankkontoEntity.besitzer = besitzerEntity;
+        }
         em.persist(bankkontoEntity);
-        em.getTransaction().commit();
     }
 
     public void deleteBankkonto(String iban) {
         BankkontoEntity bankkontoEntity = em.find(BankkontoEntity.class, iban);
         if (bankkontoEntity != null) {
-            em.getTransaction().begin();
             em.remove(bankkontoEntity);
-            em.getTransaction().commit();
         }
     }
 
     public void editBankkonto(Bankkonto bankkonto) {
         BankkontoEntity bankkontoEntity = em.find(BankkontoEntity.class, bankkonto.getIban());
         if (bankkontoEntity != null) {
-            em.getTransaction().begin();
             bankkontoEntity.kontoart = bankkonto.getKontoart();
             bankkontoEntity.kontostand = bankkonto.getKontostand();
             bankkontoEntity.kontoeroeffnungsdatum = bankkonto.getKontoeroeffnungsdatum();
             bankkontoEntity.kontostatus = bankkonto.getKontostatus();
             if (bankkonto.getBesitzer() != null) {
-                bankkontoEntity.besitzer = new KundeEntity(bankkonto.getBesitzer());
+                // Find the managed KundeEntity instead of creating a new one
+                KundeEntity besitzerEntity = em.find(KundeEntity.class, bankkonto.getBesitzer().getKundennummer());
+                bankkontoEntity.besitzer = besitzerEntity;
+            } else {
+                bankkontoEntity.besitzer = null;
             }
             em.merge(bankkontoEntity);
-            em.getTransaction().commit();
         }
     }
 
     public List<Bankkonto> alleLesen() {
         TypedQuery<BankkontoEntity> query = em.createQuery("SELECT b FROM BankkontoEntity b", BankkontoEntity.class);
+        return query.getResultList().stream()
+                .map(BankkontoEntity::toBankkonto)
+                .collect(Collectors.toList());
+    }
+
+    public List<Bankkonto> findByKundennummer(String kundennummer) {
+        TypedQuery<BankkontoEntity> query = em.createQuery(
+                "SELECT b FROM BankkontoEntity b WHERE b.besitzer.kundennummer = :kundennummer",
+                BankkontoEntity.class);
+        query.setParameter("kundennummer", kundennummer);
         return query.getResultList().stream()
                 .map(BankkontoEntity::toBankkonto)
                 .collect(Collectors.toList());

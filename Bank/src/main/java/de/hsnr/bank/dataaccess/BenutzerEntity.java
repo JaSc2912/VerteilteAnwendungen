@@ -5,14 +5,17 @@
 package de.hsnr.bank.dataaccess;
 
 import de.hsnr.bank.entities.Benutzer;
-import jakarta.persistence.Column;
-import jakarta.persistence.Id;
 import de.hsnr.bank.usecases.RolleT;
+import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.EnumType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "USER_TYPE")
 public class BenutzerEntity {
 
     @Id
@@ -29,7 +32,6 @@ public class BenutzerEntity {
     protected String telefonnummer;
 
     @Column(name = "ROLLE")
-    @Enumerated(EnumType.STRING)
     protected RolleT rolle;
 
     public BenutzerEntity() {

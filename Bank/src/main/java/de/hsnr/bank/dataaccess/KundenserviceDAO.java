@@ -5,6 +5,7 @@
 package de.hsnr.bank.dataaccess;
 
 import de.hsnr.bank.entities.Kundenservice;
+import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
@@ -15,6 +16,7 @@ import java.util.stream.Collectors;
  *
  * @author jannn
  */
+@Stateless
 public class KundenserviceDAO {
 
     @PersistenceContext
@@ -27,30 +29,24 @@ public class KundenserviceDAO {
 
     public void addKundenservice(Kundenservice kundenservice) {
         KundenserviceEntity entity = new KundenserviceEntity(kundenservice);
-        em.getTransaction().begin();
         em.persist(entity);
-        em.getTransaction().commit();
     }
 
     public void deleteKundenservice(String benutzername) {
         KundenserviceEntity entity = em.find(KundenserviceEntity.class, benutzername);
         if (entity != null) {
-            em.getTransaction().begin();
             em.remove(entity);
-            em.getTransaction().commit();
         }
     }
 
     public void editKundenservice(Kundenservice kundenservice) {
         KundenserviceEntity entity = em.find(KundenserviceEntity.class, kundenservice.getBenutzername());
         if (entity != null) {
-            em.getTransaction().begin();
             entity.passwort = kundenservice.getPasswort();
             entity.name = kundenservice.getName();
             entity.telefonnummer = kundenservice.getTelefonnummer();
             entity.rolle = kundenservice.getRolle();
             em.merge(entity);
-            em.getTransaction().commit();
         }
     }
 

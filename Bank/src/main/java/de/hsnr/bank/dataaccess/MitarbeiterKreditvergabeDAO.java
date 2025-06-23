@@ -5,6 +5,7 @@
 package de.hsnr.bank.dataaccess;
 
 import de.hsnr.bank.entities.MitarbeiterKreditvergabe;
+import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
@@ -15,6 +16,7 @@ import java.util.stream.Collectors;
  *
  * @author muell
  */
+@Stateless
 public class MitarbeiterKreditvergabeDAO {
 
     @PersistenceContext
@@ -27,17 +29,13 @@ public class MitarbeiterKreditvergabeDAO {
 
     public void addMitarbeiterKreditvergabe(MitarbeiterKreditvergabe mitarbeiter) {
         MitarbeiterKreditvergabeEntity entity = new MitarbeiterKreditvergabeEntity(mitarbeiter);
-        em.getTransaction().begin();
         em.persist(entity);
-        em.getTransaction().commit();
     }
 
     public void deleteMitarbeiterKreditvergabe(String benutzername) {
         MitarbeiterKreditvergabeEntity entity = em.find(MitarbeiterKreditvergabeEntity.class, benutzername);
         if (entity != null) {
-            em.getTransaction().begin();
             em.remove(entity);
-            em.getTransaction().commit();
         }
     }
 
@@ -45,7 +43,6 @@ public class MitarbeiterKreditvergabeDAO {
         MitarbeiterKreditvergabeEntity entity = em.find(MitarbeiterKreditvergabeEntity.class,
                 mitarbeiter.getBenutzername());
         if (entity != null) {
-            em.getTransaction().begin();
             entity.setMitarbeiterID(mitarbeiter.getMitarbeiterID());
             entity.setAbteilung(mitarbeiter.getAbteilung());
             // Felder von BenutzerEntity aktualisieren
@@ -54,7 +51,6 @@ public class MitarbeiterKreditvergabeDAO {
             entity.telefonnummer = mitarbeiter.getTelefonnummer();
             entity.rolle = mitarbeiter.getRolle();
             em.merge(entity);
-            em.getTransaction().commit();
         }
     }
 

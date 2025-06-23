@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:p="http://primefaces.org/ui"
+>
+  <h:head>
+    <title>Kundensuche</title>
+  </h:head>
+  <h:body>
+    <h:form>
+      <p:panel header="Kundensuche">
+        <h:panelGrid columns="3" cellpadding="5">
+          <p:outputLabel for="search" value="Suchbegriff (Name, Kundennr.):" />
+          <p:inputText id="search" value="#{kundenSuchenBean.suchbegriff}" />
+          <p:commandButton
+            value="Suchen"
+            action="#{kundenSuchenBean.suchen}"
+            update="kundentabelle"
+          />
+        </h:panelGrid>
+      </p:panel>
+
+      <p:dataTable
+        id="kundentabelle"
+        var="kunde"
+        value="#{kundenSuchenBean.suchergebnisse}"
+        emptyMessage="Keine Kunden gefunden."
+      >
+        <p:column headerText="Kundennummer">
+          <h:outputText value="#{kunde.kundennummer}" />
+        </p:column>
+        <p:column headerText="Name">
+          <h:outputText value="#{kunde.name}" />
+        </p:column>
+        <p:column headerText="Aktionen">
+          <p:button
+            value="Übersicht"
+            outcome="/kundenuebersicht.xhtml?faces-redirect=true&amp;kdnr=#{kunde.kundennummer}"
+          />
+          <p:button
+            value="Daten pflegen"
+            outcome="/kundenpflegen.xhtml?faces-redirect=true&amp;kdnr=#{kunde.kundennummer}"
+          />
+          <p:button
+            value="Konten verwalten"
+            outcome="/bankkonten.xhtml?faces-redirect=true&amp;kdnr=#{kunde.kundennummer}"
+          />
+        </p:column>
+      </p:dataTable>
+    </h:form>
+    <h:link value="Zurück zum Menü" outcome="menu.xhtml" />
+  </h:body>
+</html>

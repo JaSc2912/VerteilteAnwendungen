@@ -16,35 +16,36 @@ import java.util.Date;
 public class TransaktionEntity {
     @Id
     @Column(name = "TRANSAKTIONSNUMMER")
-    private String transaktionsnummer;
+    protected String transaktionsnummer;
 
     @ManyToOne
     @JoinColumn(name = "BANKKONTO")
-    private BankkontoEntity bankkonto;
+    protected BankkontoEntity bankkonto;
 
     @Column(name = "EMPFAENGER")
-    private String empfaenger;
+    protected String empfaenger;
 
     @Column(name = "BETRAG")
-    private double betrag;
+    protected double betrag;
 
     @Column(name = "TRANSAKTIONSDATUM")
-    private Date transaktionsdatum;
+    protected Date transaktionsdatum;
 
     @Column(name = "TRANSAKTIONSSTATUS")
-    private String transaktionsstatus;
+    protected String transaktionsstatus;
 
     @Column(name = "TRANSAKTIONSART")
-    private String transaktionsart;
+    protected String transaktionsart;
 
     public TransaktionEntity() {
     }
 
     public TransaktionEntity(Transaktion transaktion) {
         this.transaktionsnummer = transaktion.getTransaktionsnummer();
-        if (transaktion.getKonto() != null) {
-            this.bankkonto = new BankkontoEntity(transaktion.getKonto());
-        }
+        // The relationship is now set in the DAO, not here.
+        // if (transaktion.getKonto() != null) {
+        // this.bankkonto = new BankkontoEntity(transaktion.getKonto());
+        // }
         this.empfaenger = transaktion.getEmpfänger();
         this.betrag = transaktion.getBetrag();
         this.transaktionsdatum = transaktion.getTransaktionsdatum();

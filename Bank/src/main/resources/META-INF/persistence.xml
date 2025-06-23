@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="3.0" xmlns="https://jakarta.ee/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
     <!-- Define Persistence Unit -->
-    <persistence-unit name="my_persistence_unit">
+    <persistence-unit name="my_persistence_unit" transaction-type="JTA">
+        <jta-data-source>jdbc/__default</jta-data-source> <!-- This is the default for GlassFish, adjust if needed -->
         
+        <!-- List all your entity classes here -->
+        <class>de.hsnr.bank.dataaccess.AdminEntity</class>
+        <class>de.hsnr.bank.dataaccess.BankkontoEntity</class>
+        <class>de.hsnr.bank.dataaccess.BenutzerEntity</class>
+        <class>de.hsnr.bank.dataaccess.KreditantragEntity</class>
+        <class>de.hsnr.bank.dataaccess.KundeEntity</class>
+        <class>de.hsnr.bank.dataaccess.KundenserviceEntity</class>
+        <class>de.hsnr.bank.dataaccess.MitarbeiterKreditvergabeEntity</class>
+        <class>de.hsnr.bank.dataaccess.TransaktionEntity</class>
+        
+        <properties>
+            <!-- These properties will drop and recreate the database schema on every deployment. -->
+            <!-- This is useful for development but should be removed for production. -->
+            <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
+            <property name="jakarta.persistence.sql-load-script-source" value="META-INF/load.sql"/> <!-- Optional: for initial data -->
+        </properties>
     </persistence-unit>
 </persistence>

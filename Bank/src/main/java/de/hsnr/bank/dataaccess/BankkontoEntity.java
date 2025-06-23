@@ -21,22 +21,22 @@ public class BankkontoEntity {
 
     @Id
     @Column(name = "IBAN")
-    private String iban;
+    protected String iban;
 
     @Column(name = "KONTOART")
-     String kontoart;
+    protected String kontoart;
 
     @Column(name = "KONTOSTAND")
-     Double kontostand;
+    protected Double kontostand;
 
     @Column(name = "KONTOEROEFFNUNGSDATUM")
-     Date kontoeroeffnungsdatum;
+    protected Date kontoeroeffnungsdatum;
 
     @Column(name = "KONTOSTATUS")
-     String kontostatus;
+    protected String kontostatus;
 
     @ManyToOne
-     KundeEntity besitzer;
+    protected KundeEntity besitzer;
 
     public BankkontoEntity() {
     }
@@ -47,9 +47,10 @@ public class BankkontoEntity {
         this.kontostand = bankkonto.getKontostand();
         this.kontoeroeffnungsdatum = bankkonto.getKontoeroeffnungsdatum();
         this.kontostatus = bankkonto.getKontostatus();
-        if (bankkonto.getBesitzer() != null) {
-            this.besitzer = new KundeEntity(bankkonto.getBesitzer());
-        }
+        // The relationship is now set in the DAO, not here.
+        // if (bankkonto.getBesitzer() != null) {
+        // this.besitzer = new KundeEntity(bankkonto.getBesitzer());
+        // }
     }
 
     public String getIban() {

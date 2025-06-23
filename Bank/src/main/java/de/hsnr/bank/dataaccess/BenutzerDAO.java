@@ -5,6 +5,7 @@
 package de.hsnr.bank.dataaccess;
 
 import de.hsnr.bank.entities.Benutzer;
+import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
@@ -15,6 +16,7 @@ import java.util.stream.Collectors;
  *
  * @author muell
  */
+@Stateless
 public class BenutzerDAO {
 
     @PersistenceContext
@@ -35,9 +37,7 @@ public class BenutzerDAO {
 
         BenutzerEntity benutzerEntity = new BenutzerEntity(benutzer);
 
-        em.getTransaction().begin();
         em.persist(benutzerEntity);
-        em.getTransaction().commit();
 
     }
 
@@ -46,9 +46,7 @@ public class BenutzerDAO {
         BenutzerEntity benutzerEntity = em.find(BenutzerEntity.class, benutzername);
 
         if (benutzerEntity != null) {
-            em.getTransaction().begin();
             em.remove(benutzerEntity);
-            em.getTransaction().commit();
         }
 
     }

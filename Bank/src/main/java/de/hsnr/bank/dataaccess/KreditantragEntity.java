@@ -8,23 +8,23 @@ public class KreditantragEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long kreditantragsNummer;
+    protected Long kreditantragsNummer;
 
     @Column(name = "KREDITSUMME")
-    Double kreditsumme;
+    protected Double kreditsumme;
 
     @Column(name = "LAUFZEIT")
-    String laufzeit;
+    protected String laufzeit;
 
     @Column(name = "ZINS")
-    Double zins;
+    protected Double zins;
 
     @Column(name = "STATUS")
-    String status;
+    protected String status;
 
     @ManyToOne
     @JoinColumn(name = "KUNDE_ID")
-    KundeEntity antragssteller;
+    protected KundeEntity antragssteller;
 
     public KreditantragEntity() {
     }
@@ -35,7 +35,8 @@ public class KreditantragEntity {
         this.laufzeit = kreditantrag.getLaufzeit();
         this.zins = kreditantrag.getZins();
         this.status = kreditantrag.getStatus();
-        this.antragssteller = new KundeEntity(kreditantrag.getAntragssteller());
+        // The relationship is now set in the DAO, not here.
+        // this.antragssteller = new KundeEntity(kreditantrag.getAntragssteller());
     }
 
     public Kreditantrag toKreditantrag() {

@@ -8,6 +8,7 @@ import de.hsnr.bank.dataaccess.TransaktionDAO;
 import de.hsnr.bank.entities.Bankkonto;
 import de.hsnr.bank.entities.Transaktion;
 import de.hsnr.bank.usecases.Interfaces.ITransaktionDurchführen;
+import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
 
 /**
@@ -17,7 +18,8 @@ import jakarta.ejb.Stateless;
 @Stateless
 public class TransaktionDurchführen implements ITransaktionDurchführen {
 
-    private TransaktionDAO transaktionDAO = new TransaktionDAO();
+    @EJB
+    private TransaktionDAO transaktionDAO;
 
     @Override
     public void doTransaktion(Bankkonto konto, String transaktionsnummer, java.util.Date transaktionsdatum,
