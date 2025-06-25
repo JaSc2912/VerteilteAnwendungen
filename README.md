@@ -2,40 +2,43 @@
 
 This is a web-based banking management application built with Jakarta EE 10, JSF (PrimeFaces), and EJB. It provides administrative functionalities for managing users, customers, bank accounts, and credit applications.
 
-## 1. How to Build and Deploy
+## 1. Start Database and GlassFish
 
-Follow these steps to build the project and deploy it to a GlassFish server.
+1. Ensure your Derby network database is running:
+   ```powershell
+   cd "%DERBY_HOME%\lib"
+   java -jar derbyrun.jar server start
+   ```
+2. Start GlassFish domain:
+   ```powershell
+   cd "%GLASSFISH_HOME%\glassfish\bin"
+   .\asadmin.bat start-domain domain1
+   ```
 
-### Prerequisites
+## 2. Build the Application
 
-*   Java Development Kit (JDK) 11 or newer.
-*   Apache Maven.
-*   A running GlassFish Server (v6.x or v7.x recommended for Jakarta EE 10 support).
+1. Open a terminal in the project root (`Bank/`).
+2. Run:
+   ```shell
+   mvn clean package
+   ```
+3. Artifact is generated at `target/Bank-1.0-SNAPSHOT.war`.
 
-### Build Steps
+## 3. Deploy to GlassFish
 
-1.  Open a terminal or command prompt in the project's root directory (`c:\Users\scja07\Documents\Werkstudent\Uni\VerteilteAnwendungen\Bank`).
-2.  Run the following Maven command to clean the project and create the `.war` file:
-    ```shell
-    mvn clean package
-    ```
-3.  After a successful build, you will find the application archive at `target/Bank-1.0-SNAPSHOT.war`.
+1. In the Admin Console (`http://localhost:4848`), go to **Applications**.
+2. Click **Deploy...**, choose "Packaged File", and select `target/Bank-1.0-SNAPSHOT.war`.
+3. Click **OK**.
 
-### Deployment to GlassFish
+## 4. Access the Application
 
-1.  Start your GlassFish server.
-2.  Open the GlassFish Admin Console in your web browser (typically `http://localhost:4848`).
-3.  Navigate to **Applications** from the menu on the left.
-4.  Click the **Deploy...** button.
-5.  On the "Deploy Applications or Modules" page, select "Packaged File to Be Uploaded to the Server", click **Browse...** (or "Choose File"), and select the `Bank-1.0-SNAPSHOT.war` file from your project's `target` directory.
-6.  Click **OK** to deploy the application.
+Navigate to:
 
-### Accessing the Application
+```
+http://localhost:8080/Bank-1.0-SNAPSHOT/login.xhtml
+```
 
-Once deployed, the application's login page will be available at:
-[http://localhost:8080/Bank-1.0-SNAPSHOT/login.xhtml](http://localhost:8080/Bank-1.0-SNAPSHOT/login.xhtml)
-
-## 2. Application Overview
+## 5. Application Overview
 
 The application provides a user interface for common banking administrative tasks. It demonstrates a classic three-tier architecture with a presentation layer (JSF), a business logic layer (EJBs), and a data access layer (JPA).
 
@@ -65,28 +68,119 @@ To make the application easier to test, you can use the following SQL scripts. Y
 ````sql
 -- filepath: src/main/resources/META-INF/load.sql
 
--- Note: The table and column names must match what JPA generates. These are examples.
--- The USER_TYPE column is the discriminator for the BenutzerEntity inheritance.
+-- DDL: Create tables for each entity (JPA will use these table names)
+-- Note: Using DROP TABLE IF EXISTS and CREATE TABLE for Derby compatibility
 
--- Create Users (Admin, Customer Service, Credit Employee)
-INSERT INTO BENUTZERENTITY (USER_TYPE, BENUTZERNAME, NAME, PASSWORT, TELEFONNUMMER, ROLLE) VALUES ('ADMIN', 'admin', 'Administrator', 'adminpass', '0123456789', 'ADMIN');
-INSERT INTO BENUTZERENTITY (USER_TYPE, BENUTZERNAME, NAME, PASSWORT, TELEFONNUMMER, ROLLE) VALUES ('KUNDENSERVICE', 'service01', 'Sarah Schmidt', 'servicepass', '0987654321', 'KUNDENSERVICE');
-INSERT INTO MITARBEITERKREDITVERGABEENTITY (USER_TYPE, BENUTZERNAME, NAME, PASSWORT, TELEFONNUMMER, ROLLE, MITARBEITER_ID, ABTEILUNG) VALUES ('KREDITVERGABE', 'credit01', 'Peter Meier', 'creditpass', '01122334455', 'KREDITVERGABE', 'MK-789', 'Credit Department');
+-- 1. BENUTZERENTITY (SINGLE_TABLE inheritance for Admin, Kundenservice, MitarbeiterKreditvergabe)
 
--- Create Customers
-INSERT INTO KUNDEENTITY (KUNDENNUMMER, NAME, ADRESSE, KUNDENSTATUS, GEBURTSDATUM, TELEFONNUMMER, EMAIL) VALUES ('K-001', 'Max Mustermann', 'Musterstraße 1, 12345 Musterstadt', 'ACTIVE', '1985-05-20', '01511234567', 'max.mustermann@example.com');
-INSERT INTO KUNDEENTITY (KUNDENNUMMER, NAME, ADRESSE, KUNDENSTATUS, GEBURTSDATUM, TELEFONNUMMER, EMAIL) VALUES ('K-002', 'Erika Mustermann', 'Beispielweg 2, 54321 Beispielhausen', 'ACTIVE', '1990-11-15', '01607654321', 'erika.mustermann@example.com');
+CREATE TABLE BENUTZERENTITY (
+  BENUTZERNAME      VARCHAR(50)   PRIMARY KEY,
+  PASSWORT          VARCHAR(100),
+  NAME              VARCHAR(100),
+  TELEFONNUMMER     VARCHAR(20),
+  ROLLE             VARCHAR(50),
+  USER_TYPE         VARCHAR(50),   -- discriminator: ADMIN, KUNDENSERVICE, KREDITVERGABE
+  MITARBEITER_ID    VARCHAR(50),   -- only for KREDITVERGABE
+  ABTEILUNG         VARCHAR(100)   -- only for KREDITVERGABE
+);
 
--- Create Bank Accounts and link them to Customers
-INSERT INTO BANKKONTOENTITY (IBAN, KONTOART, KONTOSTAND, KONTOEROEFFNUNGSDATUM, KONTOSTATUS, BESITZER_KUNDENNUMMER) VALUES ('DE89370400440532013000', 'Girokonto', 1500.75, '2020-01-10', 'ACTIVE', 'K-001');
-INSERT INTO BANKKONTOENTITY (IBAN, KONTOART, KONTOSTAND, KONTOEROEFFNUNGSDATUM, KONTOSTATUS, BESITZER_KUNDENNUMMER) VALUES ('DE02100100100123456789', 'Sparkonto', 12500.00, '2021-03-15', 'ACTIVE', 'K-001');
-INSERT INTO BANKKONTOENTITY (IBAN, KONTOART, KONTOSTAND, KONTOEROEFFNUNGSDATUM, KONTOSTATUS, BESITZER_KUNDENNUMMER) VALUES ('DE27100777770200283700', 'Girokonto', -250.50, '2019-08-01', 'ACTIVE', 'K-002');
+-- 2. KUNDEENTITY
 
--- Create a Credit Application
-INSERT INTO KREDITANTRAGENTITY (KREDITSUMME, LAUFZEIT, ZINS, STATUS, KUNDE_ID) VALUES (10000.00, '48 Monate', 3.5, 'PENDING', 'K-002');
+CREATE TABLE KUNDEENTITY (
+  KUNDENNUMMER      VARCHAR(20)   PRIMARY KEY,
+  NAME              VARCHAR(100),
+  ADRESSE           VARCHAR(255),
+  KUNDENSTATUS      VARCHAR(50),
+  GEBURTSDATUM      DATE,
+  TELEFONNUMMER     VARCHAR(20),
+  EMAIL             VARCHAR(100)
+);
 
--- Create Transactions
-INSERT INTO TRANSAKTIONENTITY (TRANSAKTIONSNUMMER, BANKKONTO, EMPFAENGER, BETRAG, TRANSAKTIONSDATUM, TRANSAKTIONSSTATUS, TRANSAKTIONSART) VALUES ('TXN-001', 'DE89370400440532013000', 'Stromversorger GmbH', 85.50, '2025-06-01', 'COMPLETED', 'AUSGANG');
-INSERT INTO TRANSAKTIONENTITY (TRANSAKTIONSNUMMER, BANKKONTO, EMPFAENGER, BETRAG, TRANSAKTIONSDATUM, TRANSAKTIONSSTATUS, TRANSAKTIONSART) VALUES ('TXN-002', 'DE89370400440532013000', 'Arbeitgeber AG', 2800.00, '2025-05-30', 'COMPLETED', 'EINGANG');
-INSERT INTO TRANSAKTIONENTITY (TRANSAKTIONSNUMMER, BANKKONTO, EMPFAENGER, BETRAG, TRANSAKTIONSDATUM, TRANSAKTIONSSTATUS, TRANSAKTIONSART) VALUES ('TXN-003', 'DE27100777770200283700', 'Miete', 750.00, '2025-06-01', 'COMPLETED', 'AUSGANG');
-`````
+-- 3. BANKKONTOENTITY
+
+CREATE TABLE BANKKONTOENTITY (
+  IBAN                     VARCHAR(34)   PRIMARY KEY,
+  KONTOART                 VARCHAR(50),
+  KONTOSTAND               DOUBLE,
+  KONTOEROEFFNUNGSDATUM    DATE,
+  KONTOSTATUS              VARCHAR(50),
+  BESITZER_KUNDENNUMMER    VARCHAR(20),
+  CONSTRAINT FK_BANKKONTO_KUNDE FOREIGN KEY (BESITZER_KUNDENNUMMER)
+    REFERENCES KUNDEENTITY(KUNDENNUMMER)
+);
+
+-- 4. KREDITANTRAGENTITY
+
+CREATE TABLE KREDITANTRAGENTITY (
+  KREDITANTRAGSNUMMER   BIGINT      GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  KREDITSUMME           DOUBLE,
+  LAUFZEIT              VARCHAR(50),
+  ZINS                  DOUBLE,
+  STATUS                VARCHAR(20),
+  KUNDE_ID              VARCHAR(20),
+  CONSTRAINT FK_KREDITANTRAG_KUNDE FOREIGN KEY (KUNDE_ID)
+    REFERENCES KUNDEENTITY(KUNDENNUMMER)
+);
+
+-- 5. TRANSAKTIONENTITY
+
+CREATE TABLE TRANSAKTIONENTITY (
+  TRANSAKTIONSNUMMER    VARCHAR(50)   PRIMARY KEY,
+  BANKKONTO_IBAN        VARCHAR(34),
+  EMPFAENGER            VARCHAR(100),
+  BETRAG                DOUBLE,
+  TRANSAKTIONSDATUM     DATE,
+  TRANSAKTIONSSTATUS    VARCHAR(20),
+  TRANSAKTIONSART       VARCHAR(20),
+  CONSTRAINT FK_TRANSAKTION_BANKKONTO FOREIGN KEY (BANKKONTO_IBAN)
+    REFERENCES BANKKONTOENTITY(IBAN)
+);
+
+
+-- DML: Insert example values
+
+-- BENUTZERENTITY
+INSERT INTO BENUTZERENTITY (USER_TYPE, BENUTZERNAME, NAME, PASSWORT, TELEFONNUMMER, ROLLE)
+  VALUES ('ADMIN', 'admin', 'Administrator', 'adminpass', '0123456789', 'ADMIN');
+INSERT INTO BENUTZERENTITY (USER_TYPE, BENUTZERNAME, NAME, PASSWORT, TELEFONNUMMER, ROLLE)
+  VALUES ('KUNDENSERVICE', 'service01', 'Sarah Schmidt', 'servicepass', '0987654321', 'KUNDENSERVICE');
+INSERT INTO BENUTZERENTITY (USER_TYPE, BENUTZERNAME, NAME, PASSWORT, TELEFONNUMMER, ROLLE, MITARBEITER_ID, ABTEILUNG)
+  VALUES ('KREDITVERGABE', 'credit01', 'Peter Meier', 'creditpass', '01122334455', 'KREDITVERGABE', 'MK-789', 'Credit Department');
+
+-- KUNDEENTITY
+INSERT INTO KUNDEENTITY (KUNDENNUMMER, NAME, ADRESSE, KUNDENSTATUS, GEBURTSDATUM, TELEFONNUMMER, EMAIL)
+  VALUES ('K-001', 'Max Mustermann', 'Musterstraße 1, 12345 Musterstadt', 'ACTIVE',  '1985-05-20', '01511234567', 'max.mustermann@example.com');
+INSERT INTO KUNDEENTITY (KUNDENNUMMER, NAME, ADRESSE, KUNDENSTATUS, GEBURTSDATUM, TELEFONNUMMER, EMAIL)
+  VALUES ('K-002', 'Erika Mustermann', 'Beispielweg 2, 54321 Beispielhausen', 'ACTIVE',  '1990-11-15', '01607654321', 'erika.mustermann@example.com');
+
+-- BANKKONTOENTITY
+INSERT INTO BANKKONTOENTITY (IBAN, KONTOART, KONTOSTAND, KONTOEROEFFNUNGSDATUM, KONTOSTATUS, BESITZER_KUNDENNUMMER)
+  VALUES ('DE89370400440532013000', 'Girokonto', 1500.75,  '2020-01-10', 'ACTIVE', 'K-001');
+INSERT INTO BANKKONTOENTITY (IBAN, KONTOART, KONTOSTAND, KONTOEROEFFNUNGSDATUM, KONTOSTATUS, BESITZER_KUNDENNUMMER)
+  VALUES ('DE02100100100123456789', 'Sparkonto', 12500.00,  '2021-03-15', 'ACTIVE', 'K-001');
+INSERT INTO BANKKONTOENTITY (IBAN, KONTOART, KONTOSTAND, KONTOEROEFFNUNGSDATUM, KONTOSTATUS, BESITZER_KUNDENNUMMER)
+  VALUES ('DE27100777770200283700', 'Girokonto', -250.50,  '2019-08-01', 'ACTIVE', 'K-002');
+
+-- KREDITANTRAGENTITY (Note: KREDITANTRAGSNUMMER is auto-generated, so we don't specify it)
+INSERT INTO KREDITANTRAGENTITY (KREDITSUMME, LAUFZEIT, ZINS, STATUS, KUNDE_ID)
+  VALUES (10000.00, '48 Monate', 3.50, 'PENDING', 'K-002');
+
+-- TRANSAKTIONENTITY (Note: foreign key column name is BANKKONTO_IBAN)
+INSERT INTO TRANSAKTIONENTITY (TRANSAKTIONSNUMMER, BANKKONTO_IBAN, EMPFAENGER, BETRAG, TRANSAKTIONSDATUM, TRANSAKTIONSSTATUS, TRANSAKTIONSART)
+  VALUES ('TXN-001', 'DE89370400440532013000', 'Stromversorger GmbH', 85.50,  '2025-06-01', 'COMPLETED', 'AUSGANG');
+INSERT INTO TRANSAKTIONENTITY (TRANSAKTIONSNUMMER, BANKKONTO_IBAN, EMPFAENGER, BETRAG, TRANSAKTIONSDATUM, TRANSAKTIONSSTATUS, TRANSAKTIONSART)
+  VALUES ('TXN-002', 'DE89370400440532013000', 'Arbeitgeber AG', 2800.00,  '2025-05-30', 'COMPLETED', 'EINGANG');
+INSERT INTO TRANSAKTIONENTITY (TRANSAKTIONSNUMMER, BANKKONTO_IBAN, EMPFAENGER, BETRAG, TRANSAKTIONSDATUM, TRANSAKTIONSSTATUS, TRANSAKTIONSART)
+  VALUES ('TXN-003', 'DE27100777770200283700', 'Miete', 750.00,  '2025-06-01', 'COMPLETED', 'AUSGANG');
+````
+
+### Derby SQL Compatibility Notes
+
+**Important**: Derby does not support `CREATE TABLE IF NOT EXISTS` syntax. Instead, this script uses the `DROP TABLE IF EXISTS` followed by `CREATE TABLE` pattern, which is Derby-compatible and ensures clean table recreation on each deployment.
+
+**Foreign Key Constraints**: Named constraints are used (e.g., `CONSTRAINT FK_BANKKONTO_KUNDE`) to make constraint management easier and avoid Derby's auto-generated constraint names.
+
+**Deployment Workflow**:
+1. Tables are dropped (if they exist) and recreated fresh on each deployment
+2. Sample data is inserted to make testing easier
+3. The `persistence.xml` is configured to execute this script via the `sql-load-script-source` property
