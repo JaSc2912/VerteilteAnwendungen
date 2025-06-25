@@ -3,7 +3,6 @@
   xmlns="http://www.w3.org/1999/xhtml"
   xmlns:h="http://xmlns.jcp.org/jsf/html"
   xmlns:f="http://xmlns.jcp.org/jsf/core"
-  xmlns:p="http://primefaces.org/ui"
 >
   <f:metadata>
     <f:viewParam name="iban" value="#{transaktionBean.iban}" />
@@ -14,20 +13,30 @@
   </h:head>
   <h:body>
     <h:form>
-      <p:panel header="Transaktionen für Konto #{transaktionBean.iban}">
-        <p:dataTable
-          var="tx"
-          value="#{transaktionBean.transaktionen}"
-          paginator="true"
-          rows="15"
+      <h2>Transaktionen für Konto #{transaktionBean.iban}</h2>
+      <h:dataTable
+        var="tx"
+        value="#{transaktionBean.transaktionen}"
+        border="1"
+        cellpadding="5"
+      >
+        <h:column
+          ><f:facet name="header">Datum</f:facet
+          >#{tx.transaktionsdatum}</h:column
         >
-          <p:column headerText="Datum" value="#{tx.transaktionsdatum}" />
-          <p:column headerText="Betrag" value="#{tx.betrag}" />
-          <p:column headerText="Art" value="#{tx.transaktionsart}" />
-          <p:column headerText="Empfänger/Sender" value="#{tx.empfaenger}" />
-          <p:column headerText="Status" value="#{tx.transaktionsstatus}" />
-        </p:dataTable>
-      </p:panel>
+        <h:column><f:facet name="header">Betrag</f:facet>#{tx.betrag}</h:column>
+        <h:column
+          ><f:facet name="header">Art</f:facet>#{tx.transaktionsart}</h:column
+        >
+        <h:column
+          ><f:facet name="header">Empfänger/Sender</f:facet
+          >#{tx.empfaenger}</h:column
+        >
+        <h:column
+          ><f:facet name="header">Status</f:facet
+          >#{tx.transaktionsstatus}</h:column
+        >
+      </h:dataTable>
     </h:form>
     <h:link value="Zurück zum Menü" outcome="menu.xhtml" />
   </h:body>
