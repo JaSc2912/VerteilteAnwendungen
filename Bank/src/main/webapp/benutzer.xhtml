@@ -3,91 +3,84 @@
   xmlns="http://www.w3.org/1999/xhtml"
   xmlns:h="http://xmlns.jcp.org/jsf/html"
   xmlns:f="http://xmlns.jcp.org/jsf/core"
-  xmlns:p="http://primefaces.org/ui"
 >
   <h:head>
     <title>Admin - Benutzerverwaltung</title>
   </h:head>
   <h:body>
     <h:form id="form">
-      <p:panel header="Benutzerverwaltung">
-        <p:dataTable
-          var="benutzer"
-          value="#{benutzerBean.alleBenutzer}"
-          paginator="true"
-          rows="10"
+      <h2>Benutzerverwaltung</h2>
+      <h:dataTable
+        var="benutzer"
+        value="#{benutzerBean.alleBenutzer}"
+        border="1"
+        cellpadding="5"
+      >
+        <h:column
+          ><f:facet name="header">Benutzername</f:facet
+          >#{benutzer.benutzername}</h:column
         >
-          <p:column
-            headerText="Benutzername"
-            sortBy="#{benutzer.benutzername}"
-            filterBy="#{benutzer.benutzername}"
+        <h:column
+          ><f:facet name="header">Name</f:facet>#{benutzer.name}</h:column
+        >
+        <h:column
+          ><f:facet name="header">Rolle</f:facet>#{benutzer.rolle}</h:column
+        >
+        <h:column>
+          <f:facet name="header">Aktionen</f:facet>
+          <h:commandButton
+            value="Bearbeiten"
+            action="#{benutzerBean.setSelectedBenutzer(benutzer)}"
           >
-            <h:outputText value="#{benutzer.benutzername}" />
-          </p:column>
-          <p:column
-            headerText="Name"
-            sortBy="#{benutzer.name}"
-            filterBy="#{benutzer.name}"
+            <f:ajax render=":form:editPanel" />
+          </h:commandButton>
+          <h:commandButton
+            value="Löschen"
+            action="#{benutzerBean.loeschen(benutzer.benutzername)}"
+            style="margin-left: 5px"
           >
-            <h:outputText value="#{benutzer.name}" />
-          </p:column>
-          <p:column
-            headerText="Rolle"
-            sortBy="#{benutzer.rolle}"
-            filterBy="#{benutzer.rolle}"
-          >
-            <h:outputText value="#{benutzer.rolle}" />
-          </p:column>
-          <p:column
-            headerText="Aktionen"
-            style="width: 100px; text-align: center"
-          >
-            <p:commandButton
-              icon="pi pi-pencil"
-              title="Bearbeiten"
-              oncomplete="PF('userDialog').show()"
-              update=":form:dialogContent"
-            />
-            <p:commandButton
-              icon="pi pi-trash"
-              title="Löschen"
-              action="#{benutzerBean.loeschen(benutzer.benutzername)}"
-              update="@form"
-            />
-          </p:column>
-        </p:dataTable>
-        <p:commandButton
-          value="Neuen Benutzer anlegen"
-          oncomplete="PF('userDialog').show()"
-          style="margin-top: 10px"
-        />
-      </p:panel>
+            <f:ajax render="@form" />
+          </h:commandButton>
+        </h:column>
+      </h:dataTable>
 
-      <p:dialog header="Benutzerdetails" widgetVar="userDialog" modal="true">
-        <h:panelGrid id="dialogContent" columns="2" cellpadding="5">
+      <hr style="margin-top: 20px; margin-bottom: 20px" />
+
+      <h:panelGroup id="editPanel">
+        <h3>Benutzerdetails</h3>
+        <h:panelGrid columns="2" cellpadding="5">
           <h:outputLabel for="username" value="Benutzername:" />
-          <p:inputText
+          <h:inputText
             id="username"
             value="#{benutzerBean.selectedBenutzer.benutzername}"
           />
 
           <h:outputLabel for="name" value="Name:" />
-          <p:inputText
+          <h:inputText
             id="name"
             value="#{benutzerBean.selectedBenutzer.name}"
           />
 
           <!-- Weitere Felder für Passwort, Rolle etc. -->
-
-          <p:commandButton
-            value="Speichern"
-            action="#{benutzerBean.speichern}"
-            update=":form:form"
-            oncomplete="PF('userDialog').hide()"
+          <h:outputLabel for="passwort" value="Passwort:" />
+          <h:inputSecret
+            id="passwort"
+            value="#{benutzerBean.selectedBenutzer.passwort}"
           />
+
+          <h:outputLabel for="rolle" value="Rolle:" />
+          <h:inputText
+            id="rolle"
+            value="#{benutzerBean.selectedBenutzer.rolle}"
+          />
+
+          <h:commandButton value="Speichern" action="#{benutzerBean.speichern}">
+            <f:ajax execute="editPanel" render="@form" />
+          </h:commandButton>
         </h:panelGrid>
-      </p:dialog>
+      </h:panelGroup>
     </h:form>
+    <br />
     <h:link value="Zurück zum Menü" outcome="menu.xhtml" />
   </h:body>
 </html>

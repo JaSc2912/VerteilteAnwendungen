@@ -3,7 +3,6 @@
   xmlns="http://www.w3.org/1999/xhtml"
   xmlns:h="http://xmlns.jcp.org/jsf/html"
   xmlns:f="http://xmlns.jcp.org/jsf/core"
-  xmlns:p="http://primefaces.org/ui"
 >
   <f:metadata>
     <f:viewParam name="kdnr" value="#{kundenPflegeBean.kundennummer}" />
@@ -13,44 +12,40 @@
     <title>Kundendaten pflegen</title>
   </h:head>
   <h:body>
+    <h2>Kundendaten für #{kundenPflegeBean.kunde.name} bearbeiten</h2>
     <h:form>
-      <p:panel
-        header="Kundendaten für #{kundenPflegeBean.kunde.name} bearbeiten"
+      <h:messages showDetail="true" />
+      <h:panelGrid
+        columns="2"
+        cellpadding="5"
+        rendered="#{not empty kundenPflegeBean.kunde}"
       >
-        <p:messages showDetail="true" />
-        <h:panelGrid
-          columns="2"
-          cellpadding="5"
-          rendered="#{not empty kundenPflegeBean.kunde}"
-        >
-          <p:outputLabel for="name" value="Name:" />
-          <p:inputText id="name" value="#{kundenPflegeBean.kunde.name}" />
+        <h:outputLabel for="name" value="Name:" />
+        <h:inputText id="name" value="#{kundenPflegeBean.kunde.name}" />
 
-          <p:outputLabel for="adresse" value="Adresse:" />
-          <p:inputText id="adresse" value="#{kundenPflegeBean.kunde.adresse}" />
+        <h:outputLabel for="adresse" value="Adresse:" />
+        <h:inputText id="adresse" value="#{kundenPflegeBean.kunde.adresse}" />
 
-          <p:outputLabel for="telefon" value="Telefon:" />
-          <p:inputText
-            id="telefon"
-            value="#{kundenPflegeBean.kunde.telefonnummer}"
-          />
-
-          <p:outputLabel for="email" value="E-Mail:" />
-          <p:inputText id="email" value="#{kundenPflegeBean.kunde.email}" />
-
-          <p:outputLabel for="status" value="Status:" />
-          <p:inputText
-            id="status"
-            value="#{kundenPflegeBean.kunde.kundenstatus}"
-          />
-        </h:panelGrid>
-        <p:commandButton
-          value="Speichern"
-          action="#{kundenPflegeBean.speichern}"
-          update="@form"
+        <h:outputLabel for="telefon" value="Telefon:" />
+        <h:inputText
+          id="telefon"
+          value="#{kundenPflegeBean.kunde.telefonnummer}"
         />
-      </p:panel>
+
+        <h:outputLabel for="email" value="E-Mail:" />
+        <h:inputText id="email" value="#{kundenPflegeBean.kunde.email}" />
+
+        <h:outputLabel for="status" value="Status:" />
+        <h:inputText
+          id="status"
+          value="#{kundenPflegeBean.kunde.kundenstatus}"
+        />
+      </h:panelGrid>
+      <h:commandButton value="Speichern" action="#{kundenPflegeBean.speichern}">
+        <f:ajax execute="@form" render="@form" />
+      </h:commandButton>
     </h:form>
+    <br />
     <h:link value="Zurück zum Menü" outcome="menu.xhtml" />
   </h:body>
 </html>

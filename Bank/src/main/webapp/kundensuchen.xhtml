@@ -2,53 +2,65 @@
 <html
   xmlns="http://www.w3.org/1999/xhtml"
   xmlns:h="http://xmlns.jcp.org/jsf/html"
-  xmlns:p="http://primefaces.org/ui"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
 >
   <h:head>
     <title>Kundensuche</title>
   </h:head>
   <h:body>
+    <h1>Kundensuche</h1>
     <h:form>
-      <p:panel header="Kundensuche">
-        <h:panelGrid columns="3" cellpadding="5">
-          <p:outputLabel for="search" value="Suchbegriff (Name, Kundennr.):" />
-          <p:inputText id="search" value="#{kundenSuchenBean.suchbegriff}" />
-          <p:commandButton
-            value="Suchen"
-            action="#{kundenSuchenBean.suchen}"
-            update="kundentabelle"
-          />
-        </h:panelGrid>
-      </p:panel>
+      <h:panelGrid columns="3" cellpadding="5">
+        <h:outputLabel for="search" value="Suchbegriff:" />
+        <h:inputText id="search" value="#{kundenSuchenBean.suchbegriff}" />
+        <h:commandButton value="Suchen" action="#{kundenSuchenBean.suchen}">
+          <f:ajax execute="search" render="kundentabelle" />
+        </h:commandButton>
+      </h:panelGrid>
 
-      <p:dataTable
+      <h:dataTable
         id="kundentabelle"
         var="kunde"
         value="#{kundenSuchenBean.suchergebnisse}"
-        emptyMessage="Keine Kunden gefunden."
+        rendered="#{not empty kundenSuchenBean.suchergebnisse}"
+        style="margin-top: 20px"
+        border="1"
+        cellpadding="5"
       >
-        <p:column headerText="Kundennummer">
+        <h:column>
+          <f:facet name="header">Kundennummer</f:facet>
           <h:outputText value="#{kunde.kundennummer}" />
-        </p:column>
-        <p:column headerText="Name">
+        </h:column>
+        <h:column>
+          <f:facet name="header">Name</f:facet>
           <h:outputText value="#{kunde.name}" />
-        </p:column>
-        <p:column headerText="Aktionen">
-          <p:button
+        </h:column>
+        <h:column>
+          <f:facet name="header">Aktionen</f:facet>
+          <h:button
             value="Übersicht"
             outcome="/kundenuebersicht.xhtml?faces-redirect=true&amp;kdnr=#{kunde.kundennummer}"
           />
-          <p:button
+          <h:button
             value="Daten pflegen"
             outcome="/kundenpflegen.xhtml?faces-redirect=true&amp;kdnr=#{kunde.kundennummer}"
           />
-          <p:button
-            value="Konten verwalten"
+          <h:button
+            value="Konten"
             outcome="/bankkonten.xhtml?faces-redirect=true&amp;kdnr=#{kunde.kundennummer}"
           />
-        </p:column>
-      </p:dataTable>
+          <h:button
+            value="Auswerten"
+            outcome="/auswertung.xhtml?faces-redirect=true&amp;kdnr=#{kunde.kundennummer}"
+          />
+        </h:column>
+      </h:dataTable>
+      <h:outputText
+        value="Keine Kunden gefunden."
+        rendered="#{empty kundenSuchenBean.suchergebnisse and not empty kundenSuchenBean.suchbegriff}"
+      />
     </h:form>
+    <br />
     <h:link value="Zurück zum Menü" outcome="menu.xhtml" />
   </h:body>
 </html>

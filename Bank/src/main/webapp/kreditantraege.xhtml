@@ -3,41 +3,53 @@
   xmlns="http://www.w3.org/1999/xhtml"
   xmlns:h="http://xmlns.jcp.org/jsf/html"
   xmlns:f="http://xmlns.jcp.org/jsf/core"
-  xmlns:p="http://primefaces.org/ui"
 >
   <h:head>
     <title>Kreditanträge verwalten</title>
   </h:head>
   <h:body>
+    <h2>Kreditanträge verwalten</h2>
     <h:form>
-      <p:panel header="Kreditanträge verwalten">
-        <p:dataTable var="antrag" value="#{kreditantragBean.alleAntraege}">
-          <p:column
-            headerText="Antrags-Nr."
-            value="#{antrag.kreditantragsNummer}"
-          />
-          <p:column
-            headerText="Antragsteller"
-            value="#{antrag.antragssteller.name}"
-          />
-          <p:column headerText="Kreditsumme" value="#{antrag.kreditsumme}" />
-          <p:column headerText="Status" value="#{antrag.status}" />
-          <p:column headerText="Aktionen">
-            <p:commandButton
-              value="Annehmen"
-              action="#{kreditantragBean.annehmen(antrag.kreditantragsNummer)}"
-              update="@form"
-            />
-            <p:commandButton
-              value="Ablehnen"
-              action="#{kreditantragBean.ablehnen(antrag.kreditantragsNummer)}"
-              update="@form"
-              style="margin-left: 5px"
-            />
-          </p:column>
-        </p:dataTable>
-      </p:panel>
+      <h:dataTable
+        var="antrag"
+        value="#{kreditantragBean.alleAntraege}"
+        border="1"
+        cellpadding="5"
+      >
+        <h:column
+          ><f:facet name="header">Antrags-Nr.</f:facet
+          >#{antrag.kreditantragsNummer}</h:column
+        >
+        <h:column
+          ><f:facet name="header">Antragsteller</f:facet
+          >#{antrag.antragssteller.name}</h:column
+        >
+        <h:column
+          ><f:facet name="header">Kreditsumme</f:facet
+          >#{antrag.kreditsumme}</h:column
+        >
+        <h:column
+          ><f:facet name="header">Status</f:facet>#{antrag.status}</h:column
+        >
+        <h:column>
+          <f:facet name="header">Aktionen</f:facet>
+          <h:commandButton
+            value="Annehmen"
+            action="#{kreditantragBean.annehmen(antrag.kreditantragsNummer)}"
+          >
+            <f:ajax render="@form" />
+          </h:commandButton>
+          <h:commandButton
+            value="Ablehnen"
+            action="#{kreditantragBean.ablehnen(antrag.kreditantragsNummer)}"
+            style="margin-left: 5px"
+          >
+            <f:ajax render="@form" />
+          </h:commandButton>
+        </h:column>
+      </h:dataTable>
     </h:form>
+    <br />
     <h:link value="Zurück zum Menü" outcome="menu.xhtml" />
   </h:body>
 </html>

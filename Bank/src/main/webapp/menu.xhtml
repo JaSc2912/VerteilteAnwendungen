@@ -4,39 +4,20 @@
     <title>Bankportal</title>
   </h:head>
   <h:body>
+    <h1>Hauptmenü</h1>
     <h:form>
-      <h:panelGrid columns="2">
+      <h:panelGrid columns="1" style="border-spacing: 10px">
         <h:commandLink
-          value="Kundenübersicht anzeigen"
-          action="kundenuebersicht.xhtml?faces-redirect=true"
-        />
-        <h:commandLink
-          value="Bankkonten verwalten"
-          action="bankkonten.xhtml?faces-redirect=true"
-        />
-        <h:commandLink
-          value="Kundendaten pflegen"
-          action="kundenpflegen.xhtml?faces-redirect=true"
-        />
-        <h:commandLink
-          value="Kontotransaktionen verwalten"
-          action="transaktionen.xhtml?faces-redirect=true"
+          value="Kunden suchen"
+          action="kundensuchen.xhtml?faces-redirect=true"
         />
         <h:commandLink
           value="Kreditanträge verwalten"
           action="kreditantraege.xhtml?faces-redirect=true"
         />
         <h:commandLink
-          value="Kunden auswerten"
-          action="auswertung.xhtml?faces-redirect=true"
-        />
-        <h:commandLink
-          value="Benutzer verwalten"
+          value="Benutzer verwalten (Admin)"
           action="benutzer.xhtml?faces-redirect=true"
-        />
-        <h:commandLink
-          value="Kunden suchen"
-          action="kundensuchen.xhtml?faces-redirect=true"
         />
       </h:panelGrid>
     </h:form>
