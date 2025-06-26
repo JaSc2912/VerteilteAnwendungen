@@ -67,15 +67,15 @@
   </head>
   <body>
     <div class="container">
-      <div class="navigation">
-        <h:link outcome="kundenuebersicht">Kundenübersicht</h:link>
-        <h:link outcome="kundendatenPflegen">Kunde pflegen</h:link>
-        <h:commandLink action="#{loginBean.logout}">Abmelden</h:commandLink>
-      </div>
-
-      <h1>Kunden suchen</h1>
-
       <h:form>
+        <div class="navigation">
+          <h:link outcome="dashboard">Dashboard</h:link>
+          <h:link outcome="kundendatenPflegen">Kunde pflegen</h:link>
+          <h:commandLink action="#{loginBean.logout}">Abmelden</h:commandLink>
+        </div>
+
+        <h1>Kunden suchen</h1>
+
         <div class="form-group">
           <label for="suchName">Name (Teilstring):</label>
           <h:inputText

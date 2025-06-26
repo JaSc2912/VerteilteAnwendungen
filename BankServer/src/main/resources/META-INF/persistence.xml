@@ -5,15 +5,22 @@
              https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
     <persistence-unit name="BankPU" transaction-type="JTA">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-        <jta-data-source>java:app/jdbc/bankDS</jta-data-source>
+        <jta-data-source>jdbc/BankDB</jta-data-source>
         <class>de.hsnr.bankserver.dataaccess.entities.BenutzerEntity</class>
         <class>de.hsnr.bankserver.dataaccess.entities.KundeEntity</class>
         <class>de.hsnr.bankserver.dataaccess.entities.BankkontoEntity</class>
         <class>de.hsnr.bankserver.dataaccess.entities.TransaktionEntity</class>
         <class>de.hsnr.bankserver.dataaccess.entities.KreditantragEntity</class>
         <properties>
-            <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
+            <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
+            <property name="eclipselink.ddl-generation.output-mode" value="database"/>
+            <property name="eclipselink.create-ddl-jdbc-file-name" value="create.sql"/>
+            <property name="eclipselink.drop-ddl-jdbc-file-name" value="drop.sql"/>
             <property name="eclipselink.logging.level" value="INFO"/>
+            <property name="eclipselink.logging.level.sql" value="FINE"/>
+            <!-- Load initial data -->
+            <property name="javax.persistence.sql-load-script-source" value="META-INF/load.sql"/>
+            <property name="jakarta.persistence.sql-load-script-source" value="META-INF/load.sql"/>
         </properties>
     </persistence-unit>
 </persistence>

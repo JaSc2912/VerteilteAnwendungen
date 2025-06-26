@@ -77,15 +77,14 @@
   </head>
   <body>
     <div class="container">
-      <div class="navigation">
-        <h:link outcome="kundenuebersicht">Kundenübersicht</h:link>
-        <h:link outcome="kundenSuchen">Kunden suchen</h:link>
-        <h:commandLink action="#{loginBean.logout}">Abmelden</h:commandLink>
-      </div>
-
-      <h1>Kundendaten pflegen</h1>
-
       <h:form>
+        <div class="navigation">
+          <h:link outcome="dashboard">Dashboard</h:link>
+          <h:link outcome="kundenSuchen">Kunden suchen</h:link>
+          <h:commandLink action="#{loginBean.logout}">Abmelden</h:commandLink>
+        </div>
+
+        <h1>Kundendaten pflegen</h1>
         <div class="form-group">
           <label for="kundennummer">Kundennummer:</label>
           <h:inputText

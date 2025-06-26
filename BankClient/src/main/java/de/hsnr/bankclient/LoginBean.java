@@ -59,7 +59,7 @@ public class LoginBean implements Serializable {
 
             if (response.getStatus() == 200) {
                 currentUser = response.readEntity(BenutzerTO.class);
-                
+
                 FacesContext facesContext = FacesContext.getCurrentInstance();
                 HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
                 session.setAttribute("currentUser", currentUser);
@@ -67,13 +67,13 @@ public class LoginBean implements Serializable {
                 // Weiterleitung basierend auf Rolle
                 switch (currentUser.getRolle()) {
                     case ADMIN:
-                        return "/benutzerVerwaltung.xhtml?faces-redirect=true";
+                        return "/dashboard.xhtml?faces-redirect=true";
                     case KUNDENSERVICE:
-                        return "/kundenuebersicht.xhtml?faces-redirect=true";
+                        return "/dashboard.xhtml?faces-redirect=true";
                     case KREDITBEARBEITER:
-                        return "/kreditantraege.xhtml?faces-redirect=true";
+                        return "/dashboard.xhtml?faces-redirect=true";
                     default:
-                        return "/menu.xhtml?faces-redirect=true";
+                        return "/dashboard.xhtml?faces-redirect=true";
                 }
             } else {
                 return "/loginError.xhtml?faces-redirect=true";
@@ -103,10 +103,20 @@ public class LoginBean implements Serializable {
         private String benutzername;
         private String passwort;
 
-        public String getBenutzername() { return benutzername; }
-        public void setBenutzername(String benutzername) { this.benutzername = benutzername; }
+        public String getBenutzername() {
+            return benutzername;
+        }
 
-        public String getPasswort() { return passwort; }
-        public void setPasswort(String passwort) { this.passwort = passwort; }
+        public void setBenutzername(String benutzername) {
+            this.benutzername = benutzername;
+        }
+
+        public String getPasswort() {
+            return passwort;
+        }
+
+        public void setPasswort(String passwort) {
+            this.passwort = passwort;
+        }
     }
 }
