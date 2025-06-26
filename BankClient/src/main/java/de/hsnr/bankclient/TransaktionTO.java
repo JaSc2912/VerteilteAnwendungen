@@ -1,7 +1,6 @@
 package de.hsnr.bankclient;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 
 /**
  * Transfer Object für Transaktion
@@ -15,7 +14,7 @@ public class TransaktionTO implements Serializable {
     private String empfaenger;
     private String transaktionsart;
     private String transaktionsstatus;
-    private LocalDateTime transaktionsdatum;
+    private String transaktionsdatum; // Changed from LocalDateTime to String
 
     // Default constructor
     public TransaktionTO() {
@@ -24,7 +23,7 @@ public class TransaktionTO implements Serializable {
     // Constructor with all fields
     public TransaktionTO(String transaktionsnummer, String konto, Double betrag,
             String empfaenger, String transaktionsart, String transaktionsstatus,
-            LocalDateTime transaktionsdatum) {
+            String transaktionsdatum) {
         this.transaktionsnummer = transaktionsnummer;
         this.konto = konto;
         this.betrag = betrag;
@@ -83,11 +82,11 @@ public class TransaktionTO implements Serializable {
         this.transaktionsstatus = transaktionsstatus;
     }
 
-    public LocalDateTime getTransaktionsdatum() {
+    public String getTransaktionsdatum() {
         return transaktionsdatum;
     }
 
-    public void setTransaktionsdatum(LocalDateTime transaktionsdatum) {
+    public void setTransaktionsdatum(String transaktionsdatum) {
         this.transaktionsdatum = transaktionsdatum;
     }
 }

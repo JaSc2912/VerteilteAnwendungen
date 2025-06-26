@@ -71,11 +71,52 @@
       .btn-warning:hover {
         background-color: #e0a800;
       }
+      .btn-danger {
+        background-color: #dc3545;
+        color: white;
+      }
+      .btn-danger:hover {
+        background-color: #c82333;
+      }
       .btn-secondary {
         background-color: #6c757d;
       }
       .btn-secondary:hover {
         background-color: #545b62;
+      }
+      .accounts-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+      .accounts-table th,
+      .accounts-table td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+      .accounts-table th {
+        background-color: #f8f9fa;
+        font-weight: bold;
+      }
+      .accounts-table tr:hover {
+        background-color: #f5f5f5;
+      }
+      .positive-balance {
+        color: #28a745;
+        font-weight: bold;
+      }
+      .negative-balance {
+        color: #dc3545;
+        font-weight: bold;
+      }
+      .status-active {
+        color: #28a745;
+        font-weight: bold;
+      }
+      .status-blocked {
+        color: #dc3545;
+        font-weight: bold;
       }
       .navigation {
         text-align: center;
@@ -142,19 +183,19 @@
             requiredMessage="Transaktionsart ist erforderlich"
           >
             <f:selectItem itemValue="" itemLabel="-- Art auswählen --" />
-            <f:selectItem itemValue="ÜBERWEISUNG" itemLabel="Überweisung" />
-            <f:selectItem itemValue="EINZAHLUNG" itemLabel="Einzahlung" />
-            <f:selectItem itemValue="ABHEBUNG" itemLabel="Abhebung" />
+            <f:selectItem itemValue="Überweisung" itemLabel="Überweisung" />
+            <f:selectItem itemValue="Einzahlung" itemLabel="Einzahlung" />
+            <f:selectItem itemValue="Abhebung" itemLabel="Abhebung" />
           </h:selectOneMenu>
         </div>
 
         <div class="form-group">
-          <label for="empfaengerAbsender">Empfänger/Absender:</label>
+          <label for="empfaenger">Empfänger:</label>
           <h:inputText
-            id="empfaengerAbsender"
-            value="#{transaktionBean.transaktion.empfaengerAbsender}"
+            id="empfaenger"
+            value="#{transaktionBean.transaktion.empfaenger}"
             required="true"
-            requiredMessage="Empfänger/Absender ist erforderlich"
+            requiredMessage="Empfänger ist erforderlich"
           />
         </div>
 
@@ -167,19 +208,10 @@
             requiredMessage="Transaktionsstatus ist erforderlich"
           >
             <f:selectItem itemValue="" itemLabel="-- Status auswählen --" />
-            <f:selectItem itemValue="ABGESCHLOSSEN" itemLabel="Abgeschlossen" />
-            <f:selectItem itemValue="AUSSTEHEND" itemLabel="Ausstehend" />
-            <f:selectItem itemValue="STORNIERT" itemLabel="Storniert" />
+            <f:selectItem itemValue="abgeschlossen" itemLabel="Abgeschlossen" />
+            <f:selectItem itemValue="ausstehend" itemLabel="Ausstehend" />
+            <f:selectItem itemValue="storniert" itemLabel="Storniert" />
           </h:selectOneMenu>
-        </div>
-
-        <div class="form-group">
-          <label for="anmerkung">Anmerkung:</label>
-          <h:inputTextarea
-            id="anmerkung"
-            value="#{transaktionBean.transaktion.anmerkung}"
-            rows="3"
-          />
         </div>
 
         <h:commandButton
@@ -188,14 +220,31 @@
           styleClass="btn"
         />
         <h:commandButton
+          value="Transaktion bearbeiten"
+          action="#{transaktionBean.editTransaktion}"
+          styleClass="btn"
+        />
+        <h:commandButton
+          value="Transaktion löschen"
+          action="#{transaktionBean.deleteTransaktion}"
+          styleClass="btn btn-danger"
+        />
+        <h:commandButton
           value="Transaktion stornieren"
           action="#{transaktionBean.cancelTransaktion}"
           styleClass="btn btn-warning"
         />
         <h:commandButton
+          value="Neue Transaktion"
+          action="#{transaktionBean.neueTransaktion}"
+          styleClass="btn btn-secondary"
+          immediate="true"
+        />
+        <h:commandButton
           value="Alle Transaktionen anzeigen"
           action="#{transaktionBean.loadAllTransaktionen}"
           styleClass="btn btn-secondary"
+          immediate="true"
         />
 
         <div class="navigation">
@@ -203,10 +252,107 @@
             value="Zurück zum Dashboard"
             action="/dashboard.xhtml?faces-redirect=true"
             styleClass="btn btn-secondary"
+            immediate="true"
           />
         </div>
 
         <h:messages style="color: red; margin-top: 10px" />
+
+        <!-- Message Display -->
+        <h:panelGroup rendered="#{not empty transaktionBean.message}">
+          <div
+            style="
+              background: #e8f4fd;
+              padding: 15px;
+              border-radius: 5px;
+              margin: 20px 0;
+              color: #333;
+            "
+          >
+            <strong>Status:</strong> #{transaktionBean.message}
+          </div>
+        </h:panelGroup>
+
+        <!-- Transactions Table -->
+        <h:panelGroup
+          rendered="#{not empty transaktionBean.transaktionenListe}"
+        >
+          <h2 style="margin-top: 40px; color: #333">
+            Alle Transaktionen (#{transaktionBean.transaktionenListe.size()}
+            gefunden)
+          </h2>
+
+          <table class="accounts-table" style="margin-top: 20px">
+            <thead>
+              <tr>
+                <th>Transaktionsnummer</th>
+                <th>Konto (IBAN)</th>
+                <th>Betrag</th>
+                <th>Empfänger</th>
+                <th>Art</th>
+                <th>Status</th>
+                <th>Datum</th>
+                <th>Aktionen</th>
+              </tr>
+            </thead>
+            <tbody>
+              <ui:repeat
+                value="#{transaktionBean.transaktionenListe}"
+                var="transaktion"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+              >
+                <tr>
+                  <td>#{transaktion.transaktionsnummer}</td>
+                  <td>#{transaktion.konto}</td>
+                  <td
+                    class="#{transaktion.betrag >= 0 ? 'positive-balance' : 'negative-balance'}"
+                  >
+                    #{transaktion.betrag} €
+                  </td>
+                  <td>#{transaktion.empfaenger}</td>
+                  <td>#{transaktion.transaktionsart}</td>
+                  <td>
+                    <span
+                      class="#{transaktion.transaktionsstatus eq 'abgeschlossen' ? 'status-active' : 'status-blocked'}"
+                    >
+                      #{transaktion.transaktionsstatus}
+                    </span>
+                  </td>
+                  <td>#{transaktion.transaktionsdatum}</td>
+                  <td>
+                    <h:commandButton
+                      value="Details"
+                      action="#{transaktionBean.showDetails(transaktion.transaktionsnummer)}"
+                      styleClass="btn"
+                      style="padding: 5px 10px; font-size: 12px"
+                      immediate="true"
+                    />
+                  </td>
+                </tr>
+              </ui:repeat>
+            </tbody>
+          </table>
+        </h:panelGroup>
+
+        <!-- No data message -->
+        <h:panelGroup
+          rendered="#{empty transaktionBean.transaktionenListe and not empty transaktionBean.message}"
+        >
+          <div
+            style="
+              text-align: center;
+              padding: 40px;
+              color: #666;
+              margin-top: 20px;
+            "
+          >
+            <h3>Keine Transaktionen gefunden</h3>
+            <p>
+              Es wurden keine Transaktionen gefunden. Klicken Sie auf "Alle
+              Transaktionen anzeigen" um die Daten zu laden.
+            </p>
+          </div>
+        </h:panelGroup>
       </h:form>
     </div>
   </body>

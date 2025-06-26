@@ -10,8 +10,8 @@ public class KreditantragTO implements Serializable {
 
     private String kreditantragsnummer;
     private String antragsteller;
-    private Double kreditsumme;  // Changed from BigDecimal to Double
-    private String kreditlaufzeit;  // Changed from Integer to String (e.g., "60 Monate")
+    private Double kreditsumme; // Changed from BigDecimal to Double
+    private String kreditlaufzeit; // Changed from Integer to String (e.g., "60 Monate")
     private String kreditstatus;
     private String genehmigenderMitarbeiter;
 

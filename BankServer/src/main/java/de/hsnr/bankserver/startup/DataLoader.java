@@ -128,8 +128,9 @@ public class DataLoader {
             }
 
             // Load initial bank accounts
-            Long bankkontenCount = entityManager.createQuery("SELECT COUNT(b) FROM BankkontoEntity b", Long.class).getSingleResult();
-            
+            Long bankkontenCount = entityManager.createQuery("SELECT COUNT(b) FROM BankkontoEntity b", Long.class)
+                    .getSingleResult();
+
             if (bankkontenCount == 0) {
                 // Bank Account 1 - Peter Schmidt Girokonto
                 BankkontoEntity account1 = new BankkontoEntity();
@@ -184,8 +185,9 @@ public class DataLoader {
             }
 
             // Load initial transactions
-            Long transaktionenCount = entityManager.createQuery("SELECT COUNT(t) FROM TransaktionEntity t", Long.class).getSingleResult();
-            
+            Long transaktionenCount = entityManager.createQuery("SELECT COUNT(t) FROM TransaktionEntity t", Long.class)
+                    .getSingleResult();
+
             if (transaktionenCount == 0) {
                 // Transaction 1 - Salary deposit
                 TransaktionEntity trans1 = new TransaktionEntity();
@@ -233,8 +235,9 @@ public class DataLoader {
             }
 
             // Load initial credit applications
-            Long kreditantraegeCount = entityManager.createQuery("SELECT COUNT(k) FROM KreditantragEntity k", Long.class).getSingleResult();
-            
+            Long kreditantraegeCount = entityManager
+                    .createQuery("SELECT COUNT(k) FROM KreditantragEntity k", Long.class).getSingleResult();
+
             if (kreditantraegeCount == 0) {
                 // Credit Application 1 - In Processing
                 KreditantragEntity ka001 = new KreditantragEntity();

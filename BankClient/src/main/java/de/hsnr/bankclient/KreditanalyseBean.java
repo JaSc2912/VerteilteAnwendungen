@@ -77,8 +77,9 @@ public class KreditanalyseBean implements Serializable {
      */
     public String analyseKunde() {
         try {
+            System.out.println("=== KREDITANALYSE STARTED ===");
             System.out.println("Starting credit analysis for customer: " + kundenname);
-            
+
             // Reset previous analysis
             analysisPerformed = false;
             durchschnittlicheEingaenge = 0.0;
@@ -87,26 +88,28 @@ public class KreditanalyseBean implements Serializable {
             monateNegativ = 0;
             kreditwuerdigkeit = "";
             empfehlung = "";
-            message = "";
+            message = "Analyse wird durchgeführt...";
 
             if (kundenname == null || kundenname.trim().isEmpty()) {
                 message = "Bitte geben Sie einen Kundennamen ein.";
+                System.out.println("No customer name provided");
                 return null;
             }
 
             Client client = ClientBuilder.newClient();
-            
+
             // First, get the customer to find their customer number
             WebTarget customerTarget = client.target(serverUrl).path("/kunden");
             Response customerResponse = customerTarget.request(MediaType.APPLICATION_JSON).get();
-            
+
             String customerNumber = null;
             String actualCustomerName = kundenname;
-            
+
             if (customerResponse.getStatus() == 200) {
-                List<KundeTO> customers = customerResponse.readEntity(new GenericType<List<KundeTO>>() {});
+                List<KundeTO> customers = customerResponse.readEntity(new GenericType<List<KundeTO>>() {
+                });
                 System.out.println("Retrieved " + customers.size() + " customers from server");
-                
+
                 // Find customer by name OR customer number
                 for (KundeTO kunde : customers) {
                     if (kundenname.equals(kunde.getName()) || kundenname.equals(kunde.getKundennummer())) {
@@ -116,7 +119,7 @@ public class KreditanalyseBean implements Serializable {
                         break;
                     }
                 }
-                
+
                 if (customerNumber == null) {
                     message = "Kunde '" + kundenname + "' nicht gefunden. Verfügbare Kunden: ";
                     for (KundeTO kunde : customers) {
@@ -130,22 +133,23 @@ public class KreditanalyseBean implements Serializable {
                 client.close();
                 return null;
             }
-            
+
             // Get bank accounts for this customer
             WebTarget accountTarget = client.target(serverUrl).path("/bankkonten");
             Response accountResponse = accountTarget.request(MediaType.APPLICATION_JSON).get();
-            
+
             List<String> customerIbans = new ArrayList<>();
             if (accountResponse.getStatus() == 200) {
-                List<BankkontoTO> accounts = accountResponse.readEntity(new GenericType<List<BankkontoTO>>() {});
-                
+                List<BankkontoTO> accounts = accountResponse.readEntity(new GenericType<List<BankkontoTO>>() {
+                });
+
                 // Find all IBANs for this customer
                 for (BankkontoTO account : accounts) {
                     if (customerNumber.equals(account.getKontoinhaber())) {
                         customerIbans.add(account.getIban());
                     }
                 }
-                
+
                 if (customerIbans.isEmpty()) {
                     message = "Keine Bankkonten für Kunde '" + actualCustomerName + "' gefunden.";
                     client.close();
@@ -160,46 +164,50 @@ public class KreditanalyseBean implements Serializable {
             // Get transactions for customer's accounts
             WebTarget transactionTarget = client.target(serverUrl).path("/transaktionen");
             Response transactionResponse = transactionTarget.request(MediaType.APPLICATION_JSON).get();
-            
+
             if (transactionResponse.getStatus() == 200) {
-                List<TransaktionTO> allTransactions = transactionResponse.readEntity(new GenericType<List<TransaktionTO>>() {});
+                List<TransaktionTO> allTransactions = transactionResponse
+                        .readEntity(new GenericType<List<TransaktionTO>>() {
+                        });
                 System.out.println("Retrieved " + allTransactions.size() + " transactions from server");
-                
+
                 // Filter transactions for customer's accounts
                 List<TransaktionTO> customerTransactions = allTransactions.stream()
-                    .filter(t -> customerIbans.contains(t.getKonto()))
-                    .toList();
-                
-                System.out.println("Found " + customerTransactions.size() + " transactions for customer: " + actualCustomerName);
-                
+                        .filter(t -> customerIbans.contains(t.getKonto()))
+                        .toList();
+
+                System.out.println(
+                        "Found " + customerTransactions.size() + " transactions for customer: " + actualCustomerName);
+
                 if (customerTransactions.isEmpty()) {
                     message = "Keine Transaktionen für Kunde '" + actualCustomerName + "' gefunden.";
                     client.close();
                     return null;
                 }
-                
+
                 // Perform analysis
                 performAnalysis(customerTransactions);
                 analysisPerformed = true;
                 kundenname = actualCustomerName; // Update to show actual customer name
                 message = "Analyse erfolgreich durchgeführt.";
-                
+
             } else {
                 message = "Fehler beim Abrufen der Transaktionsdaten: " + transactionResponse.getStatus();
-                System.out.println("Error response: " + transactionResponse.getStatus() + " - " + transactionResponse.readEntity(String.class));
+                System.out.println("Error response: " + transactionResponse.getStatus() + " - "
+                        + transactionResponse.readEntity(String.class));
             }
-            
+
             client.close();
-            
+
         } catch (Exception e) {
             message = "Fehler bei der Kreditanalyse: " + e.getMessage();
             System.out.println("Exception during credit analysis: " + e.getMessage());
             e.printStackTrace();
         }
-        
+
         return null; // Stay on same page
     }
-    
+
     /**
      * Performs the actual credit analysis calculation
      */
@@ -207,11 +215,11 @@ public class KreditanalyseBean implements Serializable {
         if (transactions.isEmpty()) {
             return;
         }
-        
+
         double totalIncome = 0.0;
         double totalExpenses = 0.0;
         int negativeMonths = 0;
-        
+
         // Calculate averages (simplified analysis)
         for (TransaktionTO transaction : transactions) {
             double amount = transaction.getBetrag();
@@ -221,16 +229,16 @@ public class KreditanalyseBean implements Serializable {
                 totalExpenses += Math.abs(amount);
             }
         }
-        
+
         // Calculate monthly averages (assuming transactions span multiple months)
         int months = Math.max(1, transactions.size() / 10); // Rough estimate
         durchschnittlicheEingaenge = totalIncome / months;
         durchschnittlicheAusgaenge = totalExpenses / months;
         monatlichesDifferenz = durchschnittlicheEingaenge - durchschnittlicheAusgaenge;
-        
+
         // Simplified calculation for negative months
         monateNegativ = (int) (Math.random() * 60); // Placeholder - would need proper monthly grouping
-        
+
         // Determine credit worthiness
         if (monatlichesDifferenz > 1000) {
             kreditwuerdigkeit = "HOCH";
@@ -242,10 +250,10 @@ public class KreditanalyseBean implements Serializable {
             kreditwuerdigkeit = "NIEDRIG";
             empfehlung = "Kredit wird nicht empfohlen. Negative monatliche Bilanz.";
         }
-        
-        System.out.println("Analysis completed: Income=" + durchschnittlicheEingaenge + 
-                          ", Expenses=" + durchschnittlicheAusgaenge + 
-                          ", Difference=" + monatlichesDifferenz + 
-                          ", Credit Rating=" + kreditwuerdigkeit);
+
+        System.out.println("Analysis completed: Income=" + durchschnittlicheEingaenge +
+                ", Expenses=" + durchschnittlicheAusgaenge +
+                ", Difference=" + monatlichesDifferenz +
+                ", Credit Rating=" + kreditwuerdigkeit);
     }
 }

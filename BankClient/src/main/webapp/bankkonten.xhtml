@@ -111,10 +111,10 @@
             requiredMessage="Kontenart ist erforderlich"
           >
             <f:selectItem itemValue="" itemLabel="-- Kontenart auswählen --" />
-            <f:selectItem itemValue="GIROKONTO" itemLabel="Girokonto" />
-            <f:selectItem itemValue="SPARKONTO" itemLabel="Sparkonto" />
+            <f:selectItem itemValue="Girokonto" itemLabel="Girokonto" />
+            <f:selectItem itemValue="Sparkonto" itemLabel="Sparkonto" />
             <f:selectItem
-              itemValue="GESCHÄFTSKONTO"
+              itemValue="Geschäftskonto"
               itemLabel="Geschäftskonto"
             />
           </h:selectOneMenu>
@@ -138,9 +138,8 @@
             id="kontoeröffnungsdatum"
             value="#{bankkontoBean.bankkonto.kontoeröffnungsdatum}"
             type="date"
-          >
-            <f:convertDateTime pattern="yyyy-MM-dd" />
-          </h:inputText>
+            required="false"
+          />
         </div>
 
         <div class="form-group">
@@ -152,9 +151,9 @@
             requiredMessage="Kontostatus ist erforderlich"
           >
             <f:selectItem itemValue="" itemLabel="-- Status auswählen --" />
-            <f:selectItem itemValue="AKTIV" itemLabel="Aktiv" />
-            <f:selectItem itemValue="GESPERRT" itemLabel="Gesperrt" />
-            <f:selectItem itemValue="GESCHLOSSEN" itemLabel="Geschlossen" />
+            <f:selectItem itemValue="aktiv" itemLabel="Aktiv" />
+            <f:selectItem itemValue="gesperrt" itemLabel="Gesperrt" />
+            <f:selectItem itemValue="geschlossen" itemLabel="Geschlossen" />
           </h:selectOneMenu>
         </div>
 
@@ -174,9 +173,16 @@
           styleClass="btn btn-danger"
         />
         <h:commandButton
+          value="Neues Konto"
+          action="#{bankkontoBean.neuesKonto}"
+          styleClass="btn btn-secondary"
+          immediate="true"
+        />
+        <h:commandButton
           value="Alle Konten anzeigen"
           action="#{bankkontoBean.loadAllKonten}"
           styleClass="btn btn-secondary"
+          immediate="true"
         />
 
         <div class="navigation">
@@ -184,6 +190,7 @@
             value="Zurück zum Dashboard"
             action="/dashboard.xhtml?faces-redirect=true"
             styleClass="btn btn-secondary"
+            immediate="true"
           />
         </div>
 

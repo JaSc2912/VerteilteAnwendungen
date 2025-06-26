@@ -1,17 +1,18 @@
 package de.hsnr.bankclient;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.io.Serializable;
 
 /**
  * Transfer Object für Bankkonto
  */
-public class BankkontoTO {
+public class BankkontoTO implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     private String iban;
     private String kontoinhaber;
-    private String kontenart;
-    private BigDecimal kontostand;
-    private LocalDate kontoeröffnungsdatum;
+    private String kontoart; // Fixed field name
+    private Double kontostand; // Changed from BigDecimal to Double
+    private String kontoeroeffnungsdatum; // Changed from LocalDate to String and fixed field name
     private String kontostatus;
 
     // Default constructor
@@ -19,13 +20,13 @@ public class BankkontoTO {
     }
 
     // Constructor with all fields
-    public BankkontoTO(String iban, String kontoinhaber, String kontenart,
-            BigDecimal kontostand, LocalDate kontoeröffnungsdatum, String kontostatus) {
+    public BankkontoTO(String iban, String kontoinhaber, String kontoart,
+            Double kontostand, String kontoeroeffnungsdatum, String kontostatus) {
         this.iban = iban;
         this.kontoinhaber = kontoinhaber;
-        this.kontenart = kontenart;
+        this.kontoart = kontoart;
         this.kontostand = kontostand;
-        this.kontoeröffnungsdatum = kontoeröffnungsdatum;
+        this.kontoeroeffnungsdatum = kontoeroeffnungsdatum;
         this.kontostatus = kontostatus;
     }
 
@@ -46,28 +47,38 @@ public class BankkontoTO {
         this.kontoinhaber = kontoinhaber;
     }
 
+    public String getKontoart() {
+        return kontoart;
+    }
+
+    public void setKontoart(String kontoart) {
+        this.kontoart = kontoart;
+    }
+
+    // Additional getter for XHTML compatibility
     public String getKontenart() {
-        return kontenart;
+        return kontoart;
     }
 
-    public void setKontenart(String kontenart) {
-        this.kontenart = kontenart;
-    }
-
-    public BigDecimal getKontostand() {
+    public Double getKontostand() {
         return kontostand;
     }
 
-    public void setKontostand(BigDecimal kontostand) {
+    public void setKontostand(Double kontostand) {
         this.kontostand = kontostand;
     }
 
-    public LocalDate getKontoeröffnungsdatum() {
-        return kontoeröffnungsdatum;
+    public String getKontoeroeffnungsdatum() {
+        return kontoeroeffnungsdatum;
     }
 
-    public void setKontoeröffnungsdatum(LocalDate kontoeröffnungsdatum) {
-        this.kontoeröffnungsdatum = kontoeröffnungsdatum;
+    public void setKontoeroeffnungsdatum(String kontoeroeffnungsdatum) {
+        this.kontoeroeffnungsdatum = kontoeroeffnungsdatum;
+    }
+
+    // Additional getter for XHTML compatibility (with ö)
+    public String getKontoeröffnungsdatum() {
+        return kontoeroeffnungsdatum;
     }
 
     public String getKontostatus() {

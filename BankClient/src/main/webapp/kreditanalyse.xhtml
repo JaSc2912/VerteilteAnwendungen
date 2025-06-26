@@ -204,6 +204,24 @@
           />
         </div>
 
+        <!-- Display custom messages from the bean -->
+        <h:panelGroup rendered="#{not empty kreditanalyseBean.message}">
+          <div
+            style="
+              margin-top: 20px;
+              padding: 10px;
+              border-radius: 4px;
+              background-color: #f8f9fa;
+              border: 1px solid #dee2e6;
+            "
+          >
+            <h:outputText
+              value="#{kreditanalyseBean.message}"
+              style="color: #495057"
+            />
+          </div>
+        </h:panelGroup>
+
         <h:messages style="color: red; margin-top: 10px" />
       </h:form>
     </div>

@@ -1,27 +1,26 @@
 package de.hsnr.bankclient;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * Transfer Object für Kunde
  */
 public class KundeTO implements Serializable {
     private static final long serialVersionUID = 1L;
-    
+
     private String kundennummer;
     private String name;
     private String adresse;
     private String telefonnummer;
     private String email;
-    private Date geburtsdatum;
+    private String geburtsdatum; // Changed from Date to String
     private String kundenstatus;
 
     public KundeTO() {
     }
 
-    public KundeTO(String kundennummer, String name, String adresse, String telefonnummer, 
-                   String email, Date geburtsdatum, String kundenstatus) {
+    public KundeTO(String kundennummer, String name, String adresse, String telefonnummer,
+            String email, String geburtsdatum, String kundenstatus) {
         this.kundennummer = kundennummer;
         this.name = name;
         this.adresse = adresse;
@@ -71,11 +70,11 @@ public class KundeTO implements Serializable {
         this.email = email;
     }
 
-    public Date getGeburtsdatum() {
+    public String getGeburtsdatum() {
         return geburtsdatum;
     }
 
-    public void setGeburtsdatum(Date geburtsdatum) {
+    public void setGeburtsdatum(String geburtsdatum) {
         this.geburtsdatum = geburtsdatum;
     }
 
