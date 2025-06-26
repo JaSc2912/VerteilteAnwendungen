@@ -1,4 +1,55 @@
-# Bank Application
+# Bank Client-Server Anwendung
+
+Diese Anwendung implementiert ein Banksystem mit einer Client-Server-Architektur basierend auf Jakarta EE.
+
+## Projekte
+
+### Bank (Original)
+- Monolithische Anwendung aus einem Guss
+- Vollständige Implementierung mit JSF und EJB
+
+### BankServer (Neu)
+- **Facade**: REST-Services für die Kommunikation mit dem Client
+- **Core**: 
+  - **Entities**: Business Objects (frei von JPA-Annotationen)
+  - **Use Cases**: Geschäftslogik in Session Beans
+- **DataAccess**: 
+  - **Entities**: JPA-Entities für die Datenbankpersistierung
+  - **DAO**: Data Access Objects für Datenbankzugriff
+
+### BankClient (Neu)
+- JSF-Anwendung mit Managed Beans
+- Kommunikation mit Server über REST-Services
+- Multipage-Anwendung mit rollenbasierter Navigation
+
+## Neue Client-Server Architektur
+
+### Benutzerrollen
+- **Administrator**: Benutzerverwaltung
+- **Kundenservice**: Kundendaten pflegen, Bankkonten verwalten, Kontotransaktionen, Kundenübersicht
+- **Kreditbearbeiter**: Kreditanträge verwalten, Kundenauswertungen
+
+### Implementierte Use Cases
+1. **Benutzer verwalten** (Admin)
+2. **Kundendaten pflegen** (Kundenservice)
+3. **Kunden suchen** (Kundenservice)
+4. **Bankkonten verwalten** (Kundenservice)
+5. **Kontotransaktionen verwalten** (Kundenservice)
+6. **Kreditanträge verwalten** (Kreditbearbeiter)
+7. **Kunden auswerten** (Kreditbearbeiter)
+
+### Zugriff auf neue Anwendung
+- **Server**: http://localhost:8080/BankServer/api
+- **Client**: http://localhost:8080/BankClient
+
+### Testbenutzer
+- **Admin**: admin / admin123
+- **Kundenservice**: service1 / service123
+- **Kreditbearbeiter**: kredit1 / kredit123
+
+---
+
+# Original Bank Application
 
 This is a web-based banking management application built with Jakarta EE 10, JSF (PrimeFaces), and EJB. It provides administrative functionalities for managing users, customers, bank accounts, and credit applications.
 

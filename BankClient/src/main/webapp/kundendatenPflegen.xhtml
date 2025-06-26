@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html
+  lang="de"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Kunde pflegen</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
+        background-color: #f5f5f5;
+      }
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        color: #333;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .form-group {
+        margin-bottom: 20px;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #555;
+      }
+      input[type="text"],
+      input[type="email"],
+      input[type="date"],
+      select {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 14px;
+      }
+      .btn {
+        background-color: #007bff;
+        color: white;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-right: 10px;
+      }
+      .btn:hover {
+        background-color: #0056b3;
+      }
+      .btn-danger {
+        background-color: #dc3545;
+      }
+      .btn-danger:hover {
+        background-color: #c82333;
+      }
+      .navigation {
+        margin-bottom: 20px;
+      }
+      .navigation a {
+        margin-right: 15px;
+        text-decoration: none;
+        color: #007bff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="navigation">
+        <h:link outcome="kundenuebersicht">Kundenübersicht</h:link>
+        <h:link outcome="kundenSuchen">Kunden suchen</h:link>
+        <h:commandLink action="#{loginBean.logout}">Abmelden</h:commandLink>
+      </div>
+
+      <h1>Kundendaten pflegen</h1>
+
+      <h:form>
+        <div class="form-group">
+          <label for="kundennummer">Kundennummer:</label>
+          <h:inputText
+            id="kundennummer"
+            value="#{kundendatenPflegenBean.kunde.kundennummer}"
+            required="true"
+            requiredMessage="Kundennummer ist erforderlich"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <h:inputText
+            id="name"
+            value="#{kundendatenPflegenBean.kunde.name}"
+            required="true"
+            requiredMessage="Name ist erforderlich"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="adresse">Adresse:</label>
+          <h:inputText
+            id="adresse"
+            value="#{kundendatenPflegenBean.kunde.adresse}"
+            required="true"
+            requiredMessage="Adresse ist erforderlich"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="telefonnummer">Telefonnummer:</label>
+          <h:inputText
+            id="telefonnummer"
+            value="#{kundendatenPflegenBean.kunde.telefonnummer}"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="email">E-Mail:</label>
+          <h:inputText
+            id="email"
+            value="#{kundendatenPflegenBean.kunde.email}"
+            type="email"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="geburtsdatum">Geburtsdatum:</label>
+          <h:inputText
+            id="geburtsdatum"
+            value="#{kundendatenPflegenBean.kunde.geburtsdatum}"
+            type="date"
+          >
+            <f:convertDateTime pattern="yyyy-MM-dd" />
+          </h:inputText>
+        </div>
+
+        <div class="form-group">
+          <label for="kundenstatus">Kundenstatus:</label>
+          <h:selectOneMenu
+            id="kundenstatus"
+            value="#{kundendatenPflegenBean.kunde.kundenstatus}"
+          >
+            <f:selectItem itemValue="aktiv" itemLabel="Aktiv" />
+            <f:selectItem itemValue="gesperrt" itemLabel="Gesperrt" />
+            <f:selectItem itemValue="verstorben" itemLabel="Verstorben" />
+          </h:selectOneMenu>
+        </div>
+
+        <h:commandButton
+          value="Hinzufügen"
+          action="#{kundendatenPflegenBean.addKunde}"
+          styleClass="btn"
+        />
+        <h:commandButton
+          value="Bearbeiten"
+          action="#{kundendatenPflegenBean.editKunde}"
+          styleClass="btn"
+        />
+        <h:commandButton
+          value="Löschen"
+          action="#{kundendatenPflegenBean.deleteKunde}"
+          styleClass="btn btn-danger"
+        />
+
+        <h:messages style="color: red; margin-top: 10px" />
+      </h:form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html
+  lang="de"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Kunden suchen</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
+        background-color: #f5f5f5;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        color: #333;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .form-group {
+        margin-bottom: 20px;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #555;
+      }
+      input[type="text"] {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 14px;
+      }
+      .btn {
+        background-color: #007bff;
+        color: white;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      .btn:hover {
+        background-color: #0056b3;
+      }
+      .navigation {
+        margin-bottom: 20px;
+      }
+      .navigation a {
+        margin-right: 15px;
+        text-decoration: none;
+        color: #007bff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="navigation">
+        <h:link outcome="kundenuebersicht">Kundenübersicht</h:link>
+        <h:link outcome="kundendatenPflegen">Kunde pflegen</h:link>
+        <h:commandLink action="#{loginBean.logout}">Abmelden</h:commandLink>
+      </div>
+
+      <h1>Kunden suchen</h1>
+
+      <h:form>
+        <div class="form-group">
+          <label for="suchName">Name (Teilstring):</label>
+          <h:inputText
+            id="suchName"
+            value="#{kundenSuchenBean.suchName}"
+            required="true"
+            requiredMessage="Suchbegriff ist erforderlich"
+          />
+        </div>
+
+        <h:commandButton
+          value="Suchen"
+          action="#{kundenSuchenBean.suchenKunde}"
+          styleClass="btn"
+        />
+
+        <h:messages style="color: red; margin-top: 10px" />
+      </h:form>
+    </div>
+  </body>
+</html>

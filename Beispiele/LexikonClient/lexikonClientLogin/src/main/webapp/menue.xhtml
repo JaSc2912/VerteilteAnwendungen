@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<h:html  
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="jakarta.faces.core"
+    xmlns:h="jakarta.faces.html"> 
+<h:head>
+	<title>Online Lexikon</title>
+</h:head>
+<h:body>
+    
+     <h:outputStylesheet name="css/Style.css" />
+	<h2>
+		<h:outputText value="#{bundle.willkommen}" />
+	</h2>
+	<h:form id="form">
+		<h:commandButton id="suchen" value="#{bundle.suchen}"
+			action="#{menueBean.suchen}" />
+                <br/>
+		<h:commandButton id="hinzufuegen" value="#{bundle.hinzufuegen}"
+			action="#{menueBean.hinzufuegen}" />
+	</h:form>
+</h:body>
+</h:html>

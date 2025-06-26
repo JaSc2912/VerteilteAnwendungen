@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<h:html  
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="jakarta.faces.core"
+    xmlns:h="jakarta.faces.html"> 
+<h:head><title>Web-Lexikon</title>
+</h:head>
+<h:body> 
+  <h:outputStylesheet name="css/Style.css" />
+  <h:form id="form" >
+    <h2>
+        <h:outputText value="#{bundle.willkommen}"/>
+    </h2>
+    <h:outputText value="#{bundle.anweisungen_login}"/>
+    <p/>
+    <h:outputText value="#{bundle.label_kennung} "/>
+    <h:inputText id="getkennung" 
+        value="#{einloggenBean.kennung}">
+    </h:inputText>
+    <p></p>
+    <h:outputText value="#{bundle.label_secret} "/>
+    <h:inputSecret id="getsecret"  value="#{einloggenBean.secret}">
+    </h:inputSecret>
+    <p/>
+    
+    <h:commandButton value="#{bundle.submit_einloggen}" 
+                     action="#{einloggenBean.einloggen}"/>
+    
+  </h:form>
+  
+  
+  
+  </h:body>
+</h:html>

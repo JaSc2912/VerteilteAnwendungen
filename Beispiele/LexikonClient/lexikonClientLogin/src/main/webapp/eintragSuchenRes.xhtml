@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<h:html  
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="jakarta.faces.core"
+    xmlns:h="jakarta.faces.html"> 
+<h:head>
+	<title>Web-Lexikon</title>
+</h:head>
+<h:body>
+     <h:outputStylesheet name="css/Style.css" />
+	<h2>
+		<h:outputText value="#{bundle.willkommen}" />
+	</h2>
+	<h:form>
+            
+            <h:dataTable value="#{eintragSuchenBean.tabelle}" var="e" cellspacing="10">
+                <h:column>
+                    <f:facet name="header"><h:outputText value="#{bundle.label_begriff}" /></f:facet>
+                    #{e.begriff}
+                </h:column>
+                <h:column>
+                    <f:facet name="header"><h:outputText value="#{bundle.label_definition}" /></f:facet>
+                    #{e.definition}
+                </h:column>
+                <h:column>
+                    <f:facet name="header"><h:outputText value="#{bundle.label_autor}" /></f:facet>
+                    #{e.autor}
+                </h:column>
+            </h:dataTable>
+		
+		
+            <p />
+            <h:commandButton id="back" value="#{bundle.back}" action="menue" />
+	</h:form>
+</h:body>
+</h:html>

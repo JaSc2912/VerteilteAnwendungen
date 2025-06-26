@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">  
+<h:head>
+	<title>Web-Lexikon</title>
+</h:head>
+<h:body>
+     <h:outputStylesheet name="css/Style.css" />
+	<h2>
+		<h:outputText value="#{bundle.willkommen}" />
+	</h2>
+    
+            <h:outputText value="#{bundle.label_eintragid}" />
+            #{eintragHinzufuegenBean.eintragid}
+    
+	<h:form>
+		<h:commandButton id="back" value="#{bundle.back}" action="menue" />
+	</h:form>
+</h:body>
+</h:html>
