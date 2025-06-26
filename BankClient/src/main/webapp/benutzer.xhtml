@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html
+  lang="de"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Benutzer verwalten</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
+        background-color: #f5f5f5;
+      }
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        color: #333;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .form-group {
+        margin-bottom: 20px;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #555;
+      }
+      input[type="text"],
+      input[type="password"],
+      select {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 14px;
+      }
+      .btn {
+        background-color: #007bff;
+        color: white;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        margin: 5px;
+      }
+      .btn:hover {
+        background-color: #0056b3;
+      }
+      .btn-danger {
+        background-color: #dc3545;
+      }
+      .btn-danger:hover {
+        background-color: #c82333;
+      }
+      .navigation {
+        text-align: center;
+        margin-top: 30px;
+      }
+      .btn-secondary {
+        background-color: #6c757d;
+      }
+      .btn-secondary:hover {
+        background-color: #545b62;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Benutzer verwalten</h1>
+
+      <h:form>
+        <div class="form-group">
+          <label for="benutzername">Benutzername:</label>
+          <h:inputText
+            id="benutzername"
+            value="#{benutzerBean.benutzer.benutzername}"
+            required="true"
+            requiredMessage="Benutzername ist erforderlich"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="passwort">Passwort:</label>
+          <h:inputSecret
+            id="passwort"
+            value="#{benutzerBean.benutzer.passwort}"
+            required="true"
+            requiredMessage="Passwort ist erforderlich"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <h:inputText
+            id="name"
+            value="#{benutzerBean.benutzer.name}"
+            required="true"
+            requiredMessage="Name ist erforderlich"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="telefonnummer">Telefonnummer:</label>
+          <h:inputText
+            id="telefonnummer"
+            value="#{benutzerBean.benutzer.telefonnummer}"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="rolle">Rolle:</label>
+          <h:selectOneMenu
+            id="rolle"
+            value="#{benutzerBean.benutzer.rolle}"
+            required="true"
+            requiredMessage="Rolle ist erforderlich"
+          >
+            <f:selectItem itemValue="" itemLabel="-- Rolle auswählen --" />
+            <f:selectItem itemValue="ADMIN" itemLabel="Administrator" />
+            <f:selectItem itemValue="KUNDENSERVICE" itemLabel="Kundenservice" />
+            <f:selectItem itemValue="KREDITBEREICH" itemLabel="Kreditbereich" />
+          </h:selectOneMenu>
+        </div>
+
+        <h:commandButton
+          value="Hinzufügen"
+          action="#{benutzerBean.addBenutzer}"
+          styleClass="btn"
+        />
+        <h:commandButton
+          value="Bearbeiten"
+          action="#{benutzerBean.editBenutzer}"
+          styleClass="btn"
+        />
+        <h:commandButton
+          value="Löschen"
+          action="#{benutzerBean.deleteBenutzer}"
+          styleClass="btn btn-danger"
+        />
+        <h:commandButton
+          value="Alle Benutzer anzeigen"
+          action="#{benutzerBean.loadAllBenutzer}"
+          styleClass="btn btn-secondary"
+        />
+
+        <div class="navigation">
+          <h:commandButton
+            value="Zurück zum Dashboard"
+            action="/dashboard.xhtml?faces-redirect=true"
+            styleClass="btn btn-secondary"
+          />
+        </div>
+
+        <h:messages style="color: red; margin-top: 10px" />
+      </h:form>
+    </div>
+  </body>
+</html>

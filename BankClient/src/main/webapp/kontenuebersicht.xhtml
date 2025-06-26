@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html
+  lang="de"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Konten-Übersicht</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
+        background-color: #f5f5f5;
+      }
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        color: #333;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .filter-section {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 5px;
+        margin-bottom: 30px;
+      }
+      .btn {
+        background-color: #007bff;
+        color: white;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        margin: 5px;
+      }
+      .btn:hover {
+        background-color: #0056b3;
+      }
+      .btn-secondary {
+        background-color: #6c757d;
+      }
+      .btn-secondary:hover {
+        background-color: #545b62;
+      }
+      .accounts-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+      .accounts-table th,
+      .accounts-table td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+      .accounts-table th {
+        background-color: #f8f9fa;
+        font-weight: bold;
+      }
+      .accounts-table tr:hover {
+        background-color: #f5f5f5;
+      }
+      .positive-balance {
+        color: #28a745;
+        font-weight: bold;
+      }
+      .status-active {
+        color: #28a745;
+        font-weight: bold;
+      }
+      .status-blocked {
+        color: #dc3545;
+        font-weight: bold;
+      }
+      .navigation {
+        text-align: center;
+        margin-top: 30px;
+      }
+      .summary {
+        background: #e8f4fd;
+        padding: 15px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Konten-Übersicht</h1>
+      <p style="text-align: center; color: #666; margin-bottom: 30px">
+        Übersicht aller aktiven Konten mit positivem Saldo
+      </p>
+
+      <h:form>
+        <div class="filter-section">
+          <h3>Filter</h3>
+          <h:commandButton
+            value="Nur positive Salden anzeigen"
+            action="#{kontenuebersichtBean.loadPositiveAccounts}"
+            styleClass="btn"
+          />
+          <h:commandButton
+            value="Alle aktiven Konten anzeigen"
+            action="#{kontenuebersichtBean.loadActiveAccounts}"
+            styleClass="btn btn-secondary"
+          />
+          <h:commandButton
+            value="Aktualisieren"
+            action="#{kontenuebersichtBean.refresh}"
+            styleClass="btn btn-secondary"
+          />
+        </div>
+
+        <!-- Summary -->
+        <h:panelGroup rendered="#{not empty kontenuebersichtBean.kontenListe}">
+          <div class="summary">
+            <h3>Zusammenfassung</h3>
+            <p>
+              <strong>Anzahl Konten:</strong>
+              #{kontenuebersichtBean.anzahlKonten}
+            </p>
+            <p>
+              <strong>Gesamtsaldo:</strong>
+              <span class="positive-balance"
+                >#{kontenuebersichtBean.gesamtsaldo} €</span
+              >
+            </p>
+            <p>
+              <strong>Durchschnittssaldo:</strong>
+              #{kontenuebersichtBean.durchschnittssaldo} €
+            </p>
+          </div>
+        </h:panelGroup>
+
+        <!-- Accounts Table -->
+        <h:panelGroup rendered="#{not empty kontenuebersichtBean.kontenListe}">
+          <table class="accounts-table">
+            <thead>
+              <tr>
+                <th>IBAN</th>
+                <th>Kontoinhaber</th>
+                <th>Kontenart</th>
+                <th>Kontostand</th>
+                <th>Eröffnungsdatum</th>
+                <th>Status</th>
+                <th>Aktionen</th>
+              </tr>
+            </thead>
+            <tbody>
+              <ui:repeat
+                value="#{kontenuebersichtBean.kontenListe}"
+                var="konto"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+              >
+                <tr>
+                  <td>#{konto.iban}</td>
+                  <td>#{konto.kontoinhaber}</td>
+                  <td>#{konto.kontenart}</td>
+                  <td class="positive-balance">#{konto.kontostand} €</td>
+                  <td>
+                    <h:outputText value="#{konto.kontoeröffnungsdatum}">
+                      <f:convertDateTime pattern="dd.MM.yyyy" />
+                    </h:outputText>
+                  </td>
+                  <td>
+                    <span
+                      class="#{konto.kontostatus eq 'AKTIV' ? 'status-active' : 'status-blocked'}"
+                    >
+                      #{konto.kontostatus}
+                    </span>
+                  </td>
+                  <td>
+                    <h:commandButton
+                      value="Details"
+                      action="#{kontenuebersichtBean.showDetails(konto.iban)}"
+                      styleClass="btn"
+                      style="padding: 5px 10px; font-size: 12px"
+                    />
+                  </td>
+                </tr>
+              </ui:repeat>
+            </tbody>
+          </table>
+        </h:panelGroup>
+
+        <!-- No data message -->
+        <h:panelGroup
+          rendered="#{empty kontenuebersichtBean.kontenListe and kontenuebersichtBean.dataLoaded}"
+        >
+          <div style="text-align: center; padding: 40px; color: #666">
+            <h3>Keine Konten gefunden</h3>
+            <p>Es wurden keine Konten mit den gewählten Kriterien gefunden.</p>
+          </div>
+        </h:panelGroup>
+
+        <div class="navigation">
+          <h:commandButton
+            value="Bankkonten verwalten"
+            action="/bankkonten.xhtml?faces-redirect=true"
+            styleClass="btn btn-secondary"
+          />
+          <h:commandButton
+            value="Zurück zum Dashboard"
+            action="/dashboard.xhtml?faces-redirect=true"
+            styleClass="btn btn-secondary"
+          />
+        </div>
+
+        <h:messages style="color: red; margin-top: 10px" />
+      </h:form>
+    </div>
+  </body>
+</html>

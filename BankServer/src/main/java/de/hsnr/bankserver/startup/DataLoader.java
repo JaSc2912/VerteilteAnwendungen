@@ -2,6 +2,9 @@ package de.hsnr.bankserver.startup;
 
 import de.hsnr.bankserver.dataaccess.entities.BenutzerEntity;
 import de.hsnr.bankserver.dataaccess.entities.KundeEntity;
+import de.hsnr.bankserver.dataaccess.entities.KreditantragEntity;
+import de.hsnr.bankserver.dataaccess.entities.BankkontoEntity;
+import de.hsnr.bankserver.dataaccess.entities.TransaktionEntity;
 import de.hsnr.bankserver.core.entities.RolleT;
 import jakarta.annotation.PostConstruct;
 import jakarta.ejb.Singleton;
@@ -122,6 +125,151 @@ public class DataLoader {
                 System.out.println("Initial test customers loaded successfully!");
             } else {
                 System.out.println("Customers already exist, skipping customer load.");
+            }
+
+            // Load initial bank accounts
+            Long bankkontenCount = entityManager.createQuery("SELECT COUNT(b) FROM BankkontoEntity b", Long.class).getSingleResult();
+            
+            if (bankkontenCount == 0) {
+                // Bank Account 1 - Peter Schmidt Girokonto
+                BankkontoEntity account1 = new BankkontoEntity();
+                account1.setIban("DE89370400440532013000");
+                account1.setKontoinhaber("K001");
+                account1.setKontoart("Girokonto");
+                account1.setKontostand(2500.50);
+                Calendar cal1 = Calendar.getInstance();
+                cal1.set(2020, Calendar.JANUARY, 15);
+                account1.setKontoeröffnungsdatum(cal1.getTime());
+                account1.setKontostatus("aktiv");
+
+                // Bank Account 2 - Peter Schmidt Sparkonto
+                BankkontoEntity account2 = new BankkontoEntity();
+                account2.setIban("DE89370400440532013001");
+                account2.setKontoinhaber("K001");
+                account2.setKontoart("Sparkonto");
+                account2.setKontostand(15000.00);
+                account2.setKontoeröffnungsdatum(cal1.getTime());
+                account2.setKontostatus("aktiv");
+
+                // Bank Account 3 - Maria Garcia Girokonto
+                BankkontoEntity account3 = new BankkontoEntity();
+                account3.setIban("DE89370400440532013002");
+                account3.setKontoinhaber("K002");
+                account3.setKontoart("Girokonto");
+                account3.setKontostand(1200.75);
+                Calendar cal2 = Calendar.getInstance();
+                cal2.set(2021, Calendar.MARCH, 10);
+                account3.setKontoeröffnungsdatum(cal2.getTime());
+                account3.setKontostatus("aktiv");
+
+                // Bank Account 4 - Hans Weber Geschäftskonto
+                BankkontoEntity account4 = new BankkontoEntity();
+                account4.setIban("DE89370400440532013003");
+                account4.setKontoinhaber("K003");
+                account4.setKontoart("Geschäftskonto");
+                account4.setKontostand(-500.00);
+                Calendar cal3 = Calendar.getInstance();
+                cal3.set(2019, Calendar.NOVEMBER, 20);
+                account4.setKontoeröffnungsdatum(cal3.getTime());
+                account4.setKontostatus("gesperrt");
+
+                entityManager.persist(account1);
+                entityManager.persist(account2);
+                entityManager.persist(account3);
+                entityManager.persist(account4);
+
+                System.out.println("Initial test bank accounts loaded successfully!");
+            } else {
+                System.out.println("Bank accounts already exist, skipping bank account load.");
+            }
+
+            // Load initial transactions
+            Long transaktionenCount = entityManager.createQuery("SELECT COUNT(t) FROM TransaktionEntity t", Long.class).getSingleResult();
+            
+            if (transaktionenCount == 0) {
+                // Transaction 1 - Salary deposit
+                TransaktionEntity trans1 = new TransaktionEntity();
+                trans1.setTransaktionsnummer("T001");
+                trans1.setKonto("DE89370400440532013000");
+                Calendar transDate1 = Calendar.getInstance();
+                transDate1.set(2024, Calendar.JUNE, 1, 10, 30, 0);
+                trans1.setTransaktionsdatum(transDate1.getTime());
+                trans1.setBetrag(2000.00);
+                trans1.setTransaktionsart("Einzahlung");
+                trans1.setEmpfänger("Gehaltseingang");
+                trans1.setTransaktionsstatus("abgeschlossen");
+
+                // Transaction 2 - Utility payment
+                TransaktionEntity trans2 = new TransaktionEntity();
+                trans2.setTransaktionsnummer("T002");
+                trans2.setKonto("DE89370400440532013000");
+                Calendar transDate2 = Calendar.getInstance();
+                transDate2.set(2024, Calendar.JUNE, 2, 14, 15, 0);
+                trans2.setTransaktionsdatum(transDate2.getTime());
+                trans2.setBetrag(-150.00);
+                trans2.setTransaktionsart("Überweisung");
+                trans2.setEmpfänger("Stadtwerke Düsseldorf");
+                trans2.setTransaktionsstatus("abgeschlossen");
+
+                // Transaction 3 - Transfer from parents
+                TransaktionEntity trans3 = new TransaktionEntity();
+                trans3.setTransaktionsnummer("T003");
+                trans3.setKonto("DE89370400440532013002");
+                Calendar transDate3 = Calendar.getInstance();
+                transDate3.set(2024, Calendar.JUNE, 3, 9, 45, 0);
+                trans3.setTransaktionsdatum(transDate3.getTime());
+                trans3.setBetrag(500.00);
+                trans3.setTransaktionsart("Einzahlung");
+                trans3.setEmpfänger("Überweisung von Eltern");
+                trans3.setTransaktionsstatus("abgeschlossen");
+
+                entityManager.persist(trans1);
+                entityManager.persist(trans2);
+                entityManager.persist(trans3);
+
+                System.out.println("Initial test transactions loaded successfully!");
+            } else {
+                System.out.println("Transactions already exist, skipping transaction load.");
+            }
+
+            // Load initial credit applications
+            Long kreditantraegeCount = entityManager.createQuery("SELECT COUNT(k) FROM KreditantragEntity k", Long.class).getSingleResult();
+            
+            if (kreditantraegeCount == 0) {
+                // Credit Application 1 - In Processing
+                KreditantragEntity ka001 = new KreditantragEntity();
+                ka001.setKreditantragsnummer("KA001");
+                ka001.setAntragsteller("K001");
+                ka001.setKreditsumme(25000.00);
+                ka001.setKreditlaufzeit("60 Monate");
+                ka001.setKreditstatus("in Bearbeitung");
+                ka001.setGenehmigenderMitarbeiter(null);
+
+                // Credit Application 2 - Approved
+                KreditantragEntity ka002 = new KreditantragEntity();
+                ka002.setKreditantragsnummer("KA002");
+                ka002.setAntragsteller("K002");
+                ka002.setKreditsumme(10000.00);
+                ka002.setKreditlaufzeit("36 Monate");
+                ka002.setKreditstatus("genehmigt");
+                ka002.setGenehmigenderMitarbeiter("kredit1");
+
+                // Credit Application 3 - Rejected
+                KreditantragEntity ka003 = new KreditantragEntity();
+                ka003.setKreditantragsnummer("KA003");
+                ka003.setAntragsteller("K003");
+                ka003.setKreditsumme(50000.00);
+                ka003.setKreditlaufzeit("84 Monate");
+                ka003.setKreditstatus("abgelehnt");
+                ka003.setGenehmigenderMitarbeiter(null);
+
+                entityManager.persist(ka001);
+                entityManager.persist(ka002);
+                entityManager.persist(ka003);
+
+                System.out.println("Initial test credit applications loaded successfully!");
+            } else {
+                System.out.println("Credit applications already exist, skipping credit application load.");
             }
         } catch (Exception e) {
             System.err.println("Error loading initial data: " + e.getMessage());

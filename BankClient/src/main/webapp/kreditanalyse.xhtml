@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html
+  lang="de"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Kreditanalyse</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
+        background-color: #f5f5f5;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        color: #333;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .form-group {
+        margin-bottom: 20px;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #555;
+      }
+      input[type="text"] {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 14px;
+      }
+      .btn {
+        background-color: #007bff;
+        color: white;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        margin: 5px;
+      }
+      .btn:hover {
+        background-color: #0056b3;
+      }
+      .btn-secondary {
+        background-color: #6c757d;
+      }
+      .btn-secondary:hover {
+        background-color: #545b62;
+      }
+      .analysis-result {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 5px;
+        margin-top: 20px;
+        border-left: 4px solid #007bff;
+      }
+      .metric {
+        margin-bottom: 15px;
+        padding: 10px;
+        background: white;
+        border-radius: 3px;
+      }
+      .metric-label {
+        font-weight: bold;
+        color: #555;
+      }
+      .metric-value {
+        font-size: 1.2em;
+        color: #007bff;
+        margin-left: 10px;
+      }
+      .navigation {
+        text-align: center;
+        margin-top: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Kreditanalyse</h1>
+      <p style="text-align: center; color: #666; margin-bottom: 30px">
+        Analysieren Sie die Bonität und Zahlungshistorie eines Kunden für
+        Kreditentscheidungen
+      </p>
+
+      <h:form>
+        <div class="form-group">
+          <label for="kundenname">Kundenname für Analyse:</label>
+          <h:inputText
+            id="kundenname"
+            value="#{kreditanalyseBean.kundenname}"
+            required="true"
+            requiredMessage="Kundenname ist erforderlich"
+            placeholder="Geben Sie den Namen des Kunden ein..."
+          />
+        </div>
+
+        <h:commandButton
+          value="Kreditanalyse durchführen"
+          action="#{kreditanalyseBean.analyseKunde}"
+          styleClass="btn"
+        />
+
+        <!-- Analysis Results -->
+        <h:panelGroup rendered="#{kreditanalyseBean.analysisPerformed}">
+          <div class="analysis-result">
+            <h3>Analyseergebnis für: #{kreditanalyseBean.kundenname}</h3>
+
+            <div class="metric">
+              <span class="metric-label"
+                >Durchschnittliche monatliche Eingänge:</span
+              >
+              <span class="metric-value"
+                >#{kreditanalyseBean.durchschnittlicheEingaenge} €</span
+              >
+            </div>
+
+            <div class="metric">
+              <span class="metric-label"
+                >Durchschnittliche monatliche Ausgänge:</span
+              >
+              <span class="metric-value"
+                >#{kreditanalyseBean.durchschnittlicheAusgaenge} €</span
+              >
+            </div>
+
+            <div class="metric">
+              <span class="metric-label">Monatlicher Überschuss/Defizit:</span>
+              <span
+                class="metric-value"
+                style="
+                  color: #{kreditanalyseBean.monatlichesDifferenz > 0 ? 'green':
+                    'red'};
+                "
+              >
+                #{kreditanalyseBean.monatlichesDifferenz} €
+              </span>
+            </div>
+
+            <div class="metric">
+              <span class="metric-label"
+                >Monate mit negativem Saldo (letzte 5 Jahre):</span
+              >
+              <span
+                class="metric-value"
+                style="
+                  color: #{kreditanalyseBean.monateNegativ > 12 ? 'red':
+                    (kreditanalyseBean.monateNegativ > 6 ? 'orange': 'green')};
+                "
+              >
+                #{kreditanalyseBean.monateNegativ} von 60 Monaten
+              </span>
+            </div>
+
+            <div class="metric">
+              <span class="metric-label">Kreditwürdigkeit:</span>
+              <span
+                class="metric-value"
+                style="
+                  color: #{kreditanalyseBean.kreditwuerdigkeit eq 'HOCH' ?
+                    'green':
+                    (
+                      kreditanalyseBean.kreditwuerdigkeit eq 'MITTEL' ? 'orange':
+                        'red'
+                    )};
+                "
+              >
+                #{kreditanalyseBean.kreditwuerdigkeit}
+              </span>
+            </div>
+
+            <div class="metric">
+              <span class="metric-label">Empfehlung:</span>
+              <span class="metric-value">#{kreditanalyseBean.empfehlung}</span>
+            </div>
+          </div>
+        </h:panelGroup>
+
+        <div class="navigation">
+          <h:commandButton
+            value="Zu Kreditanträgen"
+            action="/kreditantraege.xhtml?faces-redirect=true"
+            styleClass="btn btn-secondary"
+          />
+          <h:commandButton
+            value="Zurück zum Dashboard"
+            action="/dashboard.xhtml?faces-redirect=true"
+            styleClass="btn btn-secondary"
+          />
+        </div>
+
+        <h:messages style="color: red; margin-top: 10px" />
+      </h:form>
+    </div>
+  </body>
+</html>

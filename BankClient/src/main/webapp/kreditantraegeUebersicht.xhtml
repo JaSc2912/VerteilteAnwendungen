@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html
+  lang="de"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Kreditanträge - Übersicht</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
+        background-color: #f5f5f5;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        color: #333;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .btn {
+        background-color: #007bff;
+        color: white;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        text-decoration: none;
+        display: inline-block;
+        margin: 5px;
+      }
+      .btn:hover {
+        background-color: #0056b3;
+      }
+      .btn-secondary {
+        background-color: #6c757d;
+      }
+      .btn-secondary:hover {
+        background-color: #545b62;
+      }
+      .applications-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+      .applications-table th,
+      .applications-table td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+      .applications-table th {
+        background-color: #f8f9fa;
+        font-weight: bold;
+      }
+      .applications-table tr:hover {
+        background-color: #f5f5f5;
+      }
+      .status-approved {
+        color: #28a745;
+        font-weight: bold;
+      }
+      .status-rejected {
+        color: #dc3545;
+        font-weight: bold;
+      }
+      .status-pending {
+        color: #ffc107;
+        font-weight: bold;
+      }
+      .navigation {
+        text-align: center;
+        margin-top: 30px;
+      }
+      .summary {
+        background: #e8f4fd;
+        padding: 15px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Kreditanträge - Übersicht</h1>
+
+      <h:form>
+        <!-- Summary -->
+        <h:panelGroup
+          rendered="#{not empty kreditantragBean.kreditantraegeListe}"
+        >
+          <div class="summary">
+            <h3>Zusammenfassung</h3>
+            <p>
+              <strong>Anzahl Kreditanträge:</strong>
+              #{kreditantragBean.kreditantraegeListe.size()}
+            </p>
+          </div>
+        </h:panelGroup>
+
+        <!-- Applications Table -->
+        <h:panelGroup
+          rendered="#{not empty kreditantragBean.kreditantraegeListe}"
+        >
+          <table class="applications-table">
+            <thead>
+              <tr>
+                <th>Antragsnummer</th>
+                <th>Antragsteller</th>
+                <th>Kreditsumme</th>
+                <th>Laufzeit (Monate)</th>
+                <th>Status</th>
+                <th>Genehmigender Mitarbeiter</th>
+                <th>Aktionen</th>
+              </tr>
+            </thead>
+            <tbody>
+              <ui:repeat
+                value="#{kreditantragBean.kreditantraegeListe}"
+                var="antrag"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+              >
+                <tr>
+                  <td>#{antrag.kreditantragsnummer}</td>
+                  <td>#{antrag.antragsteller}</td>
+                  <td>#{antrag.kreditsumme} €</td>
+                  <td>#{antrag.kreditlaufzeit}</td>
+                  <td>
+                    <span
+                      class="#{antrag.kreditstatus eq 'GENEHMIGT' ? 'status-approved' : (antrag.kreditstatus eq 'ABGELEHNT' ? 'status-rejected' : 'status-pending')}"
+                    >
+                      #{antrag.kreditstatus}
+                    </span>
+                  </td>
+                  <td>#{antrag.genehmigenderMitarbeiter}</td>
+                  <td>
+                    <h:commandButton
+                      value="Bearbeiten"
+                      action="#{kreditantragBean.editKreditantrag(antrag)}"
+                      styleClass="btn"
+                      style="padding: 5px 10px; font-size: 12px"
+                    />
+                  </td>
+                </tr>
+              </ui:repeat>
+            </tbody>
+          </table>
+        </h:panelGroup>
+
+        <!-- No data message -->
+        <h:panelGroup rendered="#{empty kreditantragBean.kreditantraegeListe}">
+          <div style="text-align: center; padding: 40px; color: #666">
+            <h3>Keine Kreditanträge gefunden</h3>
+            <p>Es wurden noch keine Kreditanträge erstellt.</p>
+          </div>
+        </h:panelGroup>
+
+        <div class="navigation">
+          <h:commandButton
+            value="Neuen Antrag erstellen"
+            action="/kreditantraege.xhtml?faces-redirect=true"
+            styleClass="btn"
+          />
+          <h:commandButton
+            value="Aktualisieren"
+            action="#{kreditantragBean.loadAllKreditantraege}"
+            styleClass="btn btn-secondary"
+          />
+          <h:commandButton
+            value="Zurück zum Dashboard"
+            action="/dashboard.xhtml?faces-redirect=true"
+            styleClass="btn btn-secondary"
+          />
+        </div>
+
+        <h:messages style="color: red; margin-top: 10px" />
+      </h:form>
+    </div>
+  </body>
+</html>

@@ -97,15 +97,59 @@
 
         <h3>Verfügbare Funktionen</h3>
         <div class="menu-grid">
+          <!-- Gemeinsame Funktionen -->
           <h:link
             value="Kunden suchen"
             outcome="kundenSuchen"
             styleClass="menu-item"
           />
+
+          <!-- Kundenservice Funktionen -->
           <h:link
             value="Kundendaten pflegen"
             outcome="kundendatenPflegen"
             styleClass="menu-item"
+            rendered="#{loginBean.currentUser.rolle eq 'KUNDENSERVICE' or loginBean.currentUser.rolle eq 'ADMIN'}"
+          />
+          <h:link
+            value="Bankkonten verwalten"
+            outcome="bankkonten"
+            styleClass="menu-item"
+            rendered="#{loginBean.currentUser.rolle eq 'KUNDENSERVICE' or loginBean.currentUser.rolle eq 'ADMIN'}"
+          />
+          <h:link
+            value="Konten-Übersicht"
+            outcome="kontenuebersicht"
+            styleClass="menu-item"
+            rendered="#{loginBean.currentUser.rolle eq 'KUNDENSERVICE' or loginBean.currentUser.rolle eq 'ADMIN'}"
+          />
+          <h:link
+            value="Transaktionen"
+            outcome="transaktionen"
+            styleClass="menu-item"
+            rendered="#{loginBean.currentUser.rolle eq 'KUNDENSERVICE' or loginBean.currentUser.rolle eq 'ADMIN'}"
+          />
+
+          <!-- Kreditbereich Funktionen -->
+          <h:link
+            value="Kreditanträge"
+            outcome="kreditantraege"
+            styleClass="menu-item"
+            rendered="#{loginBean.currentUser.rolle eq 'KREDITBEARBEITER' or loginBean.currentUser.rolle eq 'ADMIN'}"
+          />
+          <h:link
+            value="Kreditanalyse"
+            outcome="kreditanalyse"
+            styleClass="menu-item"
+            rendered="#{loginBean.currentUser.rolle eq 'KREDITBEARBEITER' or loginBean.currentUser.rolle eq 'ADMIN'}"
+          />
+
+          <!-- Administrator Funktionen -->
+          <h:link
+            value="Benutzer verwalten"
+            outcome="benutzer"
+            styleClass="menu-item"
+            rendered="#{loginBean.currentUser.rolle eq 'ADMIN'}"
           />
         </div>
 

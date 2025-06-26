@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html
+  lang="de"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bankkonten verwalten</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
+        background-color: #f5f5f5;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        color: #333;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .form-group {
+        margin-bottom: 20px;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #555;
+      }
+      input[type="text"],
+      input[type="number"],
+      input[type="date"],
+      select {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 14px;
+      }
+      .btn {
+        background-color: #007bff;
+        color: white;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        margin: 5px;
+      }
+      .btn:hover {
+        background-color: #0056b3;
+      }
+      .btn-danger {
+        background-color: #dc3545;
+      }
+      .btn-danger:hover {
+        background-color: #c82333;
+      }
+      .btn-secondary {
+        background-color: #6c757d;
+      }
+      .btn-secondary:hover {
+        background-color: #545b62;
+      }
+      .navigation {
+        text-align: center;
+        margin-top: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Bankkonten verwalten</h1>
+
+      <h:form>
+        <div class="form-group">
+          <label for="iban">IBAN:</label>
+          <h:inputText
+            id="iban"
+            value="#{bankkontoBean.bankkonto.iban}"
+            required="true"
+            requiredMessage="IBAN ist erforderlich"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="kontoinhaber">Kontoinhaber:</label>
+          <h:inputText
+            id="kontoinhaber"
+            value="#{bankkontoBean.bankkonto.kontoinhaber}"
+            required="true"
+            requiredMessage="Kontoinhaber ist erforderlich"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="kontenart">Kontenart:</label>
+          <h:selectOneMenu
+            id="kontenart"
+            value="#{bankkontoBean.bankkonto.kontenart}"
+            required="true"
+            requiredMessage="Kontenart ist erforderlich"
+          >
+            <f:selectItem itemValue="" itemLabel="-- Kontenart auswählen --" />
+            <f:selectItem itemValue="GIROKONTO" itemLabel="Girokonto" />
+            <f:selectItem itemValue="SPARKONTO" itemLabel="Sparkonto" />
+            <f:selectItem
+              itemValue="GESCHÄFTSKONTO"
+              itemLabel="Geschäftskonto"
+            />
+          </h:selectOneMenu>
+        </div>
+
+        <div class="form-group">
+          <label for="kontostand">Kontostand (€):</label>
+          <h:inputText
+            id="kontostand"
+            value="#{bankkontoBean.bankkonto.kontostand}"
+            required="true"
+            requiredMessage="Kontostand ist erforderlich"
+          >
+            <f:convertNumber pattern="#0.00" />
+          </h:inputText>
+        </div>
+
+        <div class="form-group">
+          <label for="kontoeröffnungsdatum">Kontoeröffnungsdatum:</label>
+          <h:inputText
+            id="kontoeröffnungsdatum"
+            value="#{bankkontoBean.bankkonto.kontoeröffnungsdatum}"
+            type="date"
+          >
+            <f:convertDateTime pattern="yyyy-MM-dd" />
+          </h:inputText>
+        </div>
+
+        <div class="form-group">
+          <label for="kontostatus">Kontostatus:</label>
+          <h:selectOneMenu
+            id="kontostatus"
+            value="#{bankkontoBean.bankkonto.kontostatus}"
+            required="true"
+            requiredMessage="Kontostatus ist erforderlich"
+          >
+            <f:selectItem itemValue="" itemLabel="-- Status auswählen --" />
+            <f:selectItem itemValue="AKTIV" itemLabel="Aktiv" />
+            <f:selectItem itemValue="GESPERRT" itemLabel="Gesperrt" />
+            <f:selectItem itemValue="GESCHLOSSEN" itemLabel="Geschlossen" />
+          </h:selectOneMenu>
+        </div>
+
+        <h:commandButton
+          value="Konto erstellen"
+          action="#{bankkontoBean.addKonto}"
+          styleClass="btn"
+        />
+        <h:commandButton
+          value="Konto bearbeiten"
+          action="#{bankkontoBean.editKonto}"
+          styleClass="btn"
+        />
+        <h:commandButton
+          value="Konto löschen"
+          action="#{bankkontoBean.deleteKonto}"
+          styleClass="btn btn-danger"
+        />
+        <h:commandButton
+          value="Alle Konten anzeigen"
+          action="#{bankkontoBean.loadAllKonten}"
+          styleClass="btn btn-secondary"
+        />
+
+        <div class="navigation">
+          <h:commandButton
+            value="Zurück zum Dashboard"
+            action="/dashboard.xhtml?faces-redirect=true"
+            styleClass="btn btn-secondary"
+          />
+        </div>
+
+        <h:messages style="color: red; margin-top: 10px" />
+      </h:form>
+    </div>
+  </body>
+</html>

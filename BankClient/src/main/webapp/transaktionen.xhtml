@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html
+  lang="de"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Transaktionen verwalten</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
+        background-color: #f5f5f5;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        color: #333;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .form-group {
+        margin-bottom: 20px;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #555;
+      }
+      input[type="text"],
+      input[type="number"],
+      input[type="date"],
+      select,
+      textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 14px;
+      }
+      textarea {
+        height: 80px;
+        resize: vertical;
+      }
+      .btn {
+        background-color: #007bff;
+        color: white;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        margin: 5px;
+      }
+      .btn:hover {
+        background-color: #0056b3;
+      }
+      .btn-warning {
+        background-color: #ffc107;
+        color: #212529;
+      }
+      .btn-warning:hover {
+        background-color: #e0a800;
+      }
+      .btn-secondary {
+        background-color: #6c757d;
+      }
+      .btn-secondary:hover {
+        background-color: #545b62;
+      }
+      .navigation {
+        text-align: center;
+        margin-top: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Transaktionen verwalten</h1>
+
+      <h:form>
+        <div class="form-group">
+          <label for="konto">Konto (IBAN):</label>
+          <h:inputText
+            id="konto"
+            value="#{transaktionBean.transaktion.konto}"
+            required="true"
+            requiredMessage="Konto ist erforderlich"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="transaktionsnummer">Transaktionsnummer:</label>
+          <h:inputText
+            id="transaktionsnummer"
+            value="#{transaktionBean.transaktion.transaktionsnummer}"
+            required="true"
+            requiredMessage="Transaktionsnummer ist erforderlich"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="transaktionsdatum">Transaktionsdatum:</label>
+          <h:inputText
+            id="transaktionsdatum"
+            value="#{transaktionBean.transaktion.transaktionsdatum}"
+            type="date"
+            required="true"
+            requiredMessage="Transaktionsdatum ist erforderlich"
+          >
+            <f:convertDateTime pattern="yyyy-MM-dd" />
+          </h:inputText>
+        </div>
+
+        <div class="form-group">
+          <label for="betrag">Betrag (€):</label>
+          <h:inputText
+            id="betrag"
+            value="#{transaktionBean.transaktion.betrag}"
+            required="true"
+            requiredMessage="Betrag ist erforderlich"
+          >
+            <f:convertNumber pattern="#0.00" />
+          </h:inputText>
+        </div>
+
+        <div class="form-group">
+          <label for="transaktionsart">Transaktionsart:</label>
+          <h:selectOneMenu
+            id="transaktionsart"
+            value="#{transaktionBean.transaktion.transaktionsart}"
+            required="true"
+            requiredMessage="Transaktionsart ist erforderlich"
+          >
+            <f:selectItem itemValue="" itemLabel="-- Art auswählen --" />
+            <f:selectItem itemValue="ÜBERWEISUNG" itemLabel="Überweisung" />
+            <f:selectItem itemValue="EINZAHLUNG" itemLabel="Einzahlung" />
+            <f:selectItem itemValue="ABHEBUNG" itemLabel="Abhebung" />
+          </h:selectOneMenu>
+        </div>
+
+        <div class="form-group">
+          <label for="empfaengerAbsender">Empfänger/Absender:</label>
+          <h:inputText
+            id="empfaengerAbsender"
+            value="#{transaktionBean.transaktion.empfaengerAbsender}"
+            required="true"
+            requiredMessage="Empfänger/Absender ist erforderlich"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="transaktionsstatus">Transaktionsstatus:</label>
+          <h:selectOneMenu
+            id="transaktionsstatus"
+            value="#{transaktionBean.transaktion.transaktionsstatus}"
+            required="true"
+            requiredMessage="Transaktionsstatus ist erforderlich"
+          >
+            <f:selectItem itemValue="" itemLabel="-- Status auswählen --" />
+            <f:selectItem itemValue="ABGESCHLOSSEN" itemLabel="Abgeschlossen" />
+            <f:selectItem itemValue="AUSSTEHEND" itemLabel="Ausstehend" />
+            <f:selectItem itemValue="STORNIERT" itemLabel="Storniert" />
+          </h:selectOneMenu>
+        </div>
+
+        <div class="form-group">
+          <label for="anmerkung">Anmerkung:</label>
+          <h:inputTextarea
+            id="anmerkung"
+            value="#{transaktionBean.transaktion.anmerkung}"
+            rows="3"
+          />
+        </div>
+
+        <h:commandButton
+          value="Transaktion erstellen"
+          action="#{transaktionBean.addTransaktion}"
+          styleClass="btn"
+        />
+        <h:commandButton
+          value="Transaktion stornieren"
+          action="#{transaktionBean.cancelTransaktion}"
+          styleClass="btn btn-warning"
+        />
+        <h:commandButton
+          value="Alle Transaktionen anzeigen"
+          action="#{transaktionBean.loadAllTransaktionen}"
+          styleClass="btn btn-secondary"
+        />
+
+        <div class="navigation">
+          <h:commandButton
+            value="Zurück zum Dashboard"
+            action="/dashboard.xhtml?faces-redirect=true"
+            styleClass="btn btn-secondary"
+          />
+        </div>
+
+        <h:messages style="color: red; margin-top: 10px" />
+      </h:form>
+    </div>
+  </body>
+</html>
