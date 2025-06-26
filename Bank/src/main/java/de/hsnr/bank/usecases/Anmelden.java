@@ -21,7 +21,7 @@ public class Anmelden implements IAnmelden {
     private BenutzerDAO benutzerDAO;
 
     @Override
-    public void login(String benutzername, String passwort) {
+    public Benutzer login(String benutzername, String passwort) {
         Benutzer benutzer = benutzerDAO.suchen(benutzername);
 
         if (benutzer == null) {
@@ -33,7 +33,8 @@ public class Anmelden implements IAnmelden {
         }
 
         // Erfolgreich eingeloggt
-        System.out.println("Login erfolgreich!");
+        System.out.println("Login erfolgreich für: " + benutzer.getBenutzername());
+        return benutzer;
     }
 
 }

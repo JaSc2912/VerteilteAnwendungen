@@ -2,6 +2,7 @@ package de.hsnr.bank.beans;
 
 import de.hsnr.bank.entities.Kunde;
 import de.hsnr.bank.usecases.KundenManager;
+import jakarta.annotation.PostConstruct;
 import jakarta.ejb.EJB;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Named;
@@ -17,6 +18,12 @@ public class KundenSuchenBean implements Serializable {
 
     private String suchbegriff;
     private List<Kunde> suchergebnisse;
+
+    @PostConstruct
+    public void init() {
+        // Load all customers initially
+        suchergebnisse = kundenManager.alleLesen();
+    }
 
     public void suchen() {
         // Note: A dedicated search method in the DAO would be more efficient.

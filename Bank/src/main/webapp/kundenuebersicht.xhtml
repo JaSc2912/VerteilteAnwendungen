@@ -1,34 +1,212 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://jakarta.ee/jsf/html">
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://jakarta.ee/jsf/html"
+  xmlns:f="http://jakarta.ee/jsf/core"
+>
   <h:head>
     <title>Kundenübersicht</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: #f4f4f4;
+      }
+      .panel {
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+      }
+      .customer-info {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 5px;
+        border-left: 4px solid #007bff;
+      }
+      .info-grid {
+        border-spacing: 15px;
+        width: 100%;
+      }
+      .label {
+        font-weight: bold;
+        color: #495057;
+        vertical-align: top;
+        width: 150px;
+      }
+      .value {
+        color: #212529;
+      }
+      .btn {
+        padding: 10px 20px;
+        margin: 5px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        text-decoration: none;
+        color: white;
+        display: inline-block;
+      }
+      .btn-primary {
+        background-color: #007bff;
+      }
+      .btn-secondary {
+        background-color: #6c757d;
+      }
+      .btn-success {
+        background-color: #28a745;
+      }
+      .btn-warning {
+        background-color: #ffc107;
+        color: #212529;
+      }
+      .search-panel {
+        margin-bottom: 20px;
+      }
+      .search-grid {
+        border-spacing: 10px;
+      }
+    </style>
   </h:head>
   <h:body>
-    <h:form>
-      <h:outputLabel value="Kundennummer:" for="kundennummer" />
-      <h:inputText
-        id="kundennummer"
-        value="#{kundenUebersichtBean.kundennummer}"
+    <!-- Authentication check -->
+    <f:metadata>
+      <f:viewAction
+        action="#{!sessionBean.loggedIn ? 'login.xhtml?faces-redirect=true' : ''}"
       />
-      <h:commandButton
-        value="Anzeigen"
-        action="#{kundenUebersichtBean.laden}"
+    </f:metadata>
+
+    <div class="panel">
+      <h1>Kundenübersicht</h1>
+
+      <!-- Search panel (if no customer loaded) -->
+      <div class="search-panel">
+        <h:panelGroup rendered="#{empty kundenUebersichtBean.kunde}">
+          <h:form>
+            <h:panelGrid columns="3" styleClass="search-grid">
+              <h:outputLabel value="Kundennummer:" for="kundennummer" />
+              <h:inputText
+                id="kundennummer"
+                value="#{kundenUebersichtBean.kundennummer}"
+                style="padding: 8px; border: 1px solid #ccc; border-radius: 3px"
+              />
+              <h:commandButton
+                value="Anzeigen"
+                action="#{kundenUebersichtBean.laden}"
+                styleClass="btn btn-primary"
+              />
+            </h:panelGrid>
+          </h:form>
+        </h:panelGroup>
+      </div>
+
+      <!-- Customer information display -->
+      <h:panelGroup rendered="#{not empty kundenUebersichtBean.kunde}">
+        <div class="customer-info">
+          <h2>Kundendaten für #{kundenUebersichtBean.kunde.kundennummer}</h2>
+          <h:panelGrid columns="2" styleClass="info-grid">
+            <h:outputText value="Kundennummer:" styleClass="label" />
+            <h:outputText
+              value="#{kundenUebersichtBean.kunde.kundennummer}"
+              styleClass="value"
+            />
+
+            <h:outputText value="Name:" styleClass="label" />
+            <h:outputText
+              value="#{kundenUebersichtBean.kunde.name}"
+              styleClass="value"
+            />
+
+            <h:outputText value="Adresse:" styleClass="label" />
+            <h:outputText
+              value="#{kundenUebersichtBean.kunde.adresse}"
+              styleClass="value"
+            />
+
+            <h:outputText value="Telefon:" styleClass="label" />
+            <h:outputText
+              value="#{kundenUebersichtBean.kunde.telefonnummer}"
+              styleClass="value"
+            />
+
+            <h:outputText value="E-Mail:" styleClass="label" />
+            <h:outputText
+              value="#{kundenUebersichtBean.kunde.email}"
+              styleClass="value"
+            />
+
+            <h:outputText value="Geburtsdatum:" styleClass="label" />
+            <h:outputText
+              value="#{kundenUebersichtBean.kunde.geburtsdatum}"
+              styleClass="value"
+            >
+              <f:convertDateTime pattern="dd.MM.yyyy" />
+            </h:outputText>
+
+            <h:outputText value="Status:" styleClass="label" />
+            <h:outputText
+              value="#{kundenUebersichtBean.kunde.kundenstatus}"
+              styleClass="value"
+            />
+          </h:panelGrid>
+        </div>
+
+        <!-- Action buttons -->
+        <div style="margin-top: 20px">
+          <h:link
+            value="Daten bearbeiten"
+            outcome="kundenpflegen"
+            styleClass="btn btn-warning"
+          >
+            <f:param
+              name="kdnr"
+              value="#{kundenUebersichtBean.kunde.kundennummer}"
+            />
+          </h:link>
+
+          <h:link
+            value="Bankkonten anzeigen"
+            outcome="bankkonten"
+            styleClass="btn btn-success"
+          >
+            <f:param
+              name="kdnr"
+              value="#{kundenUebersichtBean.kunde.kundennummer}"
+            />
+          </h:link>
+
+          <h:link
+            value="Auswertung"
+            outcome="auswertung"
+            styleClass="btn btn-primary"
+            rendered="#{sessionBean.kreditvergabe or sessionBean.admin}"
+          >
+            <f:param
+              name="kdnr"
+              value="#{kundenUebersichtBean.kunde.kundennummer}"
+            />
+          </h:link>
+        </div>
+      </h:panelGroup>
+
+      <!-- No customer found message -->
+      <h:outputText
+        value="Kunde nicht gefunden!"
+        rendered="#{empty kundenUebersichtBean.kunde and not empty kundenUebersichtBean.kundennummer}"
+        style="color: #dc3545; font-weight: bold"
       />
-    </h:form>
-    <h:panelGrid columns="2" rendered="#{not empty kundenUebersichtBean.kunde}">
-      <h:outputText value="Name:" />
-      <h:outputText value="#{kundenUebersichtBean.kunde.name}" />
-      <h:outputText value="Adresse:" />
-      <h:outputText value="#{kundenUebersichtBean.kunde.adresse}" />
-      <h:outputText value="Telefon:" />
-      <h:outputText value="#{kundenUebersichtBean.kunde.telefonnummer}" />
-      <h:outputText value="E-Mail:" />
-      <h:outputText value="#{kundenUebersichtBean.kunde.email}" />
-      <h:outputText value="Geburtsdatum:" />
-      <h:outputText value="#{kundenUebersichtBean.kunde.geburtsdatum}" />
-      <h:outputText value="Status:" />
-      <h:outputText value="#{kundenUebersichtBean.kunde.kundenstatus}" />
-    </h:panelGrid>
-    <h:link value="Zurück zum Menü" outcome="menu.xhtml" />
+    </div>
+
+    <h:link
+      value="← Zurück zur Kundensuche"
+      outcome="kundensuchen"
+      styleClass="btn btn-secondary"
+    />
+    <h:link
+      value="← Zurück zum Menü"
+      outcome="menu"
+      styleClass="btn btn-secondary"
+    />
   </h:body>
 </html>

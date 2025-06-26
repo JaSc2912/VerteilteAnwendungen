@@ -1,25 +1,152 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://jakarta.ee/jsf/html">
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://jakarta.ee/jsf/html"
+  xmlns:f="http://jakarta.ee/jsf/core"
+  xmlns:c="http://jakarta.ee/jsp/jstl/core"
+>
   <h:head>
-    <title>Bankportal</title>
+    <title>Bankportal - Hauptmenü</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: #f4f4f4;
+      }
+      .header {
+        background-color: #2c3e50;
+        color: white;
+        padding: 15px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .welcome {
+        font-size: 18px;
+      }
+      .role {
+        background-color: #34495e;
+        padding: 5px 10px;
+        border-radius: 3px;
+        font-size: 14px;
+      }
+      .menu-panel {
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      .menu-grid {
+        border-spacing: 15px;
+      }
+      .menu-link {
+        display: block;
+        padding: 15px 20px;
+        background-color: #3498db;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        text-align: center;
+        transition: background-color 0.3s;
+        min-width: 200px;
+      }
+      .menu-link:hover {
+        background-color: #2980b9;
+      }
+      .admin-link {
+        background-color: #e74c3c;
+      }
+      .admin-link:hover {
+        background-color: #c0392b;
+      }
+      .logout-btn {
+        background-color: #95a5a6;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+      .logout-btn:hover {
+        background-color: #7f8c8d;
+      }
+    </style>
   </h:head>
   <h:body>
-    <h1>Hauptmenü</h1>
-    <h:form>
-      <h:panelGrid columns="1" style="border-spacing: 10px">
-        <h:commandLink
+    <!-- Check if user is logged in, redirect to login if not -->
+    <f:metadata>
+      <f:viewAction
+        action="#{!sessionBean.loggedIn ? 'login.xhtml?faces-redirect=true' : ''}"
+      />
+    </f:metadata>
+
+    <div class="header">
+      <div>
+        <div class="welcome">Willkommen, #{sessionBean.currentUserName}!</div>
+        <div class="role">Rolle: #{sessionBean.currentUserRole}</div>
+      </div>
+      <h:form>
+        <h:commandButton
+          value="Abmelden"
+          action="#{loginBean.logout}"
+          styleClass="logout-btn"
+        />
+      </h:form>
+    </div>
+
+    <div class="menu-panel">
+      <h1>Bankportal - Hauptmenü</h1>
+
+      <h:panelGrid columns="2" styleClass="menu-grid">
+        <!-- Customer Management (All roles) -->
+        <h:link
           value="Kunden suchen"
-          action="kundensuchen.xhtml?faces-redirect=true"
+          outcome="kundensuchen"
+          styleClass="menu-link"
         />
-        <h:commandLink
+        <h:link
+          value="Kunden verwalten"
+          outcome="kundenpflegen"
+          styleClass="menu-link"
+        />
+
+        <!-- Account Management (All roles) -->
+        <h:link
+          value="Bankkonten verwalten"
+          outcome="bankkonten"
+          styleClass="menu-link"
+        />
+        <h:link
+          value="Transaktionen anzeigen"
+          outcome="transaktionen"
+          styleClass="menu-link"
+        />
+
+        <!-- Credit Management (Kreditvergabe and Admin) -->
+        <h:link
           value="Kreditanträge verwalten"
-          action="kreditantraege.xhtml?faces-redirect=true"
+          outcome="kreditantraege"
+          styleClass="menu-link"
+          rendered="#{sessionBean.kreditvergabe or sessionBean.admin}"
         />
-        <h:commandLink
-          value="Benutzer verwalten (Admin)"
-          action="benutzer.xhtml?faces-redirect=true"
+        <h:link
+          value="Kundenauswertung"
+          outcome="auswertung"
+          styleClass="menu-link"
+          rendered="#{sessionBean.kreditvergabe or sessionBean.admin}"
         />
+
+        <!-- Admin Only -->
+        <h:link
+          value="Benutzer verwalten"
+          outcome="benutzer"
+          styleClass="menu-link admin-link"
+          rendered="#{sessionBean.admin}"
+        />
+        <h:outputText value="" rendered="#{!sessionBean.admin}" />
       </h:panelGrid>
-    </h:form>
+    </div>
   </h:body>
 </html>

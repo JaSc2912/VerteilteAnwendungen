@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bank-Server API</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f5f5f5;
+      }
+      .container {
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        color: #2c3e50;
+        text-align: center;
+      }
+      .api-section {
+        margin: 20px 0;
+        padding: 15px;
+        background: #f8f9fa;
+        border-radius: 5px;
+      }
+      .endpoint {
+        font-family: monospace;
+        background: #e9ecef;
+        padding: 5px 10px;
+        border-radius: 3px;
+        display: inline-block;
+        margin: 5px 0;
+      }
+      .method {
+        font-weight: bold;
+        color: #007bff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🏦 Bank-Server REST API</h1>
+
+      <div class="api-section">
+        <h2>🔐 Authentication Endpoints</h2>
+        <div class="endpoint">
+          <span class="method">POST</span> /api/auth/login
+        </div>
+        <div class="endpoint">
+          <span class="method">POST</span> /api/auth/validate
+        </div>
+        <div class="endpoint">
+          <span class="method">POST</span> /api/auth/logout
+        </div>
+      </div>
+
+      <div class="api-section">
+        <h2>👥 Customer Endpoints</h2>
+        <div class="endpoint">
+          <span class="method">GET</span> /api/customers
+        </div>
+        <div class="endpoint">
+          <span class="method">GET</span> /api/customers/{id}
+        </div>
+        <div class="endpoint">
+          <span class="method">GET</span> /api/customers/search?q={searchTerm}
+        </div>
+        <div class="endpoint">
+          <span class="method">POST</span> /api/customers
+        </div>
+        <div class="endpoint">
+          <span class="method">PUT</span> /api/customers/{id}
+        </div>
+        <div class="endpoint">
+          <span class="method">DELETE</span> /api/customers/{id}
+        </div>
+        <div class="endpoint">
+          <span class="method">GET</span> /api/customers/{id}/creditworthiness
+        </div>
+      </div>
+
+      <div class="api-section">
+        <h2>💳 Account Endpoints</h2>
+        <div class="endpoint">
+          <span class="method">GET</span> /api/accounts/{iban}
+        </div>
+        <div class="endpoint">
+          <span class="method">GET</span> /api/accounts/customer/{customerId}
+        </div>
+        <div class="endpoint">
+          <span class="method">POST</span> /api/accounts
+        </div>
+        <div class="endpoint">
+          <span class="method">PUT</span> /api/accounts/{iban}
+        </div>
+        <div class="endpoint">
+          <span class="method">GET</span> /api/accounts/{iban}/balance
+        </div>
+        <div class="endpoint">
+          <span class="method">GET</span> /api/accounts/{iban}/transactions
+        </div>
+        <div class="endpoint">
+          <span class="method">POST</span> /api/accounts/transfer
+        </div>
+        <div class="endpoint">
+          <span class="method">POST</span> /api/accounts/{iban}/deposit
+        </div>
+        <div class="endpoint">
+          <span class="method">POST</span> /api/accounts/{iban}/withdraw
+        </div>
+      </div>
+
+      <div class="api-section">
+        <h2>💰 Credit Endpoints</h2>
+        <div class="endpoint"><span class="method">GET</span> /api/credits</div>
+        <div class="endpoint">
+          <span class="method">GET</span> /api/credits/{id}
+        </div>
+        <div class="endpoint">
+          <span class="method">GET</span> /api/credits/pending
+        </div>
+        <div class="endpoint">
+          <span class="method">GET</span> /api/credits/customer/{customerId}
+        </div>
+        <div class="endpoint">
+          <span class="method">POST</span> /api/credits
+        </div>
+        <div class="endpoint">
+          <span class="method">PUT</span> /api/credits/{id}/approve
+        </div>
+        <div class="endpoint">
+          <span class="method">PUT</span> /api/credits/{id}/reject
+        </div>
+      </div>
+
+      <div class="api-section">
+        <h2>ℹ️ Server Information</h2>
+        <p><strong>Version:</strong> 1.0-SNAPSHOT</p>
+        <p><strong>Technology:</strong> Jakarta EE 10, EJB, JPA, REST</p>
+        <p><strong>Database:</strong> Apache Derby</p>
+        <p><strong>Application Server:</strong> GlassFish 7</p>
+      </div>
+    </div>
+  </body>
+</html>

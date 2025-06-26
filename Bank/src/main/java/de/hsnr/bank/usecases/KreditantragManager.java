@@ -47,19 +47,21 @@ public class KreditantragManager {
         return kreditantragDAO.kreditantragSuchenNachIban(iban);
     }
 
-    public void antragAnnehmen(Long antragId) {
-        Kreditantrag antrag = suchen(antragId);
+    public void antragAnnehmen(Long kreditantragsNummer) {
+        Kreditantrag antrag = kreditantragDAO.suchen(kreditantragsNummer);
         if (antrag != null) {
-            antrag.setStatus("Angenommen");
-            editKreditantrag(antrag);
+            antrag = new Kreditantrag(antrag.getKreditantragsNummer(), antrag.getKreditsumme(),
+                    antrag.getLaufzeit(), antrag.getZins(), "AKZEPTIERT", antrag.getAntragssteller());
+            kreditantragDAO.editKreditantrag(antrag);
         }
     }
 
-    public void antragAblehnen(Long antragId) {
-        Kreditantrag antrag = suchen(antragId);
+    public void antragAblehnen(Long kreditantragsNummer) {
+        Kreditantrag antrag = kreditantragDAO.suchen(kreditantragsNummer);
         if (antrag != null) {
-            antrag.setStatus("Abgelehnt");
-            editKreditantrag(antrag);
+            antrag = new Kreditantrag(antrag.getKreditantragsNummer(), antrag.getKreditsumme(),
+                    antrag.getLaufzeit(), antrag.getZins(), "ABGELEHNT", antrag.getAntragssteller());
+            kreditantragDAO.editKreditantrag(antrag);
         }
     }
 }

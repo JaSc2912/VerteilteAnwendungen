@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:p="http://primefaces.org/ui"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+  <ui:composition template="/templates/layout.xhtml">
+    <ui:define name="title">Dashboard - Bank-Client</ui:define>
+
+    <ui:define name="content">
+      <f:metadata>
+        <f:viewAction
+          action="#{sessionService.loggedIn ? '' : 'index?faces-redirect=true'}"
+        />
+      </f:metadata>
+
+      <div class="card">
+        <div class="card-header">
+          <h1 class="card-title">Dashboard</h1>
+        </div>
+
+        <p>
+          Willkommen bei der Bank-Client Anwendung,
+          #{sessionService.currentUser}!
+        </p>
+
+        <div class="dashboard-grid">
+          <div class="dashboard-card">
+            <h3>👥 Kunden</h3>
+            <p>Verwalten Sie Kundendaten</p>
+            <h:link
+              outcome="customers"
+              value="Zu den Kunden"
+              styleClass="ui-button ui-button-outlined"
+              style="color: white; border-color: white; margin-top: 1rem"
+            />
+          </div>
+
+          <div class="dashboard-card">
+            <h3>💳 Konten</h3>
+            <p>Bankkonten und Transaktionen</p>
+            <h:link
+              outcome="accounts"
+              value="Zu den Konten"
+              styleClass="ui-button ui-button-outlined"
+              style="color: white; border-color: white; margin-top: 1rem"
+            />
+          </div>
+
+          <div class="dashboard-card">
+            <h3>💰 Kredite</h3>
+            <p>Kreditanträge bearbeiten</p>
+            <h:link
+              outcome="credits"
+              value="Zu den Krediten"
+              styleClass="ui-button ui-button-outlined"
+              style="color: white; border-color: white; margin-top: 1rem"
+            />
+          </div>
+        </div>
+
+        <div class="card" style="margin-top: 2rem">
+          <h3>Schnellzugriff</h3>
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap">
+            <h:link
+              outcome="customers"
+              value="Neuer Kunde"
+              styleClass="ui-button ui-button-success"
+            />
+            <h:link
+              outcome="accounts"
+              value="Neues Konto"
+              styleClass="ui-button ui-button-info"
+            />
+            <h:link
+              outcome="credits"
+              value="Kreditantrag"
+              styleClass="ui-button ui-button-warning"
+            />
+          </div>
+        </div>
+      </div>
+    </ui:define>
+  </ui:composition>
+</html>

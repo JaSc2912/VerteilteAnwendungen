@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html
   xmlns="http://www.w3.org/1999/xhtml"
-  xmlns:h="http://xmlns.jcp.org/jsf/html"
-  xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:h="http://jakarta.ee/jsf/html"
+  xmlns:f="http://jakarta.ee/jsf/core"
 >
   <h:head>
     <title>Bankanwendung - Anmeldung</title>
@@ -14,47 +14,149 @@
         align-items: center;
         height: 100vh;
         margin: 0;
-        background-color: #f4f4f4;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       }
-      .panel {
-        border: 1px solid #ccc;
-        padding: 20px;
+      .login-container {
+        background: white;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        width: 400px;
+        text-align: center;
+      }
+      .login-header {
+        margin-bottom: 30px;
+      }
+      .login-header h2 {
+        color: #333;
+        margin-bottom: 10px;
+      }
+      .login-header p {
+        color: #666;
+        margin: 0;
+      }
+      .form-grid {
+        border-spacing: 15px;
+        width: 100%;
+      }
+      .form-grid td {
+        text-align: left;
+      }
+      .form-label {
+        font-weight: bold;
+        color: #555;
+        display: block;
+        margin-bottom: 5px;
+      }
+      .form-input {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #ddd;
         border-radius: 5px;
-        background-color: white;
+        font-size: 16px;
+        transition: border-color 0.3s;
       }
-      .grid {
-        border-spacing: 10px;
+      .form-input:focus {
+        outline: none;
+        border-color: #667eea;
+      }
+      .login-btn {
+        width: 100%;
+        padding: 12px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: transform 0.2s;
+        margin-top: 20px;
+      }
+      .login-btn:hover {
+        transform: translateY(-2px);
+      }
+      .error-msg {
+        color: #e74c3c;
+        background-color: #fdf2f2;
+        border: 1px solid #f5c6cb;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+      }
+      .demo-info {
+        margin-top: 30px;
+        padding: 15px;
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        border-left: 4px solid #17a2b8;
+      }
+      .demo-info h4 {
+        margin-top: 0;
+        color: #17a2b8;
+      }
+      .demo-info p {
+        margin: 5px 0;
+        font-size: 14px;
+        color: #666;
       }
     </style>
   </h:head>
   <h:body>
-    <div class="panel">
-      <h2>Anmeldung</h2>
+    <div class="login-container">
+      <div class="login-header">
+        <h2>Bankanwendung</h2>
+        <p>Melden Sie sich mit Ihren Zugangsdaten an</p>
+      </div>
+
       <h:form>
-        <h:messages id="messages" showDetail="true" style="color: red" />
-        <h:panelGrid columns="2" styleClass="grid">
-          <h:outputLabel for="username" value="Benutzername:" />
-          <h:inputText
-            id="username"
-            value="#{loginBean.benutzername}"
-            required="true"
-            label="Benutzername"
-          />
+        <h:messages styleClass="error-msg" showDetail="true" />
 
-          <h:outputLabel for="password" value="Passwort:" />
-          <h:inputSecret
-            id="password"
-            value="#{loginBean.passwort}"
-            required="true"
-            label="Passwort"
-          />
-
-          <h:outputText value="" />
-          <h:commandButton value="Einloggen" action="#{loginBean.login}">
-            <f:ajax execute="@form" render="messages" />
-          </h:commandButton>
-        </h:panelGrid>
+        <table class="form-grid">
+          <tr>
+            <td>
+              <label class="form-label" for="username">Benutzername:</label>
+              <h:inputText
+                id="username"
+                value="#{loginBean.benutzername}"
+                required="true"
+                requiredMessage="Benutzername ist erforderlich"
+                styleClass="form-input"
+                placeholder="Benutzername eingeben"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label class="form-label" for="password">Passwort:</label>
+              <h:inputSecret
+                id="password"
+                value="#{loginBean.passwort}"
+                required="true"
+                requiredMessage="Passwort ist erforderlich"
+                styleClass="form-input"
+                placeholder="Passwort eingeben"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h:commandButton
+                value="Anmelden"
+                action="#{loginBean.login}"
+                styleClass="login-btn"
+              />
+            </td>
+          </tr>
+        </table>
       </h:form>
+
+      <div class="demo-info">
+        <h4>Demo-Zugangsdaten:</h4>
+        <p><strong>Admin:</strong> admin / adminpass</p>
+        <p><strong>Kundenservice:</strong> service01 / servicepass</p>
+        <p><strong>Kreditvergabe:</strong> credit01 / creditpass</p>
+      </div>
     </div>
   </h:body>
 </html>
