@@ -12,14 +12,14 @@ import java.util.List;
  */
 @Transactional
 public class KundeDAO {
-    
+
     @PersistenceContext
     private EntityManager em;
-    
+
     public void save(KundeEntity kunde) {
         em.persist(kunde);
     }
-    
+
     public KundeEntity findByKundennummer(String kundennummer) {
         try {
             return em.createQuery("SELECT k FROM KundeEntity k WHERE k.kundennummer = :kundennummer", KundeEntity.class)
@@ -29,21 +29,21 @@ public class KundeDAO {
             return null;
         }
     }
-    
+
     public List<KundeEntity> findAll() {
         return em.createQuery("SELECT k FROM KundeEntity k", KundeEntity.class).getResultList();
     }
-    
+
     public List<KundeEntity> searchByName(String name) {
-        return em.createQuery("SELECT k FROM KundeEntity k WHERE k.name LIKE :name", KundeEntity.class)
+        return em.createQuery("SELECT k FROM KundeEntity k WHERE UPPER(k.name) LIKE UPPER(:name)", KundeEntity.class)
                 .setParameter("name", "%" + name + "%")
                 .getResultList();
     }
-    
+
     public void update(KundeEntity kunde) {
         em.merge(kunde);
     }
-    
+
     public void delete(String kundennummer) {
         KundeEntity kunde = findByKundennummer(kundennummer);
         if (kunde != null) {

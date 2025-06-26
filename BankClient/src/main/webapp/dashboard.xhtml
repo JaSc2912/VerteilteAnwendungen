@@ -85,27 +85,48 @@
       <h:form rendered="#{loginBean.loggedIn}">
         <div class="user-info">
           <h3>Benutzerinformationen</h3>
-          <p><strong>Benutzername:</strong> #{loginBean.currentUser.benutzername}</p>
+          <p>
+            <strong>Benutzername:</strong> #{loginBean.currentUser.benutzername}
+          </p>
           <p><strong>Name:</strong> #{loginBean.currentUser.name}</p>
           <p><strong>Rolle:</strong> #{loginBean.currentUser.rolle}</p>
-          <p><strong>Telefon:</strong> #{loginBean.currentUser.telefonnummer}</p>
+          <p>
+            <strong>Telefon:</strong> #{loginBean.currentUser.telefonnummer}
+          </p>
         </div>
 
         <h3>Verfügbare Funktionen</h3>
         <div class="menu-grid">
-          <h:link value="Kunden suchen" outcome="kundenSuchen" styleClass="menu-item" />
-          <h:link value="Kundendaten pflegen" outcome="kundendatenPflegen" styleClass="menu-item" />
+          <h:link
+            value="Kunden suchen"
+            outcome="kundenSuchen"
+            styleClass="menu-item"
+          />
+          <h:link
+            value="Kundendaten pflegen"
+            outcome="kundendatenPflegen"
+            styleClass="menu-item"
+          />
         </div>
 
         <div class="logout-btn">
-          <h:commandButton value="Abmelden" action="#{loginBean.logout}" styleClass="btn" />
+          <h:commandButton
+            value="Abmelden"
+            action="#{loginBean.logout}"
+            styleClass="btn"
+          />
         </div>
       </h:form>
 
       <h:panelGroup rendered="#{not loginBean.loggedIn}">
-        <div style="text-align: center; margin-top: 50px;">
+        <div style="text-align: center; margin-top: 50px">
           <p>Sie sind nicht angemeldet.</p>
-          <h:link value="Zur Anmeldung" outcome="login" styleClass="btn" style="background: #007acc;" />
+          <h:link
+            value="Zur Anmeldung"
+            outcome="login"
+            styleClass="btn"
+            style="background: #007acc"
+          />
         </div>
       </h:panelGroup>
     </div>

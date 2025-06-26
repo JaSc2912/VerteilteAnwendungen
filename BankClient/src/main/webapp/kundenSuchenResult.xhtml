@@ -76,56 +76,58 @@
   </head>
   <body>
     <div class="container">
-      <div class="navigation">
-        <h:link outcome="kundenSuchen">Zurück zur Suche</h:link>
-        <h:link outcome="kundenuebersicht">Kundenübersicht</h:link>
-        <h:commandLink action="#{loginBean.logout}">Abmelden</h:commandLink>
-      </div>
+      <h:form>
+        <div class="navigation">
+          <h:link outcome="kundenSuchen">Zurück zur Suche</h:link>
+          <h:link outcome="dashboard">Dashboard</h:link>
+          <h:commandLink action="#{loginBean.logout}">Abmelden</h:commandLink>
+        </div>
 
-      <h1>Suchergebnis</h1>
+        <h1>Suchergebnis</h1>
 
-      <div class="message">
-        <h:outputText value="#{kundenSuchenBean.message}" />
-      </div>
+        <div class="message">
+          <h:outputText value="#{kundenSuchenBean.message}" />
+        </div>
 
-      <h:dataTable
-        value="#{kundenSuchenBean.suchergebnis}"
-        var="kunde"
-        rendered="#{not empty kundenSuchenBean.suchergebnis}"
-      >
-        <h:column>
-          <f:facet name="header">Kundennummer</f:facet>
-          <h:outputText value="#{kunde.kundennummer}" />
-        </h:column>
-        <h:column>
-          <f:facet name="header">Name</f:facet>
-          <h:outputText value="#{kunde.name}" />
-        </h:column>
-        <h:column>
-          <f:facet name="header">Adresse</f:facet>
-          <h:outputText value="#{kunde.adresse}" />
-        </h:column>
-        <h:column>
-          <f:facet name="header">Telefon</f:facet>
-          <h:outputText value="#{kunde.telefonnummer}" />
-        </h:column>
-        <h:column>
-          <f:facet name="header">E-Mail</f:facet>
-          <h:outputText value="#{kunde.email}" />
-        </h:column>
-        <h:column>
-          <f:facet name="header">Geburtsdatum</f:facet>
-          <h:outputText value="#{kunde.geburtsdatum}">
-            <f:convertDateTime pattern="dd.MM.yyyy" />
-          </h:outputText>
-        </h:column>
-        <h:column>
-          <f:facet name="header">Status</f:facet>
-          <h:outputText value="#{kunde.kundenstatus}" />
-        </h:column>
-      </h:dataTable>
+        <h:dataTable
+          value="#{kundenSuchenBean.suchergebnis}"
+          var="kunde"
+          rendered="#{not empty kundenSuchenBean.suchergebnis}"
+        >
+          <h:column>
+            <f:facet name="header">Kundennummer</f:facet>
+            <h:outputText value="#{kunde.kundennummer}" />
+          </h:column>
+          <h:column>
+            <f:facet name="header">Name</f:facet>
+            <h:outputText value="#{kunde.name}" />
+          </h:column>
+          <h:column>
+            <f:facet name="header">Adresse</f:facet>
+            <h:outputText value="#{kunde.adresse}" />
+          </h:column>
+          <h:column>
+            <f:facet name="header">Telefon</f:facet>
+            <h:outputText value="#{kunde.telefonnummer}" />
+          </h:column>
+          <h:column>
+            <f:facet name="header">E-Mail</f:facet>
+            <h:outputText value="#{kunde.email}" />
+          </h:column>
+          <h:column>
+            <f:facet name="header">Geburtsdatum</f:facet>
+            <h:outputText value="#{kunde.geburtsdatum}">
+              <f:convertDateTime pattern="dd.MM.yyyy" />
+            </h:outputText>
+          </h:column>
+          <h:column>
+            <f:facet name="header">Status</f:facet>
+            <h:outputText value="#{kunde.kundenstatus}" />
+          </h:column>
+        </h:dataTable>
 
-      <h:link outcome="kundenSuchen" styleClass="btn">Neue Suche</h:link>
+        <h:link outcome="kundenSuchen" styleClass="btn">Neue Suche</h:link>
+      </h:form>
     </div>
   </body>
 </html>
