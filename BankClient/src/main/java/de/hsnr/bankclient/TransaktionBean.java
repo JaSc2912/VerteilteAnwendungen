@@ -275,24 +275,39 @@ public class TransaktionBean implements Serializable {
                 System.out.println("  Recipient: " + selectedTransaction.getEmpfaenger());
                 System.out.println("  Date: " + selectedTransaction.getTransaktionsdatum());
                 
-                // Create a copy of the selected transaction to avoid binding issues
-                transaktion = new TransaktionTO();
+                // Clear all fields first
+                transaktion.setTransaktionsnummer(null);
+                transaktion.setKonto(null);
+                transaktion.setTransaktionsdatum(null);
+                transaktion.setBetrag(null);
+                transaktion.setTransaktionsart(null);
+                transaktion.setEmpfaenger(null);
+                transaktion.setTransaktionsstatus(null);
+                
+                // Now set the values from selected transaction
                 transaktion.setTransaktionsnummer(selectedTransaction.getTransaktionsnummer());
                 transaktion.setKonto(selectedTransaction.getKonto());
-                transaktion.setTransaktionsdatum(selectedTransaction.getTransaktionsdatum());
                 transaktion.setBetrag(selectedTransaction.getBetrag());
                 transaktion.setTransaktionsart(selectedTransaction.getTransaktionsart());
                 transaktion.setEmpfaenger(selectedTransaction.getEmpfaenger());
                 transaktion.setTransaktionsstatus(selectedTransaction.getTransaktionsstatus());
                 
-                System.out.println("AFTER COPYING TO FORM:");
-                System.out.println("  Form Number: " + transaktion.getTransaktionsnummer());
-                System.out.println("  Form Account: " + transaktion.getKonto());
-                System.out.println("  Form Amount: " + transaktion.getBetrag());
-                System.out.println("  Form Type: " + transaktion.getTransaktionsart());
-                System.out.println("  Form Status: " + transaktion.getTransaktionsstatus());
-                System.out.println("  Form Recipient: " + transaktion.getEmpfaenger());
-                System.out.println("  Form Date: " + transaktion.getTransaktionsdatum());
+                // Handle date conversion - extract just the date part if it's in ISO format
+                String dateValue = selectedTransaction.getTransaktionsdatum();
+                if (dateValue != null && dateValue.contains("T")) {
+                    // Extract just the date part (yyyy-MM-dd) from ISO format
+                    dateValue = dateValue.substring(0, dateValue.indexOf("T"));
+                }
+                transaktion.setTransaktionsdatum(dateValue);
+                
+                System.out.println("AFTER SETTING VALUES:");
+                System.out.println("  Form Number: '" + transaktion.getTransaktionsnummer() + "'");
+                System.out.println("  Form Account: '" + transaktion.getKonto() + "'");
+                System.out.println("  Form Amount: '" + transaktion.getBetrag() + "'");
+                System.out.println("  Form Type: '" + transaktion.getTransaktionsart() + "'");
+                System.out.println("  Form Status: '" + transaktion.getTransaktionsstatus() + "'");
+                System.out.println("  Form Recipient: '" + transaktion.getEmpfaenger() + "'");
+                System.out.println("  Form Date: '" + transaktion.getTransaktionsdatum() + "'");
                 
                 message = "Transaktionsdaten für " + transaktionsnummer
                         + " geladen. Sie können die Daten bearbeiten und speichern.";

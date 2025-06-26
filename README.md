@@ -1,5 +1,19 @@
 # Bank Client-Server Anwendung
 
+PS C:\Users\jannn\Downloads\glassfish-7.0.24\glassfish7\glassfish\bin> ./asadmin.bat start-domain
+
+PS C:\Users\jannn> cd..
+PS C:\Users> cd..
+PS C:\> cd .\Apache
+PS C:\Apache> CD .\db-derby-10.17.1.0-bin\
+PS C:\Apache\db-derby-10.17.1.0-bin> cd .\db-derby-10.17.1.0-bin\
+PS C:\Apache\db-derby-10.17.1.0-bin\db-derby-10.17.1.0-bin> cd .\lib\
+PS C:\Apache\db-derby-10.17.1.0-bin\db-derby-10.17.1.0-bin\lib> java -jar .\derbyrun.jar server start
+
+
+
+
+
 Diese Anwendung implementiert ein Banksystem mit einer Client-Server-Architektur basierend auf Jakarta EE.
 
 ## Projekte
